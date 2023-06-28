@@ -1608,6 +1608,7 @@ GameObject:
   - component: {fileID: 1236387251}
   - component: {fileID: 1236387250}
   - component: {fileID: 1236387252}
+  - component: {fileID: 1236387253}
   m_Layer: 0
   m_Name: hair
   m_TagString: Untagged
@@ -1689,13 +1690,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236387249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 943fdaa1cceb11f43aa45473543ee2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hairSpriteRenderer: {fileID: 1236387250}
-  HairColor: {r: 1, g: 0, b: 0, a: 1}
+  HairColor:
+  - {r: 3.6312054e+36, g: 5.86e-43, b: 1.0578665e+21, a: 0.00000021438315}
+  - {r: 1.3566155e-19, g: 5.86e-43, b: 4.6e-44, a: 0.0000002134562}
+  - {r: 3.6312054e+36, g: 5.86e-43, b: 3.6304448e+36, a: 5.86e-43}
+  - {r: 1.3566196e-19, g: 5.86e-43, b: 6.9e-44, a: 1e-45}
+--- !u!114 &1236387253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236387249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6211b3b11279014084d7d319da70a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hair: {fileID: 1236387250}
 --- !u!1001 &1238972416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3607,7 +3625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationToPlay: lose2
-  _loseHair: {fileID: 0}
+  _loseHair: {fileID: 396447186}
 --- !u!61 &2111912555
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3693,13 +3711,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111912544}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 943fdaa1cceb11f43aa45473543ee2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hairSpriteRenderer: {fileID: 396447186}
-  HairColor: {r: 1, g: 0, b: 0, a: 1}
+  HairColor:
+  - {r: 0.7490196, g: 0, b: 0.003921569, a: 1}
+  - {r: 0.7490196, g: 0.003921569, b: 0.003921569, a: 1}
+  - {r: 0.7490196, g: 0, b: 0.7490196, a: 1}
+  - {r: 0.7490196, g: 0.003921569, b: 0.003921569, a: 1}
+--- !u!114 &2111912560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111912544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6211b3b11279014084d7d319da70a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hair: {fileID: 396447186}
 --- !u!1 &2136924754
 GameObject:
   m_ObjectHideFlags: 0

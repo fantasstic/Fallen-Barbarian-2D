@@ -154,14 +154,14 @@ MonoBehaviour:
     basicMoveLimitation: 0f000000
     possibleMoveStates: []
     basicMovesToggle: 0
-    statesToggle: 1
+    statesToggle: 0
   moveClassification:
     attackType: 0
-    hitType: 0
-    startupSpeed: 0
-    recoverySpeed: 0
+    hitType: 1
+    startupSpeed: 5
+    recoverySpeed: 5
     hitConfirmType: 0
-    preferableDistance: 0
+    preferableDistance: 1
     gaugeUsage: 0
     anyAttackType: 1
     anyHitType: 1
@@ -269,7 +269,7 @@ MonoBehaviour:
     instantAirRecovery: 0
     overrideHitAnimation: 0
     newHitAnimation: 27
-    hitStrength: 1
+    hitStrength: 0
     hitStunType: 2
     hitStunOnHit: 0
     _hitStunOnHit:
@@ -539,7 +539,7 @@ MonoBehaviour:
   invincibleBodyParts: []
   armorOptions:
     activeFramesBegin: 0
-    activeFramesEnds: 0
+    activeFramesEnds: 1
     overrideHitEffects: 0
     hitEffects:
       hitParticle: {fileID: 0}

@@ -46,7 +46,7 @@ MonoBehaviour:
     stageLoadingMethod: 0
     stagePath: Assets/Main/Main.unity
     screenshot: {fileID: 2800000, guid: a248f6591afb49f46beb329ea2296243, type: 3}
-    prefab: {fileID: 100000, guid: faff96cd836074bcf89bbe5e914bfd28, type: 3}
+    prefab: {fileID: 100000, guid: 3cc97a7591eae4678bb26cd12746e0ec, type: 3}
     music: {fileID: 0}
     groundFriction: 100
     _groundFriction:
@@ -927,7 +927,7 @@ MonoBehaviour:
   player2_Inputs:
   - inputType: 1
     inputButtonName: P2KeyboardVertical
-    engineRelatedButton: 3
+    engineRelatedButton: 2
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1055,7 +1055,7 @@ MonoBehaviour:
     stageLoadingMethod: 0
     stagePath: Assets/Main/Main.unity
     screenshot: {fileID: 2800000, guid: a248f6591afb49f46beb329ea2296243, type: 3}
-    prefab: {fileID: 100000, guid: faff96cd836074bcf89bbe5e914bfd28, type: 3}
+    prefab: {fileID: 100000, guid: 3cc97a7591eae4678bb26cd12746e0ec, type: 3}
     music: {fileID: 0}
     groundFriction: 100
     _groundFriction:
@@ -1102,7 +1102,7 @@ MonoBehaviour:
     startGameImmediately: 0
     skipLoadingScreen: 1
     matchType: 0
-    debugMode: 0
+    debugMode: 1
     emulateNetwork: 0
     trainingModeDebugger: 0
     preloadedObjects: 0
@@ -1131,18 +1131,18 @@ MonoBehaviour:
       aiWeightList: 0
     p2DebugInfo:
       toggle: 0
-      currentMove: 1
-      position: 1
-      lifePoints: 1
-      gaugePoints: 1
+      currentMove: 0
+      position: 0
+      lifePoints: 0
+      gaugePoints: 0
       currentState: 0
       currentSubState: 0
-      stunTime: 1
-      comboHits: 1
-      comboDamage: 1
-      inputs: 1
+      stunTime: 0
+      comboHits: 0
+      comboDamage: 0
+      inputs: 0
       buttonSequence: 0
-      aiWeightList: 0
+      aiWeightList: 1
   trainingModeOptions:
     inputInfo: 0
     freezeTime: 0
@@ -1169,50 +1169,82 @@ MonoBehaviour:
     actionListToggle: 0
     actionSequence: []
   aiOptions:
-    engine: 1
-    attackWhenEnemyIsDown: 0
-    moveWhenEnemyIsDown: 0
-    inputFrequency: 1
+    engine: 0
+    attackWhenEnemyIsDown: 1
+    moveWhenEnemyIsDown: 1
+    inputFrequency: 0.2
     behaviourToggle: 1
     distanceBehaviour:
-    - characterDistance: 2
+    - characterDistance: 1
       proximityRangeBegins: 0
-      proximityRangeEnds: 100
-      movingForwardProbability: 0.5
+      proximityRangeEnds: 20
+      movingForwardProbability: 0
       movingBackProbability: 0.5
-      jumpingProbability: 0.5
+      jumpingProbability: 0.292
+      crouchProbability: 0.7
+      attackProbability: 1
+    - characterDistance: 4
+      proximityRangeBegins: 51
+      proximityRangeEnds: 75
+      movingForwardProbability: 1
+      movingBackProbability: 0
+      jumpingProbability: 0
       crouchProbability: 0.5
-      attackProbability: 0.5
-    multiCoreSupport: 0
-    persistentBehavior: 0
+      attackProbability: 0
+    - characterDistance: 2
+      proximityRangeBegins: 21
+      proximityRangeEnds: 40
+      movingForwardProbability: 0.9
+      movingBackProbability: 0.196
+      jumpingProbability: 0.5
+      crouchProbability: 0.32
+      attackProbability: 0.548
+    - characterDistance: 3
+      proximityRangeBegins: 41
+      proximityRangeEnds: 60
+      movingForwardProbability: 0.8
+      movingBackProbability: 0.224
+      jumpingProbability: 0.648
+      crouchProbability: 0.204
+      attackProbability: 0.3
+    - characterDistance: 5
+      proximityRangeBegins: 61
+      proximityRangeEnds: 80
+      movingForwardProbability: 1
+      movingBackProbability: 0
+      jumpingProbability: 0
+      crouchProbability: 0
+      attackProbability: 0
+    multiCoreSupport: 1
+    persistentBehavior: 1
     difficultyToggle: 1
     difficultySettings:
-    - difficultyLevel: 0
-      overrideTimeBetweenDecisions: 0
+    - difficultyLevel: 2
+      overrideTimeBetweenDecisions: 1
       timeBetweenDecisions: 0
-      overrideTimeBetweenActions: 0
+      overrideTimeBetweenActions: 1
       timeBetweenActions: 0.05
-      overrideAggressiveness: 0
+      overrideAggressiveness: 1
       aggressiveness: 0.5
-      overrideRuleCompliance: 0
+      overrideRuleCompliance: 1
       ruleCompliance: 0.9
-      overrideComboEfficiency: 0
+      overrideComboEfficiency: 1
       comboEfficiency: 1
-      startupBehavior: 0
-    selectedDifficultyLevel: 0
+      startupBehavior: 3
+    selectedDifficultyLevel: 2
     selectedDifficulty:
-      difficultyLevel: 0
-      overrideTimeBetweenDecisions: 0
+      difficultyLevel: 2
+      overrideTimeBetweenDecisions: 1
       timeBetweenDecisions: 0
-      overrideTimeBetweenActions: 0
+      overrideTimeBetweenActions: 1
       timeBetweenActions: 0.05
-      overrideAggressiveness: 0
+      overrideAggressiveness: 1
       aggressiveness: 0.5
-      overrideRuleCompliance: 0
+      overrideRuleCompliance: 1
       ruleCompliance: 0.9
-      overrideComboEfficiency: 0
+      overrideComboEfficiency: 1
       comboEfficiency: 1
-      startupBehavior: 0
+      startupBehavior: 3
   networkOptions:
     forceAnimationControl: 0
     disableRootMotion: 0

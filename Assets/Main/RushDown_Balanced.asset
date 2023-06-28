@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1050371053, guid: 290947d1480294243a72173919bf47d1, type: 3}
-  m_Name: RushDown_Aggressive
+  m_Name: RushDown_Balanced
   m_EditorClassIdentifier: 
-  instructionsName: Rush Down (Aggressive)
+  instructionsName: Rush Down (Balanced)
   debugMode: 1
   debug_ReactionWeight: 1
   advancedOptions:
     timeBetweenDecisions: 0
     timeBetweenActions: 0.01
     aggressiveness: 0.5
-    ruleCompliance: 0.9
-    comboEfficiency: 1
+    ruleCompliance: 0.8
+    comboEfficiency: 0.8
     movementDuration: 0.08
     buttonSequenceInterval: 1
     attackDesirabilityCalculation: 2
-    defaultDesirability: 3
+    defaultDesirability: 0
     playRandomMoves: 1
     reactionParameters:
       attackWhenEnemyIsDown: 0
@@ -44,16 +44,16 @@ MonoBehaviour:
     preferableCombatDistance: 1
     attacksAtPreferableDistance: 5
     autoMove: 1
-    restOnLocation: 1
-    moveFrequency: 3
+    restOnLocation: 0
+    moveFrequency: 2
     autoJump: 1
     jumpBackFrequency: 1
     jumpStraightFrequency: 2
-    jumpForwardFrequency: 4
+    jumpForwardFrequency: 2
     autoBlock: 1
     obeyHitType: 1
     standBlockAccuracy: 5
-    crouchBlockAccuracy: 6
+    crouchBlockAccuracy: 5
     jumpBlockAccuracy: 0
     autoAttack: 1
     obeyPreferableDistances: 0
@@ -279,23 +279,6 @@ MonoBehaviour:
         moveDamage: 0
       conditionsToggle: 0
     reactions:
-    - reactionType: 3
-      moveClassification:
-        attackType: 0
-        hitType: 0
-        startupSpeed: 0
-        recoverySpeed: 0
-        hitConfirmType: 0
-        preferableDistance: 0
-        gaugeUsage: 0
-        anyAttackType: 1
-        anyHitType: 1
-        anyHitConfirmType: 1
-      moveDamage: 0
-      specificMove: {fileID: 0}
-      buttonPress: 4
-      behavior: 0
-      desirability: 4
     - reactionType: 10
       moveClassification:
         attackType: 0
@@ -312,7 +295,7 @@ MonoBehaviour:
       specificMove: {fileID: 0}
       buttonPress: 4
       behavior: 0
-      desirability: 5
+      desirability: 6
     - reactionType: 10
       moveClassification:
         attackType: 0
@@ -332,7 +315,7 @@ MonoBehaviour:
       desirability: 6
     debugToggle: 0
     eventsToggle: 0
-    reactionsToggle: 0
+    reactionsToggle: 1
   - ruleName: Grapple Defensive Opponents
     events:
     - enabled: 1
@@ -388,32 +371,7 @@ MonoBehaviour:
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
-      - enabled: 1
-        boolean: 1
-        targetCharacter: 1
-        conditionType: 8
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 3
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      conditionsToggle: 1
+      conditionsToggle: 0
     - enabled: 1
       boolean: 0
       conditions:
@@ -467,7 +425,7 @@ MonoBehaviour:
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
-      conditionsToggle: 1
+      conditionsToggle: 0
     reactions:
     - reactionType: 10
       moveClassification:
@@ -475,12 +433,12 @@ MonoBehaviour:
         hitType: 0
         startupSpeed: 0
         recoverySpeed: 0
-        hitConfirmType: 1
+        hitConfirmType: 0
         preferableDistance: 0
         gaugeUsage: 0
         anyAttackType: 1
         anyHitType: 1
-        anyHitConfirmType: 0
+        anyHitConfirmType: 1
       moveDamage: 0
       specificMove: {fileID: 0}
       buttonPress: 4
@@ -489,7 +447,59 @@ MonoBehaviour:
     debugToggle: 0
     eventsToggle: 0
     reactionsToggle: 0
-  - ruleName: Avoid Zoning
+  - ruleName: Change Behavior - Aggressive
+    events:
+    - enabled: 1
+      boolean: 0
+      conditions:
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 0
+        conditionType: 3
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 4
+        gaugeStatus: 0
+        playerDistance: 3
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 0
+    reactions:
+    - reactionType: 11
+      moveClassification:
+        attackType: 0
+        hitType: 0
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 1
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 4
+      desirability: 4
+    debugToggle: 0
+    eventsToggle: 0
+    reactionsToggle: 0
+  - ruleName: Projectile (Far)
     events:
     - enabled: 1
       boolean: 0
@@ -519,20 +529,16 @@ MonoBehaviour:
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
-      conditionsToggle: 1
-    - enabled: 1
-      boolean: 0
-      conditions:
       - enabled: 1
-        boolean: 0
-        targetCharacter: 1
-        conditionType: 5
+        boolean: 1
+        targetCharacter: 0
+        conditionType: 4
         horizontalMovement: 1
         verticalMovement: 1
         movementSpeed: 0
         healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 5
+        gaugeStatus: 5
+        playerDistance: 3
         jumping: 0
         blocking: 1
         moveClassification:
@@ -548,7 +554,7 @@ MonoBehaviour:
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
-      conditionsToggle: 1
+      conditionsToggle: 0
     reactions:
     - reactionType: 10
       moveClassification:
@@ -566,11 +572,11 @@ MonoBehaviour:
       specificMove: {fileID: 0}
       buttonPress: 4
       behavior: 0
-      desirability: 0
+      desirability: 3
     debugToggle: 0
     eventsToggle: 0
     reactionsToggle: 0
-  - ruleName: Jump Projectiles
+  - ruleName: Change Behavior - Defensive
     events:
     - enabled: 1
       boolean: 0
@@ -578,24 +584,24 @@ MonoBehaviour:
       - enabled: 1
         boolean: 0
         targetCharacter: 1
-        conditionType: 6
+        conditionType: 3
         horizontalMovement: 1
         verticalMovement: 1
         movementSpeed: 0
-        healthStatus: 0
+        healthStatus: 2
         gaugeStatus: 0
         playerDistance: 3
         jumping: 0
         blocking: 1
         moveClassification:
-          attackType: 6
+          attackType: 0
           hitType: 0
           startupSpeed: 0
           recoverySpeed: 0
           hitConfirmType: 0
           preferableDistance: 0
           gaugeUsage: 0
-          anyAttackType: 0
+          anyAttackType: 1
           anyHitType: 1
           anyHitConfirmType: 1
         moveFrameData: 0
@@ -603,7 +609,7 @@ MonoBehaviour:
       - enabled: 1
         boolean: 0
         targetCharacter: 0
-        conditionType: 5
+        conditionType: 3
         horizontalMovement: 1
         verticalMovement: 1
         movementSpeed: 0
@@ -613,14 +619,14 @@ MonoBehaviour:
         jumping: 0
         blocking: 1
         moveClassification:
-          attackType: 6
+          attackType: 0
           hitType: 0
           startupSpeed: 0
           recoverySpeed: 0
           hitConfirmType: 0
           preferableDistance: 0
           gaugeUsage: 0
-          anyAttackType: 0
+          anyAttackType: 1
           anyHitType: 1
           anyHitConfirmType: 1
         moveFrameData: 0
@@ -632,7 +638,32 @@ MonoBehaviour:
       - enabled: 1
         boolean: 0
         targetCharacter: 1
-        conditionType: 6
+        conditionType: 3
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 3
+        gaugeStatus: 0
+        playerDistance: 3
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 0
+        conditionType: 3
         horizontalMovement: 1
         verticalMovement: 1
         movementSpeed: 0
@@ -642,46 +673,21 @@ MonoBehaviour:
         jumping: 0
         blocking: 1
         moveClassification:
-          attackType: 6
+          attackType: 0
           hitType: 0
           startupSpeed: 0
           recoverySpeed: 0
           hitConfirmType: 0
           preferableDistance: 0
           gaugeUsage: 0
-          anyAttackType: 0
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 0
-        conditionType: 5
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 2
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 6
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 0
+          anyAttackType: 1
           anyHitType: 1
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
       conditionsToggle: 0
     reactions:
-    - reactionType: 5
+    - reactionType: 11
       moveClassification:
         attackType: 0
         hitType: 0
@@ -696,139 +702,8 @@ MonoBehaviour:
       moveDamage: 0
       specificMove: {fileID: 0}
       buttonPress: 4
-      behavior: 0
+      behavior: 2
       desirability: 4
-    debugToggle: 0
-    eventsToggle: 0
-    reactionsToggle: 0
-  - ruleName: Tech Throws
-    events:
-    - enabled: 1
-      boolean: 0
-      conditions:
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 1
-        conditionType: 6
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 3
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 1
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 0
-        moveFrameData: 1
-        moveDamage: 0
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 0
-        conditionType: 5
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 1
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      conditionsToggle: 0
-    - enabled: 1
-      boolean: 0
-      conditions:
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 1
-        conditionType: 6
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 3
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 1
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 0
-        moveFrameData: 1
-        moveDamage: 0
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 0
-        conditionType: 5
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 2
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      conditionsToggle: 0
-    reactions:
-    - reactionType: 10
-      moveClassification:
-        attackType: 0
-        hitType: 0
-        startupSpeed: 0
-        recoverySpeed: 0
-        hitConfirmType: 1
-        preferableDistance: 0
-        gaugeUsage: 0
-        anyAttackType: 1
-        anyHitType: 1
-        anyHitConfirmType: 0
-      moveDamage: 0
-      specificMove: {fileID: 0}
-      buttonPress: 4
-      behavior: 0
-      desirability: 5
     debugToggle: 0
     eventsToggle: 0
     reactionsToggle: 0
@@ -862,7 +737,7 @@ MonoBehaviour:
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
-      conditionsToggle: 1
+      conditionsToggle: 0
     - enabled: 1
       boolean: 0
       conditions:
@@ -891,7 +766,7 @@ MonoBehaviour:
           anyHitConfirmType: 1
         moveFrameData: 0
         moveDamage: 0
-      conditionsToggle: 1
+      conditionsToggle: 0
     reactions:
     - reactionType: 10
       moveClassification:
@@ -904,15 +779,15 @@ MonoBehaviour:
         gaugeUsage: 0
         anyAttackType: 1
         anyHitType: 1
-        anyHitConfirmType: 0
+        anyHitConfirmType: 1
       moveDamage: 0
       specificMove: {fileID: 0}
       buttonPress: 4
       behavior: 0
       desirability: 0
     debugToggle: 0
-    eventsToggle: 1
-    reactionsToggle: 1
+    eventsToggle: 0
+    reactionsToggle: 0
   aiDefinitions:
     damage:
       veryWeak: 0.05

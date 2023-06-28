@@ -6,11 +6,11 @@ using UFENetcode;
 using UnityEngine.SceneManagement;
 using System;
 
-public class RoundContorller : MonoBehaviour
+public class RoundContorllerNew : MonoBehaviour
 {
     [SerializeField] private float _maxYPos;
     [SerializeField] private MoveInfo _rollMove, _moveKick;
-    [SerializeField] private RoundContorller _roundContorller;
+    [SerializeField] private RoundContorllerNew _roundContorller;
 
     private GameObject _background;
     private GameObject _gameUI;
@@ -72,59 +72,57 @@ public class RoundContorller : MonoBehaviour
 
     private void OnBlock(HitBox strokeHitBox, MoveInfo move, ControlsScript player)
     {
-        var enemy = UFE.GetPlayer1();
-
-
         var playerControl = UFE.GetControlsScript(1);
         var enemyControl = UFE.GetControlsScript(2);
 
         if (player.name == "Player2" && move.name == "RollMove" && strokeHitBox.type == HitBoxType.low)
         {
-            
-            playerControl.currentLifePoints -= 100;
+            playerControl.DamageMe(100, false);
         }
 
         if (player.name == "Player1" && move.name == "RollMove" && strokeHitBox.type == HitBoxType.low)
         {
             Debug.Log("Damage Back");
-            
-            enemyControl.currentLifePoints -= 100;
+
+            enemyControl.DamageMe(100, false);
         }
 
         if (player.name == "Player2" && move.name == "HgAttackMove" && strokeHitBox.type == HitBoxType.low)
         {
-            enemyControl.currentLifePoints -= 10;
+            enemyControl.DamageMe(10, false);
         }
 
         if (player.name == "Player1" && move.name == "HgAttackMove" && strokeHitBox.type == HitBoxType.low)
         {
             Debug.Log("Damage Back");
-            playerControl.currentLifePoints -= 10;
+            playerControl.DamageMe(10, false);
         }
 
         if (player.name == "Player1" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.low)
         {
-            playerControl.currentLifePoints -= 15;
+            playerControl.DamageMe(15, false);
         }
 
         if (player.name == "Player2" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.low)
         {
-            enemyControl.currentLifePoints -= 15;
+            enemyControl.DamageMe(15, false);
         }
 
         if (player.name == "Player1" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.high)
         {
-            enemyControl.currentLifePoints -= 15;
+            enemyControl.DamageMe(15, false);
         }
 
         if (player.name == "Player2" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.high)
         {
-            playerControl.currentLifePoints -= 15;
+            playerControl.DamageMe(15, false);
         }
     }
 
     private void OnRoundBegins(int newInt)
     {
+        Debug.Log("OnRoundBegins");
+
         _roundStart = true;
 
         _player = UFE.GetControlsScript(1);
@@ -133,6 +131,8 @@ public class RoundContorller : MonoBehaviour
 
     private void OnRoundEnds(ControlsScript winner, ControlsScript loser)
     {
+        Debug.Log("OnRoundEnds");
+
         if(winner == _enemy)
         {
             EnemyWinner = true;
@@ -142,6 +142,12 @@ public class RoundContorller : MonoBehaviour
         
         UFE.StartVersusModeAfterBattleScreen(0.1f);
         _roundEnd = true;
+
+        /*if (_gameUI != null)
+            _gameUI.SetActive(false);
+
+        //LoadGoblinScene();
+        Invoke("LoadGoblinScene", 2f);*/
     }
 
     private void LoadGoblinScene()
@@ -189,14 +195,15 @@ public class RoundContorller : MonoBehaviour
             _player.airRecoveryType = AirRecoveryType.AllowMoves;
             _enemy.airRecoveryType = AirRecoveryType.AllowMoves;
 
-            if (_player.currentLifePoints <= 0 || _enemy.currentLifePoints <= 0)
-            {
-                /*_enemy.isDead = true;*/
-                _roundContorller.OnRoundEnds(_player, _enemy);
-                _gameUI = GameObject.Find("CanvasGroup");
+            //if (_player.currentLifePoints <= 0 || _enemy.currentLifePoints <= 0)
+            //{
+            //    Debug.Log("RoundControoler: " + _roundStart);
+            //    //_enemy.isDead = true;
+            //    /*_roundContorller.OnRoundEnds(_player, _enemy);*/
+            //    /*_gameUI = GameObject.Find("CanvasGroup");
 
-                _roundEnd = true;
-            }
+            //    _roundEnd = true;*/
+            //}
 
         }
 

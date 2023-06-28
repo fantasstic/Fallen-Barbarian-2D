@@ -156,12 +156,12 @@ MonoBehaviour:
     basicMovesToggle: 1
     statesToggle: 0
   moveClassification:
-    attackType: 0
-    hitType: 0
-    startupSpeed: 0
-    recoverySpeed: 0
+    attackType: 1
+    hitType: 2
+    startupSpeed: 1
+    recoverySpeed: 4
     hitConfirmType: 0
-    preferableDistance: 0
+    preferableDistance: 2
     gaugeUsage: 0
     anyAttackType: 1
     anyHitType: 1
@@ -269,7 +269,7 @@ MonoBehaviour:
     instantAirRecovery: 0
     overrideHitAnimation: 0
     newHitAnimation: 27
-    hitStrength: 1
+    hitStrength: 0
     hitStunType: 2
     hitStunOnHit: 0
     _hitStunOnHit:
@@ -283,7 +283,7 @@ MonoBehaviour:
     damageType: 1
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 107374182400
+      _serializedValue: 85899345920
     damageOnBlock: 0
     _damageOnBlock:
       _serializedValue: 0
