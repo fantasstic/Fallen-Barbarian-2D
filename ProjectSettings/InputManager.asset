@@ -90,7 +90,7 @@ InputManager:
     descriptiveName: Medium Punch
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: f
+    positiveButton: j
     altNegativeButton: 
     altPositiveButton: joystick button 3
     gravity: 1000

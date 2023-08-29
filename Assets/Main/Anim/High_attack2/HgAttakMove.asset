@@ -158,7 +158,7 @@ MonoBehaviour:
   moveClassification:
     attackType: 1
     hitType: 2
-    startupSpeed: 1
+    startupSpeed: 4
     recoverySpeed: 4
     hitConfirmType: 0
     preferableDistance: 2
@@ -204,10 +204,10 @@ MonoBehaviour:
     resetPreviousHitStun: 0
     resetCrumples: 0
     customStunValues: 0
-    overrideHitEffects: 0
+    overrideHitEffects: 1
     hitEffects:
-      hitParticle: {fileID: 0}
-      killTime: 0
+      hitParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+      killTime: 1
       hitSound: {fileID: 0}
       spawnPoint: 1
       freezingTime: 0
@@ -215,20 +215,20 @@ MonoBehaviour:
         _serializedValue: 0
       animationSpeed: 0.1
       _animationSpeed:
-        _serializedValue: 429496729
+        _serializedValue: 429496736
       autoHitStop: 1
       hitStop: 0.1
       _hitStop:
         _serializedValue: 429496729
       mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
       shakeDensity: 0.8
       _shakeDensity:
-        _serializedValue: 3435973836
+        _serializedValue: 3435973888
       _shakeCameraDensity:
-        _serializedValue: 3435973836
-      editorToggle: 0
+        _serializedValue: 3435973888
+      editorToggle: 1
     overrideHitEffectsBlock: 0
     hitEffectsBlock:
       hitParticle: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
       _shakeCameraDensity:
         _serializedValue: 3435973836
       editorToggle: 0
-    overrideEffectSpawnPoint: 0
+    overrideEffectSpawnPoint: 1
     spawnPoint: 1
     overrideHitAnimationBlend: 0
     newHitBlendingIn: 0
@@ -289,14 +289,14 @@ MonoBehaviour:
       _serializedValue: 0
     doesntKill: 0
     hitType: 2
-    resetPreviousHorizontalPush: 0
+    resetPreviousHorizontalPush: 1
     resetPreviousVerticalPush: 0
     applyDifferentAirForce: 0
     applyDifferentBlockForce: 0
     pushForce: {x: 0, y: 0}
     _pushForce:
       x:
-        _serializedValue: 15032385536
+        _serializedValue: 85899345920
       y:
         _serializedValue: 0
       z:
@@ -391,7 +391,7 @@ MonoBehaviour:
     opponentForceToggle: 1
     selfForceToggle: 1
     stageReactionsToggle: 0
-    overrideEventsToggle: 0
+    overrideEventsToggle: 1
     hitConditionsToggle: 0
     pullInToggle: 0
     hurtBoxesToggle: 1

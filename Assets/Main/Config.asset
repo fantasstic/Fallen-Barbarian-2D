@@ -45,7 +45,7 @@ MonoBehaviour:
     stageName: Main
     stageLoadingMethod: 0
     stagePath: Assets/Main/Main.unity
-    screenshot: {fileID: 2800000, guid: a248f6591afb49f46beb329ea2296243, type: 3}
+    screenshot: {fileID: 2800000, guid: cf1903c1b1bf31d4796e20cae77b0526, type: 3}
     prefab: {fileID: 100000, guid: 3cc97a7591eae4678bb26cd12746e0ec, type: 3}
     music: {fileID: 0}
     groundFriction: 100
@@ -927,7 +927,7 @@ MonoBehaviour:
   player2_Inputs:
   - inputType: 1
     inputButtonName: P2KeyboardVertical
-    engineRelatedButton: 2
+    engineRelatedButton: 3
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1007,7 +1007,7 @@ MonoBehaviour:
     inputViewerIcon6: {fileID: 0}
   - inputType: 0
     inputButtonName: P2KeyboardHorizontal
-    engineRelatedButton: 0
+    engineRelatedButton: 1
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   - stageName: Main
     stageLoadingMethod: 0
     stagePath: Assets/Main/Main.unity
-    screenshot: {fileID: 2800000, guid: a248f6591afb49f46beb329ea2296243, type: 3}
+    screenshot: {fileID: 2800000, guid: cf1903c1b1bf31d4796e20cae77b0526, type: 3}
     prefab: {fileID: 100000, guid: 3cc97a7591eae4678bb26cd12746e0ec, type: 3}
     music: {fileID: 0}
     groundFriction: 100
@@ -1117,16 +1117,16 @@ MonoBehaviour:
     stateTrackerTest: 0
     p1DebugInfo:
       toggle: 0
-      currentMove: 1
-      position: 1
-      lifePoints: 1
-      gaugePoints: 1
+      currentMove: 0
+      position: 0
+      lifePoints: 0
+      gaugePoints: 0
       currentState: 0
       currentSubState: 0
-      stunTime: 1
-      comboHits: 1
-      comboDamage: 1
-      inputs: 1
+      stunTime: 0
+      comboHits: 0
+      comboDamage: 0
+      inputs: 0
       buttonSequence: 0
       aiWeightList: 0
     p2DebugInfo:
@@ -1170,17 +1170,17 @@ MonoBehaviour:
     actionSequence: []
   aiOptions:
     engine: 0
-    attackWhenEnemyIsDown: 1
+    attackWhenEnemyIsDown: 0
     moveWhenEnemyIsDown: 1
-    inputFrequency: 0.2
+    inputFrequency: 0.1
     behaviourToggle: 1
     distanceBehaviour:
     - characterDistance: 1
       proximityRangeBegins: 0
       proximityRangeEnds: 20
       movingForwardProbability: 0
-      movingBackProbability: 0.5
-      jumpingProbability: 0.292
+      movingBackProbability: 0.3
+      jumpingProbability: 0
       crouchProbability: 0.7
       attackProbability: 1
     - characterDistance: 4
@@ -1188,23 +1188,23 @@ MonoBehaviour:
       proximityRangeEnds: 75
       movingForwardProbability: 1
       movingBackProbability: 0
-      jumpingProbability: 0
-      crouchProbability: 0.5
+      jumpingProbability: 0.2
+      crouchProbability: 0
       attackProbability: 0
     - characterDistance: 2
       proximityRangeBegins: 21
       proximityRangeEnds: 40
-      movingForwardProbability: 0.9
+      movingForwardProbability: 0.7
       movingBackProbability: 0.196
-      jumpingProbability: 0.5
+      jumpingProbability: 0
       crouchProbability: 0.32
-      attackProbability: 0.548
+      attackProbability: 0.4
     - characterDistance: 3
       proximityRangeBegins: 41
       proximityRangeEnds: 60
       movingForwardProbability: 0.8
       movingBackProbability: 0.224
-      jumpingProbability: 0.648
+      jumpingProbability: 0.1
       crouchProbability: 0.204
       attackProbability: 0.3
     - characterDistance: 5
@@ -1212,7 +1212,7 @@ MonoBehaviour:
       proximityRangeEnds: 80
       movingForwardProbability: 1
       movingBackProbability: 0
-      jumpingProbability: 0
+      jumpingProbability: 0.2
       crouchProbability: 0
       attackProbability: 0
     multiCoreSupport: 1
@@ -1291,9 +1291,9 @@ MonoBehaviour:
     inputMessageFrequency: 0
     synchronizationMessageFrequency: 2
   music: 1
-  musicVolume: 1
+  musicVolume: 0.16191852
   soundfx: 1
-  soundfxVolume: 1
+  soundfxVolume: 0.9
   colorStateOne: {r: 1, g: 0, b: 0, a: 1}
   colorIsHit: {r: 1, g: 0, b: 1, a: 1}
   colorBodyCollider: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

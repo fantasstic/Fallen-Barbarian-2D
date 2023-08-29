@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 0
   profilePictureSmall: {fileID: 2800000, guid: 8713aa93b06530c4983a07976bfca2f2, type: 3}
-  profilePictureBig: {fileID: 2800000, guid: 30e63f5864ad6b24797407dfc93d17cf, type: 3}
+  profilePictureBig: {fileID: 2800000, guid: ecc2db6fcb292584dbf3df8ef6c097c4, type: 3}
   characterName: Enemy AI
   gender: 2
   characterDescription: 
@@ -5758,13 +5758,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3208a7f8de0c57f43ad1cb2723b7e69f, type: 2}
     - {fileID: 11400000, guid: 72a9ba582b1437940be0ba5a3560aefe, type: 2}
     - {fileID: 11400000, guid: 07b86a4d574e2aa46b213c53ce5a0f16, type: 2}
-    - {fileID: 11400000, guid: e2a87e7266ad52147952b9f32a70b45d, type: 2}
     - {fileID: 11400000, guid: 16351c32863c81541afbd78d68048529, type: 2}
     - {fileID: 11400000, guid: a179d9c4f0da4934cbb66e4fe53cc346, type: 2}
     - {fileID: 11400000, guid: b4a4d9de1d4627045af52eb4a99e11b0, type: 2}
+    - {fileID: 11400000, guid: e2a87e7266ad52147952b9f32a70b45d, type: 2}
     enabledBasicMovesToggle: 1
     basicMovesToggle: 1
     attackMovesToggle: 1
   aiInstructionsSet:
   - aiInfo: {fileID: 11400000, guid: ca1b7af9ca8481a4fb9d27162cce6a97, type: 2}
-    behavior: 4
+    behavior: 3

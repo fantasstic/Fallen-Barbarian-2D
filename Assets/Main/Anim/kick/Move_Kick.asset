@@ -156,12 +156,12 @@ MonoBehaviour:
     basicMovesToggle: 1
     statesToggle: 1
   moveClassification:
-    attackType: 4
+    attackType: 1
     hitType: 5
     startupSpeed: 1
-    recoverySpeed: 5
+    recoverySpeed: 1
     hitConfirmType: 0
-    preferableDistance: 2
+    preferableDistance: 1
     gaugeUsage: 0
     anyAttackType: 1
     anyHitType: 1
@@ -172,29 +172,7 @@ MonoBehaviour:
   appliedForces: []
   slowMoEffects: []
   bodyPartVisibilityChanges: []
-  opponentOverride:
-  - position: {x: 0, y: 0, z: 0}
-    _position:
-      x:
-        _serializedValue: 0
-      y:
-        _serializedValue: 0
-      z:
-        _serializedValue: 0
-    castingFrame: 25
-    blendSpeed: 80
-    stun: 0
-    stunTime: 0
-    _stunTime:
-      _serializedValue: 515396075520
-    overrideHitAnimations: 0
-    resetAppliedForces: 0
-    standUpOptions: 2
-    characterSpecific: 0
-    move: {fileID: 0}
-    characterSpecificMoves: []
-    animationPreview: 0
-    movesToggle: 1
+  opponentOverride: []
   characterAssist: []
   soundEffects: []
   inGameAlert: []
@@ -305,7 +283,7 @@ MonoBehaviour:
     damageType: 1
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 171798691840
+      _serializedValue: 17179869184
     damageOnBlock: 0
     _damageOnBlock:
       _serializedValue: 0

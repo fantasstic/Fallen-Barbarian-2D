@@ -26,10 +26,10 @@ MonoBehaviour:
   animationSpeed: 1
   _animationSpeed:
     _serializedValue: 4294967296
-  wrapMode: 1
+  wrapMode: 0
   characterPrefab: {fileID: 6370135527279938734, guid: f3e0394aa77c8294c8bad3dc52b6d8a7,
     type: 3}
-  moveName: Attack Low
+  moveName: LowAttack
   description: 
   fps: 60
   ignoreGravity: 0
@@ -83,9 +83,9 @@ MonoBehaviour:
   fixedSpeed: 1
   animSpeedKeyFrame: []
   totalFrames: 36
-  startUpFrames: 0
-  activeFrames: 35
-  recoveryFrames: 1
+  startUpFrames: 13
+  activeFrames: 11
+  recoveryFrames: 12
   applyRootMotion: 0
   lockXMotion: 0
   lockYMotion: 0
@@ -179,8 +179,8 @@ MonoBehaviour:
   stanceChanges: []
   cameraMovements: []
   hits:
-  - activeFramesBegin: 0
-    activeFramesEnds: 35
+  - activeFramesBegin: 13
+    activeFramesEnds: 24
     hitConfirmType: 0
     throwMove: {fileID: 0}
     techMove: {fileID: 0}
@@ -200,14 +200,14 @@ MonoBehaviour:
       possibleMoveStates: []
       basicMovesToggle: 1
       statesToggle: 0
-    downHit: 0
+    downHit: 1
     resetPreviousHitStun: 0
     resetCrumples: 0
     customStunValues: 0
-    overrideHitEffects: 0
+    overrideHitEffects: 1
     hitEffects:
-      hitParticle: {fileID: 0}
-      killTime: 0
+      hitParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+      killTime: 1
       hitSound: {fileID: 0}
       spawnPoint: 1
       freezingTime: 0
@@ -215,20 +215,20 @@ MonoBehaviour:
         _serializedValue: 0
       animationSpeed: 0.1
       _animationSpeed:
-        _serializedValue: 429496729
+        _serializedValue: 429496736
       autoHitStop: 1
       hitStop: 0.1
       _hitStop:
         _serializedValue: 429496729
       mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
       shakeDensity: 0.8
       _shakeDensity:
-        _serializedValue: 3435973836
+        _serializedValue: 3435973888
       _shakeCameraDensity:
-        _serializedValue: 3435973836
-      editorToggle: 0
+        _serializedValue: 3435973888
+      editorToggle: 1
     overrideHitEffectsBlock: 0
     hitEffectsBlock:
       hitParticle: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
       _shakeCameraDensity:
         _serializedValue: 3435973836
       editorToggle: 0
-    overrideEffectSpawnPoint: 0
+    overrideEffectSpawnPoint: 1
     spawnPoint: 1
     overrideHitAnimationBlend: 0
     newHitBlendingIn: 0
@@ -289,14 +289,14 @@ MonoBehaviour:
       _serializedValue: 0
     doesntKill: 0
     hitType: 1
-    resetPreviousHorizontalPush: 0
+    resetPreviousHorizontalPush: 1
     resetPreviousVerticalPush: 0
     applyDifferentAirForce: 0
     applyDifferentBlockForce: 0
     pushForce: {x: 0, y: 0}
     _pushForce:
       x:
-        _serializedValue: 15032385536
+        _serializedValue: 85899345920
       y:
         _serializedValue: 0
       z:

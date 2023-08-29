@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: Main AI
   m_EditorClassIdentifier: 
   instructionsName: mainAI
-  debugMode: 0
+  debugMode: 1
   debug_ReactionWeight: 1
   advancedOptions:
     timeBetweenDecisions: 0
     timeBetweenActions: 0.01
     aggressiveness: 0.6
-    ruleCompliance: 0.701
-    comboEfficiency: 0.8
+    ruleCompliance: 0
+    comboEfficiency: 0.4
     movementDuration: 0.08
     buttonSequenceInterval: 1
     attackDesirabilityCalculation: 2
-    defaultDesirability: 0
+    defaultDesirability: 3
     playRandomMoves: 1
     reactionParameters:
       attackWhenEnemyIsDown: 0
@@ -38,172 +38,28 @@ MonoBehaviour:
       enableDistanceFilter: 1
       enableDamageFilter: 1
       enableHitConfirmTypeFilter: 1
-      enableAttackSpeedFilter: 0
+      enableAttackSpeedFilter: 1
       enableHitTypeFilter: 1
   rulesGenerator:
     preferableCombatDistance: 1
     attacksAtPreferableDistance: 5
     autoMove: 1
     restOnLocation: 1
-    moveFrequency: 6
+    moveFrequency: 3
     autoJump: 1
     jumpBackFrequency: 1
     jumpStraightFrequency: 2
-    jumpForwardFrequency: 5
+    jumpForwardFrequency: 2
     autoBlock: 1
     obeyHitType: 1
-    standBlockAccuracy: 4
-    crouchBlockAccuracy: 4
-    jumpBlockAccuracy: 2
+    standBlockAccuracy: 5
+    crouchBlockAccuracy: 5
+    jumpBlockAccuracy: 1
     autoAttack: 1
     obeyPreferableDistances: 1
-    attackFrequency: 5
-    debugToggle: 1
-  aiRules:
-  - ruleName: AttackLow
-    events:
-    - enabled: 1
-      boolean: 0
-      conditions:
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 0
-        conditionType: 5
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 1
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 1
-        conditionType: 5
-        horizontalMovement: 0
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 1
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 1
-        conditionType: 7
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 3
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 0
-        conditionType: 0
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 0
-        gaugeStatus: 0
-        playerDistance: 3
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      conditionsToggle: 1
-    reactions:
-    - reactionType: 10
-      moveClassification:
-        attackType: 0
-        hitType: 1
-        startupSpeed: 0
-        recoverySpeed: 0
-        hitConfirmType: 0
-        preferableDistance: 1
-        gaugeUsage: 0
-        anyAttackType: 0
-        anyHitType: 0
-        anyHitConfirmType: 0
-      moveDamage: 1
-      specificMove: {fileID: 0}
-      buttonPress: 4
-      behavior: 0
-      desirability: 6
-    - reactionType: 10
-      moveClassification:
-        attackType: 0
-        hitType: 1
-        startupSpeed: 0
-        recoverySpeed: 0
-        hitConfirmType: 0
-        preferableDistance: 1
-        gaugeUsage: 0
-        anyAttackType: 0
-        anyHitType: 0
-        anyHitConfirmType: 0
-      moveDamage: 2
-      specificMove: {fileID: 0}
-      buttonPress: 4
-      behavior: 0
-      desirability: 5
-    debugToggle: 1
-    eventsToggle: 1
-    reactionsToggle: 1
+    attackFrequency: 4
+    debugToggle: 0
+  aiRules: []
   aiDefinitions:
     damage:
       veryWeak: 0.05
@@ -212,13 +68,13 @@ MonoBehaviour:
       strong: 0.2
       veryStrong: 0.25
     distance:
-      veryClose: 0.05
-      close: 0.25
+      veryClose: 0.1
+      close: 0.15
       mid: 0.5
       far: 0.75
       veryFar: 0.95
     desirability:
-      theWorstOption: 0
+      theWorstOption: 0.05
       veryUndesirable: 0.15
       undesirable: 0.3
       notBad: 0.45

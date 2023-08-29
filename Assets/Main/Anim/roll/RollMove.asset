@@ -251,33 +251,8 @@ MonoBehaviour:
     customStunValues: 0
     overrideHitEffects: 0
     hitEffects:
-      hitParticle: {fileID: 0}
-      killTime: 0
-      hitSound: {fileID: 0}
-      spawnPoint: 1
-      freezingTime: 0
-      _freezingTime:
-        _serializedValue: 0
-      animationSpeed: 0.1
-      _animationSpeed:
-        _serializedValue: 429496729
-      autoHitStop: 1
-      hitStop: 0.1
-      _hitStop:
-        _serializedValue: 429496729
-      mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
-      shakeDensity: 0.8
-      _shakeDensity:
-        _serializedValue: 3435973836
-      _shakeCameraDensity:
-        _serializedValue: 3435973836
-      editorToggle: 0
-    overrideHitEffectsBlock: 0
-    hitEffectsBlock:
-      hitParticle: {fileID: 0}
-      killTime: 0
+      hitParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+      killTime: 1
       hitSound: {fileID: 0}
       spawnPoint: 1
       freezingTime: 0
@@ -291,16 +266,41 @@ MonoBehaviour:
       _hitStop:
         _serializedValue: 429496729
       mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
       shakeDensity: 0.8
       _shakeDensity:
         _serializedValue: 3435973888
       _shakeCameraDensity:
         _serializedValue: 3435973888
       editorToggle: 1
-    overrideEffectSpawnPoint: 0
-    spawnPoint: 1
+    overrideHitEffectsBlock: 1
+    hitEffectsBlock:
+      hitParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+      killTime: 1
+      hitSound: {fileID: 0}
+      spawnPoint: 1
+      freezingTime: 0
+      _freezingTime:
+        _serializedValue: 0
+      animationSpeed: 0.1
+      _animationSpeed:
+        _serializedValue: 429496736
+      autoHitStop: 1
+      hitStop: 0.1
+      _hitStop:
+        _serializedValue: 429496729
+      mirrorOn2PSide: 0
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
+      shakeDensity: 0.8
+      _shakeDensity:
+        _serializedValue: 3435973888
+      _shakeCameraDensity:
+        _serializedValue: 3435973888
+      editorToggle: 1
+    overrideEffectSpawnPoint: 1
+    spawnPoint: 0
     overrideHitAnimationBlend: 0
     newHitBlendingIn: 0
     _newHitBlendingIn:

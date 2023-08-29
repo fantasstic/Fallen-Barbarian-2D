@@ -9,7 +9,7 @@ using System;
 public class RoundContorllerNew : MonoBehaviour
 {
     [SerializeField] private float _maxYPos;
-    [SerializeField] private MoveInfo _rollMove, _moveKick;
+    [SerializeField] private MoveInfo _rollMove, _moveKick, _runMove;
     [SerializeField] private RoundContorllerNew _roundContorller;
 
     private GameObject _background;
@@ -64,7 +64,13 @@ public class RoundContorllerNew : MonoBehaviour
                 if (otherPlayer.currentMove.name == _moveKick.name)
                 {
                     player.Physics.ResetForces(true, false);
-                    player.Physics.AddForce(new FPLibrary.FPVector(-20, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
+                    player.Physics.AddForce(new FPLibrary.FPVector(-25, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
+                }
+
+                if (otherPlayer.currentMove.name == _runMove.name)
+                {
+                    player.Physics.ResetForces(true, false);
+                    player.Physics.AddForce(new FPLibrary.FPVector(-38, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
                 }
             }
         }
@@ -131,22 +137,23 @@ public class RoundContorllerNew : MonoBehaviour
 
     private void OnRoundEnds(ControlsScript winner, ControlsScript loser)
     {
-        Debug.Log("OnRoundEnds");
+        Debug.Log(winner);
+        _gameUI = GameObject.Find("CanvasGroup");
 
         if(winner == _enemy)
         {
             EnemyWinner = true;
         }
-
-        _gameUI = GameObject.Find("CanvasGroup");
         
+        /*_gameUI.SetActive(false);*/
         UFE.StartVersusModeAfterBattleScreen(0.1f);
+        
         _roundEnd = true;
 
         /*if (_gameUI != null)
             _gameUI.SetActive(false);
 
-        //LoadGoblinScene();
+        //LoadGoblinScene(); 
         Invoke("LoadGoblinScene", 2f);*/
     }
 
@@ -157,7 +164,7 @@ public class RoundContorllerNew : MonoBehaviour
         if(EnemyWinner)
             SceneManager.LoadScene(1);
         else
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(0);
     }
 
     private float _lastEnemyYPos, _lastPlayerYPos;
@@ -195,24 +202,22 @@ public class RoundContorllerNew : MonoBehaviour
             _player.airRecoveryType = AirRecoveryType.AllowMoves;
             _enemy.airRecoveryType = AirRecoveryType.AllowMoves;
 
-            //if (_player.currentLifePoints <= 0 || _enemy.currentLifePoints <= 0)
-            //{
-            //    Debug.Log("RoundControoler: " + _roundStart);
-            //    //_enemy.isDead = true;
-            //    /*_roundContorller.OnRoundEnds(_player, _enemy);*/
-            //    /*_gameUI = GameObject.Find("CanvasGroup");
-
-            //    _roundEnd = true;*/
-            //}
-
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if(UFE.isPaused())
+                    UFE.PauseGame(false);
+                else
+                    UFE.PauseGame(true);
+            }
         }
 
         if (_roundEnd)
         {
             if(_gameUI != null)
+            {
                 _gameUI.SetActive(false);
-
-            Invoke("LoadGoblinScene", 2f);
+                Invoke("LoadGoblinScene", 2f);
+            }
         }
     }
 }

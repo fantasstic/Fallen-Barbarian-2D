@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 0
   profilePictureSmall: {fileID: 2800000, guid: 8713aa93b06530c4983a07976bfca2f2, type: 3}
-  profilePictureBig: {fileID: 2800000, guid: 7c02012693a81a04c9985c04d39ed324, type: 3}
+  profilePictureBig: {fileID: 2800000, guid: 13acee7a28a7c3340860203eceb90266, type: 3}
   characterName: Barbarian
   gender: 2
   characterDescription: 
@@ -24,7 +24,7 @@ MonoBehaviour:
   height: 170
   age: 20
   bloodType: Unknown
-  lifePoints: 1000
+  lifePoints: 10
   maxGaugePoints: 0
   characterPrefabStorage: 0
   characterPrefab: {fileID: 6370135527279938734, guid: f3e0394aa77c8294c8bad3dc52b6d8a7,
