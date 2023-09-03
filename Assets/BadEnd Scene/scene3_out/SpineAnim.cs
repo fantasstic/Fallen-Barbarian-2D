@@ -9,10 +9,11 @@ public class SpineAnim : MonoBehaviour
 {
     [SerializeField] private GameObject _ui, _panel;
     [SerializeField] private TMP_Text _animationCountUI,_skinsCountUI, _animationSpeedUI, _zoomUI;
-    [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource;
-    [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips;
+    [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource, _pussySource;
+    [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips, _pussyClips;
     [SerializeField] private AudioClip _oralMainClip;
     [SerializeField] private GoblinScene _goblicScene;
+    [SerializeField] private Transform _zoomedTr;
 
     private float _primaryProbability = 0.75f;
     private int _birdClipIndex = 0;
@@ -47,8 +48,8 @@ public class SpineAnim : MonoBehaviour
     void Start()
     {
         _ui.SetActive(true);
-        _initialScale = transform.localScale;
-        _initialPosition = transform.position;
+        _initialScale = _zoomedTr.localScale;
+        _initialPosition = _zoomedTr.position;
         /*_skinsCount = Random.Range(0, AnimationSkins.Count);*/
 
         BadEndAnimation.initialSkinName = AnimationSkins[0];
@@ -253,15 +254,28 @@ public class SpineAnim : MonoBehaviour
                 {
                     _autoModeChangeCounter = 0;
                     _autoSwitchDelay = 10f;
-                    BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
-                    BadEndAnimation.Initialize(true);
-                    BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
-                    int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
-                    while (newClipIndex == _currentAutoStepClipIndex)
-                        newClipIndex = Random.Range(0, _autoModeStepClips.Length);
-                    _currentAutoStepClipIndex = newClipIndex;
-                    _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
-                    _autoModeStepSoruce.Play();
+                    int variationAnim = Random.Range(0, 2);
+                    if(variationAnim == 0)
+                    {
+                        BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
+                        BadEndAnimation.Initialize(true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                        while (newClipIndex == _currentAutoStepClipIndex)
+                            newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                        _currentAutoStepClipIndex = newClipIndex;
+                        _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
+                        _autoModeStepSoruce.Play();
+                    }
+                    else
+                    {
+                        BadEndAnimation.initialSkinName = "cum_3/cum_vagina";
+                        BadEndAnimation.Initialize(true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        int newClipIndex = Random.Range(0, _pussyClips.Length);
+                        _pussySource.clip = _pussyClips[newClipIndex];
+                        _pussySource.Play();
+                    }
 
                 }
 
@@ -335,19 +349,27 @@ public class SpineAnim : MonoBehaviour
         {
             if (!_isZoomed)
             {
-                /*Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);*/
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
 
-                transform.localScale *= ZoomFactor;
-                transform.position += mousePosition * (1 - ZoomFactor);
+                var zoom = _zoomedTr.localScale * ZoomFactor;
+                zoom.z = 1;
+                _zoomedTr.localScale = zoom;
+                var pos = _zoomedTr.position + mousePosition * (1 - ZoomFactor);
+                pos.z = _initialPosition.z;
+                _zoomedTr.position = pos;
                 _isZoomed = true;
                 _panel.SetActive(false);
                 _zoomUI.text = "Back";
+                
+                /*transform.localScale *= ZoomFactor;
+                transform.position += mousePosition * (1 - ZoomFactor);
+                _isZoomed = true;
+                _panel.SetActive(false);*/
             }
             else
             {
-                transform.localScale = _initialScale;
-                transform.position = _initialPosition;
+                _zoomedTr.localScale = _initialScale;
+                _zoomedTr.position = _initialPosition;
                 _isZoomed = false;
                 _panel.SetActive(true);
                 _zoomUI.text = "Zoom";
