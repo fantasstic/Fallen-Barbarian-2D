@@ -294,10 +294,10 @@ MonoBehaviour:
     damageType: 0
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 429496729600
+      _serializedValue: 214748364800
     damageOnBlock: 0
     _damageOnBlock:
-      _serializedValue: 429496729600
+      _serializedValue: 214748364800
     doesntKill: 0
     hitType: 1
     resetPreviousHorizontalPush: 0

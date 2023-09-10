@@ -1374,7 +1374,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Patreon
 --- !u!1 &158554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,6 +1803,7 @@ GameObject:
   - component: {fileID: 11482448}
   - component: {fileID: 11487116}
   - component: {fileID: 7128582142639359197}
+  - component: {fileID: 1172978036262832045}
   m_Layer: 5
   m_Name: Button_VersusMode
   m_TagString: Untagged
@@ -1913,9 +1914,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7128582142639359197}
-        m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
-        m_MethodName: StartGameButton
+      - m_Target: {fileID: 1172978036262832045}
+        m_TargetAssemblyTypeName: OpenDiscord, Assembly-CSharp
+        m_MethodName: OpenURL
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1940,6 +1941,19 @@ MonoBehaviour:
   Player1: {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   Player2: {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
   MoveTutorial: {fileID: 1377440647233432984}
+--- !u!114 &1172978036262832045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad78f766a528904887af031fb09e3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Url: https://nudemod.com/s/zuleyka.cgi?4&group=fallen-barbarian
 --- !u!1 &196796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2127,7 @@ GameObject:
   - component: {fileID: 8456045206991706581}
   - component: {fileID: 7816529731892942861}
   - component: {fileID: 2838244739249398149}
+  - component: {fileID: 755977247684627768}
   m_Layer: 5
   m_Name: Button_Patreon
   m_TagString: Untagged
@@ -2223,9 +2238,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2838244739249398149}
-        m_TargetAssemblyTypeName: OpenDiscord, Assembly-CSharp
-        m_MethodName: OpenURL
+      - m_Target: {fileID: 755977247684627768}
+        m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
+        m_MethodName: StartGameButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2248,6 +2263,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Url: https://nudemod.com/s/zuleyka.cgi?4&group=fallen-barbarian
+--- !u!114 &755977247684627768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236540544173868314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3dd8035eff4c84386d1dd53edfd0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
+  Player2: {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
+  MoveTutorial: {fileID: 1377440647233432984}
 --- !u!1 &1377440647233432984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,7 +2723,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Patreon
+  m_Text: Start
 --- !u!1 &7744116066674513824
 GameObject:
   m_ObjectHideFlags: 0

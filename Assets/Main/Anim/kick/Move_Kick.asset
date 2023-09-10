@@ -280,10 +280,10 @@ MonoBehaviour:
     frameAdvantageOnHit: 0
     frameAdvantageOnBlock: 0
     damageScaling: 0
-    damageType: 1
+    damageType: 0
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 17179869184
+      _serializedValue: 64424509440
     damageOnBlock: 0
     _damageOnBlock:
       _serializedValue: 0
