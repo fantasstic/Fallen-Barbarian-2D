@@ -2645,7 +2645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57152075, y: 0.0165169}
   m_AnchorMax: {x: 0.7064793, y: 0.06914769}
-  m_AnchoredPosition: {x: 232.17102, y: -448.2}
+  m_AnchoredPosition: {x: 232.17047, y: -448.2}
   m_SizeDelta: {x: 259.5491, y: 49.34395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &465104759
@@ -11089,7 +11089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57152075, y: 0.0165169}
   m_AnchorMax: {x: 0.7064793, y: 0.06914769}
-  m_AnchoredPosition: {x: 203.42099, y: -448.2}
+  m_AnchoredPosition: {x: 203.42044, y: -448.2}
   m_SizeDelta: {x: 264.04904, y: 49.34395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1530642882
@@ -11323,7 +11323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 24e2ba5cdce6b81448852ca0e463dc4c, type: 2}
-  initialSkinName: tags/tags2
+  initialSkinName: tags/tags1
   initialFlipX: 0
   initialFlipY: 0
   separatorSlotNames: []
@@ -11556,7 +11556,6 @@ MonoBehaviour:
   - G123
   AnimationSkins:
   - tags/tags1
-  - tags/tags2
   - tags/tags3
   ZoomFactor: 2
   ZoomSpeed: 2

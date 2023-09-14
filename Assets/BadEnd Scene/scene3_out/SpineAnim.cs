@@ -38,6 +38,7 @@ public class SpineAnim : MonoBehaviour
     private const float _maxAnimationSpeedFactor = 1.9f;
     private int _autoModeChangeCounter = 0;
 
+    private bool _isCumStep = false;
     public SkeletonAnimation BadEndAnimation;
     public List<string> AnimationStates = new List<string>();
     public List<string> AnimationSkins = new List<string>();
@@ -298,12 +299,76 @@ public class SpineAnim : MonoBehaviour
                 _animationCount--;
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
-            else if (Input.GetKeyDown(KeyCode.D) && _animationCount < AnimationStates.Count - 1)
+            else if (Input.GetKeyDown(KeyCode.D) && _animationCount <= 3)
             {
                 _animationCount++;
-                _isFirstAnimation = false;
+                if (/*_animationCount < AnimationStates.Count - 1 &&*/ _animationCount <= 2)
+                {
+
+                    _isFirstAnimation = false;
+                    BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
+                    Debug.Log(_animationCount);
+
+                }
+                else if (_animationCount == 3)
+                {
+                
+                    int variationAnim = Random.Range(0, 2);
+                    if (variationAnim == 0)
+                    {
+                        BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
+                        BadEndAnimation.Initialize(true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                        while (newClipIndex == _currentAutoStepClipIndex)
+                            newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                        _currentAutoStepClipIndex = newClipIndex;
+                        _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
+                        _autoModeStepSoruce.Play();
+                    }
+                    else
+                    {
+                        BadEndAnimation.initialSkinName = "cum_3/cum_vagina";
+                        BadEndAnimation.Initialize(true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        int newClipIndex = Random.Range(0, _pussyClips.Length);
+                        _pussySource.clip = _pussyClips[newClipIndex];
+                        _pussySource.Play();
+                    }
+            }
+                }
+
+            /*if (Input.GetKeyDown(KeyCode.D) && _animationCount == 3)
+            {
+                _animationCount++;
+                int variationAnim = Random.Range(0, 2);
+                if (variationAnim == 0)
+                {
+                    BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
+                    BadEndAnimation.Initialize(true);
+                    BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                    int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                    while (newClipIndex == _currentAutoStepClipIndex)
+                        newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                    _currentAutoStepClipIndex = newClipIndex;
+                    _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
+                    _autoModeStepSoruce.Play();
+                }
+                else
+                {
+                    BadEndAnimation.initialSkinName = "cum_3/cum_vagina";
+                    BadEndAnimation.Initialize(true);
+                    BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                    int newClipIndex = Random.Range(0, _pussyClips.Length);
+                    _pussySource.clip = _pussyClips[newClipIndex];
+                    _pussySource.Play();
+                }
+            }*/
+            if (Input.GetKeyDown(KeyCode.A) && _animationCount == 3)
+            {
+                BadEndAnimation.initialSkinName = AnimationSkins[0];
+                BadEndAnimation.Initialize(true);
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
-                Debug.Log(_animationCount);
             }
 
             // Переключение в автоматический режим при нажатии клавиши A

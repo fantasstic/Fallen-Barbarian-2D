@@ -1130,7 +1130,7 @@ MonoBehaviour:
       buttonSequence: 0
       aiWeightList: 0
     p2DebugInfo:
-      toggle: 0
+      toggle: 1
       currentMove: 0
       position: 0
       lifePoints: 0
