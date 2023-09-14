@@ -335,8 +335,8 @@ public class SpineAnim : MonoBehaviour
                         _pussySource.clip = _pussyClips[newClipIndex];
                         _pussySource.Play();
                     }
-            }
                 }
+            }
 
             /*if (Input.GetKeyDown(KeyCode.D) && _animationCount == 3)
             {
