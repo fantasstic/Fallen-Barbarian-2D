@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DefaultVersusModeAfterBattleScreen : VersusModeAfterBattleScreen{
 	#region public instance properties
@@ -10,10 +11,22 @@ public class DefaultVersusModeAfterBattleScreen : VersusModeAfterBattleScreen{
 	public AudioClip moveCursorSound;
 	public bool stopPreviousSoundEffectsOnLoad = false;
 	public float delayBeforePlayingMusic = 0.1f;
-	#endregion
+	public Button MenuButton;
+    #endregion
 
-	#region public override methods
-	public override void DoFixedUpdate(
+    #region public override methods
+
+    private void Awake()
+    {
+        GoToMainMenu();
+    }
+
+    public override void GoToMainMenu()
+    {
+        base.GoToMainMenu();
+    }
+
+    public override void DoFixedUpdate(
 		IDictionary<InputReferences, InputEvents> player1PreviousInputs,
 		IDictionary<InputReferences, InputEvents> player1CurrentInputs,
 		IDictionary<InputReferences, InputEvents> player2PreviousInputs,

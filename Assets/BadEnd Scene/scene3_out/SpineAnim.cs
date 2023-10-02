@@ -7,15 +7,19 @@ using TMPro;
 
 public class SpineAnim : MonoBehaviour
 {
-    [SerializeField] private GameObject _ui, _panel;
-    [SerializeField] private TMP_Text _animationCountUI,_skinsCountUI, _animationSpeedUI, _zoomUI;
+    [SerializeField] private GameObject _ui, _panel, _firstAnimPanel;
+    [SerializeField] private TMP_Text _animationCountUI,_skinsCountUI, _animationSpeedUI, _zoomUI, _daysCounter;
     [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource, _pussySource;
     [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips, _pussyClips;
     [SerializeField] private AudioClip _oralMainClip;
     [SerializeField] private GoblinScene _goblicScene;
     [SerializeField] private Transform _zoomedTr;
+    [SerializeField] private List<string> _skinNames = new List<string>();
+    [SerializeField] private string _animName;
+    [SerializeField] private float _yOffsetAfterZoom;
 
     private float _primaryProbability = 0.75f;
+    private float _currentSwitchSkins, _autoSkinSwitch = 7f;
     private int _birdClipIndex = 0;
     private int _swordClipIndex = 0;
     private int _currentAutoStepClipIndex = 0;
@@ -34,11 +38,13 @@ public class SpineAnim : MonoBehaviour
     private float _currentSwitchTimer = 0f;
     private bool _isFirstAnimation = false;
     private float _initialAnimationSpeedFactor = 1f;
-    private const float _minAnimationSpeedFactor = 0.1f; // ??????????? ??????????? ???????? ????????
+    private const float _minAnimationSpeedFactor = 0.1f; 
     private const float _maxAnimationSpeedFactor = 1.9f;
     private int _autoModeChangeCounter = 0;
+    private int _daysCount = 1;
 
     private bool _isCumStep = false;
+    private bool _isSkinsAutoMode = true;
     public SkeletonAnimation BadEndAnimation;
     public List<string> AnimationStates = new List<string>();
     public List<string> AnimationSkins = new List<string>();
@@ -48,10 +54,16 @@ public class SpineAnim : MonoBehaviour
 
     void Start()
     {
+        if (_goblicScene.CurrentBadEndSceneIndex == 2)
+        {
+            _audioSource.loop = false;
+            _audioSource.clip = _audioClips[0];
+            _audioSource.Play();
+
+        }
         _ui.SetActive(true);
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
-        /*_skinsCount = Random.Range(0, AnimationSkins.Count);*/
 
         BadEndAnimation.initialSkinName = AnimationSkins[0];
         BadEndAnimation.Initialize(true);
@@ -60,8 +72,14 @@ public class SpineAnim : MonoBehaviour
         _skinsCount = 0;
         _animationCountUI.text = "(Auto)";
 
+
         StartCoroutine(SwitchAudioClipWithInterval(3f, _swordSource, _swordClips, _swordClipIndex, true));
-        StartCoroutine(SwitchAudioClipWithInterval(1f, _audioSource, _audioClips, currentClipIndex, true));
+
+        if(_goblicScene.CurrentBadEndSceneIndex == 0 || _goblicScene.CurrentBadEndSceneIndex == 1)
+            StartCoroutine(SwitchAudioClipWithInterval(1f, _audioSource, _audioClips, currentClipIndex, true));
+        else
+            StartCoroutine(SwitchAudioClipWithInterval(4f, _audioSource, _audioClips, currentClipIndex, true));
+
         StartCoroutine(SwitchAudioClipWithInterval(15f, _birdSource, _birdClips, _birdClipIndex, true));
         StartCoroutine(SwitchAudioThirdClipWithInterval(1f, _coughSource, _coughClips, currentSecondClipIndex, true));
         StartCoroutine(PlayAudioWithProbability(_oralSquishSource, _oralMainClip, _oralCleps, _primaryProbability));
@@ -69,8 +87,10 @@ public class SpineAnim : MonoBehaviour
 
     private void Update()
     {
+        /*_daysCounter.text = (_animationCount + 1).ToString();*/
         if (_animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 0)
         {
+            _firstAnimPanel.SetActive(true);
             _audioSource.mute = true;
             _swordSource.mute = false;
         }
@@ -93,23 +113,19 @@ public class SpineAnim : MonoBehaviour
 
         if (_isAutoMode && _previousAnimationCount == 2)
         {
-            if (!_isSoundPlayed && _currentSwitchTimer >= 4) // ?????????, ???????? ?? 1 ??????? ?? ????????????
+            if (!_isSoundPlayed && _currentSwitchTimer >= 4) 
             {
                 Debug.Log("Play");
 
                 int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
 
-                // ?????????, ????? ?? ?????????? ??????? ?????????
                 while (newClipIndex == _currentAutoStepClipIndex)
                     newClipIndex = Random.Range(0, _autoModeStepClips.Length);
 
-                // ????????? ??????? ?????????
                 _currentAutoStepClipIndex = newClipIndex;
 
-                // ????????????? ????? ????????? ??? AudioSource
                 _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
 
-                // Transition occurred, play _stepSource
                 _autoModeStepSoruce.Play();
 
                 _isSoundPlayed = true;
@@ -120,17 +136,13 @@ public class SpineAnim : MonoBehaviour
         {
             int newClipIndex = Random.Range(0, _stepClips.Length);
 
-            // ?????????, ????? ?? ?????????? ??????? ?????????
             while (newClipIndex == currentStepClipIndex)
                 newClipIndex = Random.Range(0, _stepClips.Length);
 
-            // ????????? ??????? ?????????
             currentStepClipIndex = newClipIndex;
 
-            // ????????????? ????? ????????? ??? AudioSource
             _stepSource.clip = _stepClips[currentStepClipIndex];
 
-            // Transition occurred, play _stepSource
             _stepSource.Play();
         }
 
@@ -151,59 +163,57 @@ public class SpineAnim : MonoBehaviour
             _swordSource.volume = 1;
         }
 
-        // Update the previousAnimationCount for the next frame
         _previousAnimationCount = _animationCount;
 
-        // ???????????? ???????? ? ??????? ?????? A ? D
         if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0)
         {
             _animationCountUI.text = "(Auto)";
-            // ?????????????? ???????????? ???????? ? ?????????
             _currentSwitchTimer += Time.deltaTime;
             if (_currentSwitchTimer >= _autoSwitchDelay)
             {
                 _currentSwitchTimer = 0f;
-                // ??? ??? ??? ??????????????? ???????????? ????????
-                // ????????, ??????????? _animationCount ? ????????????? ????????? ????????
+                _daysCount++;
                 if (_animationCount < AnimationStates.Count - 1)
                 {
                     _animationCount++;
+                    
                 }
                 else
                 {
                     int randomIndex = Random.Range(0, _animationCount);
                     _animationCount = randomIndex;
                     _isSoundPlayed = false;
+                    
                 }
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
 
-            // ???????????? ? ?????? ????? ??? ??????? ??????? D
             if (Input.GetKeyDown(KeyCode.D) && _isAutoMode)
             {
+                _daysCount++;
                 _isAutoMode = false;
                 _isFirstAnimation = true;
-                _animationCount = 0; // ???????????? ?? ?????? ????????
+                _animationCount = 0; 
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
         }
         else if(!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0)
         {
-            // ???????????? ???????? ? ?????? ??????
             if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0)
             {
                 _animationCount--;
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
+                _daysCount++;
             }
             else if (Input.GetKeyDown(KeyCode.D) && _animationCount < AnimationStates.Count - 1)
             {
                 _animationCount++;
+                _daysCount++;
                 _isFirstAnimation = false;
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
                 Debug.Log(_animationCount);
             }
 
-            // ???????????? ? ?????????????? ????? ??? ??????? ??????? A
             if (Input.GetKeyDown(KeyCode.A) && _animationCount == 0)
             {
                 if (!_isFirstAnimation)
@@ -220,16 +230,16 @@ public class SpineAnim : MonoBehaviour
 
         }
 
-        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1)
+        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 /*|| _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 2*/)
         {
             _animationCountUI.text = "(Auto)";
-            // ?????????????? ???????????? ???????? ? ?????????
+            
             _currentSwitchTimer += Time.deltaTime;
             if (_currentSwitchTimer >= _autoSwitchDelay)
             {
                 _currentSwitchTimer = 0f;
-                // ??? ??? ??? ??????????????? ???????????? ????????
-                // ????????, ??????????? _animationCount ? ????????????? ????????? ????????
+                _daysCount++;
+
                 if (_animationCount < AnimationStates.Count - 1)
                 {
                     _autoSwitchDelay = 5f;
@@ -258,9 +268,9 @@ public class SpineAnim : MonoBehaviour
                     int variationAnim = Random.Range(0, 2);
                     if(variationAnim == 0)
                     {
-                        BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
+                        BadEndAnimation.initialSkinName = _skinNames[0];
                         BadEndAnimation.Initialize(true);
-                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, _animName, true);
                         int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
                         while (newClipIndex == _currentAutoStepClipIndex)
                             newClipIndex = Random.Range(0, _autoModeStepClips.Length);
@@ -270,9 +280,9 @@ public class SpineAnim : MonoBehaviour
                     }
                     else
                     {
-                        BadEndAnimation.initialSkinName = "cum_3/cum_vagina";
+                        BadEndAnimation.initialSkinName = _skinNames[1];
                         BadEndAnimation.Initialize(true);
-                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, _animName, true);
                         int newClipIndex = Random.Range(0, _pussyClips.Length);
                         _pussySource.clip = _pussyClips[newClipIndex];
                         _pussySource.Play();
@@ -282,23 +292,23 @@ public class SpineAnim : MonoBehaviour
 
             }
 
-            // ???????????? ? ?????? ????? ??? ??????? ??????? D
             if (Input.GetKeyDown(KeyCode.D) && _isAutoMode)
             {
                 _isAutoMode = false;
+                _daysCount++;
                 _isFirstAnimation = true;
-                _animationCount = 0; // ???????????? ?? ?????? ????????
+                _animationCount = 0; 
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
         }
         else if (!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1)
         {
-            // ???????????? ???????? ? ?????? ??????
             if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0)
             {
                 Debug.Log("1");
 
                 _animationCount--;
+                _daysCount++;
                 if (_animationCount == 2)
                 {
                     Debug.Log("2");
@@ -315,6 +325,7 @@ public class SpineAnim : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.D) && _animationCount < 3)
             {
                 _animationCount++;
+                _daysCount++;
                 if (/*_animationCount < AnimationStates.Count - 1 &&*/ _animationCount <= 2)
                 {
 
@@ -330,9 +341,9 @@ public class SpineAnim : MonoBehaviour
                     int variationAnim = Random.Range(0, 2);
                     if (variationAnim == 0)
                     {
-                        BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
+                        BadEndAnimation.initialSkinName = _skinNames[0];
                         BadEndAnimation.Initialize(true);
-                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, _animName, true);
                         int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
                         while (newClipIndex == _currentAutoStepClipIndex)
                             newClipIndex = Random.Range(0, _autoModeStepClips.Length);
@@ -342,9 +353,9 @@ public class SpineAnim : MonoBehaviour
                     }
                     else
                     {
-                        BadEndAnimation.initialSkinName = "cum_3/cum_vagina";
+                        BadEndAnimation.initialSkinName = _skinNames[1];
                         BadEndAnimation.Initialize(true);
-                        BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, _animName, true);
                         int newClipIndex = Random.Range(0, _pussyClips.Length);
                         _pussySource.clip = _pussyClips[newClipIndex];
                         _pussySource.Play();
@@ -352,34 +363,6 @@ public class SpineAnim : MonoBehaviour
                 }
             }
 
-            /*if (Input.GetKeyDown(KeyCode.D) && _animationCount == 3)
-            {
-                _animationCount++;
-                int variationAnim = Random.Range(0, 2);
-                if (variationAnim == 0)
-                {
-                    BadEndAnimation.initialSkinName = "cum_1/cum_mouth";
-                    BadEndAnimation.Initialize(true);
-                    BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
-                    int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
-                    while (newClipIndex == _currentAutoStepClipIndex)
-                        newClipIndex = Random.Range(0, _autoModeStepClips.Length);
-                    _currentAutoStepClipIndex = newClipIndex;
-                    _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
-                    _autoModeStepSoruce.Play();
-                }
-                else
-                {
-                    BadEndAnimation.initialSkinName = "cum_3/cum_vagina";
-                    BadEndAnimation.Initialize(true);
-                    BadEndAnimation.AnimationState.SetAnimation(0, "G123", true);
-                    int newClipIndex = Random.Range(0, _pussyClips.Length);
-                    _pussySource.clip = _pussyClips[newClipIndex];
-                    _pussySource.Play();
-                }
-            }*/
-
-            // ???????????? ? ?????????????? ????? ??? ??????? ??????? A
             if (Input.GetKeyDown(KeyCode.A) && _animationCount == 0)
             {
                 if (!_isFirstAnimation)
@@ -396,7 +379,7 @@ public class SpineAnim : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && _goblicScene.CurrentBadEndSceneIndex != 2)
         {
             if (AnimationSkins.Count > _skinsCount)
             {
@@ -414,10 +397,118 @@ public class SpineAnim : MonoBehaviour
                 _skinsCount++;
             }
             _skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) && _goblicScene.CurrentBadEndSceneIndex == 2)
+        {
+            
+            _daysCount++;
+
+            if (_isSkinsAutoMode)
+            {
+                _isSkinsAutoMode = false;
+                _skinsCount = 0;
+            }
+            
+            if (_skinsCount < AnimationSkins.Count - 1)
+            {
+                _skinsCount++;
+            }
+            else
+            {
+                int skinNumber = Random.Range(0, AnimationSkins.Count);
+
+                _skinsCount = skinNumber;
+            }
+            BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
+            BadEndAnimation.Initialize(true);
+            BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
+            _skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
+        }
+        else if (Input.GetKeyDown(KeyCode.A) && _goblicScene.CurrentBadEndSceneIndex == 2)
+        {
+            if(_skinsCount == 0)
+            {
+                _isSkinsAutoMode = true; 
+                _skinsCountUI.text = "Auto";
+            }
+
+            else 
+            {
+                if(_daysCount > 1)
+                {
+                    _daysCount--;
+                }
+                _skinsCount--;
+            }
+            
+            BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
+            BadEndAnimation.Initialize(true);
+            BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
+            _skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
+        }
+
+        if (_isSkinsAutoMode && _goblicScene.CurrentBadEndSceneIndex == 2)
+        {
+            _currentSwitchSkins += Time.deltaTime;
+            _skinsCountUI.text = "Auto";
+
+
+            if (_currentSwitchSkins >= _autoSkinSwitch)
+            {
+                _currentSwitchSkins = 0;
+                _daysCount++;
+
+                if (_skinsCount > 0 && _autoModeChangeCounter < 6)
+                {
+                    _autoSkinSwitch = 7f;
+                    _autoModeChangeCounter++;
+                    _skinsCount--;
+                    BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
+                    BadEndAnimation.Initialize(true);
+                    BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
+                }
+                else if (_autoModeChangeCounter < 6 && _skinsCount <= 0)
+                {
+                    _autoSkinSwitch = 7f;
+                    _autoModeChangeCounter++;
+                    _skinsCount = AnimationSkins.Count - 1;
+                    BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
+                    BadEndAnimation.Initialize(true);
+                    BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
+                }
+                else if (_autoModeChangeCounter >= 6)
+                {
+                    _autoModeChangeCounter = 0;
+                    _autoSkinSwitch = 10f;
+                    int variationAnim = Random.Range(0, 2);
+                    if (variationAnim == 0)
+                    {
+                        BadEndAnimation.initialSkinName = _skinNames[0];
+                        BadEndAnimation.Initialize(true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, _animName, true);
+                        int newClipIndex = Random.Range(0, _pussyClips.Length);
+                        _pussySource.clip = _pussyClips[newClipIndex];
+                        _pussySource.Play();
+                    }
+                    else
+                    {
+                        BadEndAnimation.initialSkinName = _skinNames[1];
+                        BadEndAnimation.Initialize(true);
+                        BadEndAnimation.AnimationState.SetAnimation(0, _animName, true);
+                        int newClipIndex = Random.Range(0, _pussyClips.Length);
+                        _pussySource.clip = _pussyClips[newClipIndex];
+                        _pussySource.Play();
+                    }
+                }
+
+                /*BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
+                BadEndAnimation.Initialize(true);
+                BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);*/
+            }
 
         }
 
-        // ??? ?? ??????? ????? ?????? ????
         if (Input.GetMouseButtonDown(0))
         {
             if (!_isZoomed)
@@ -427,17 +518,16 @@ public class SpineAnim : MonoBehaviour
                 var zoom = _zoomedTr.localScale * ZoomFactor;
                 zoom.z = 1;
                 _zoomedTr.localScale = zoom;
+
                 var pos = _zoomedTr.position + mousePosition * (1 - ZoomFactor);
-                pos.z = _initialPosition.z;
+                pos.y += _yOffsetAfterZoom; 
                 _zoomedTr.position = pos;
+
+
                 _isZoomed = true;
                 _panel.SetActive(false);
                 _zoomUI.text = "Back";
-                
-                /*transform.localScale *= ZoomFactor;
-                transform.position += mousePosition * (1 - ZoomFactor);
-                _isZoomed = true;
-                _panel.SetActive(false);*/
+               
             }
             else
             {
@@ -449,7 +539,6 @@ public class SpineAnim : MonoBehaviour
             }
         }
 
-        // ?????????? ????????? ???????? ? ??????? ?????? W ? S
         if (Input.GetKeyDown(KeyCode.W))
         {
             AnimationSpeedFactor += _initialAnimationSpeedFactor * 0.1f;
@@ -457,7 +546,6 @@ public class SpineAnim : MonoBehaviour
                 AnimationSpeedFactor = _maxAnimationSpeedFactor * _initialAnimationSpeedFactor;
 
             UpdateAnimationSpeedAndPitch();
-            /*BadEndAnimation.AnimationState.TimeScale = AnimationSpeedFactor;*/
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
@@ -466,8 +554,9 @@ public class SpineAnim : MonoBehaviour
                 AnimationSpeedFactor = _minAnimationSpeedFactor * _initialAnimationSpeedFactor;
 
             UpdateAnimationSpeedAndPitch();
-            /*BadEndAnimation.AnimationState.TimeScale = AnimationSpeedFactor;*/
         }
+
+        _daysCounter.text = _daysCount.ToString();
     }
 
     private void UpdateAnimationSpeedAndPitch()
@@ -489,23 +578,17 @@ public class SpineAnim : MonoBehaviour
     {
         while (isPlay)
         {
-            // ???????? ?? ???????? ???????
             yield return new WaitForSeconds(interval);
 
-            // ???????? ????????? ?????????
             int newClipIndex = Random.Range(0, audioClips.Length);
 
-            // ?????????, ????? ?? ?????????? ??????? ?????????
             while (newClipIndex == currentIndex)
                 newClipIndex = Random.Range(0, audioClips.Length);
 
-            // ????????? ??????? ?????????
             currentIndex = newClipIndex;
             
-            // ????????????? ????? ????????? ??? AudioSource
             audioSource.clip = audioClips[currentIndex];
 
-            // ????????????? ????? ?????????
             audioSource.Play();
             
         }
@@ -515,29 +598,21 @@ public class SpineAnim : MonoBehaviour
     {
         while (isPlay)
         {
-            // ???????? ?? ???????? ???????
             yield return new WaitForSeconds(interval);
 
-            // ?????????? ????????? ????? ????? 0 ? 1
             float randomValue = Random.Range(0f, 1f);
 
-            // ????????? ??????????? ??????????????? ??????????
             if (randomValue <= 0.85f)
             {
-                // ???????? ????????? ?????????
                 int newClipIndex = Random.Range(0, audioClips.Length);
 
-                // ?????????, ????? ?? ?????????? ??????? ?????????
                 while (newClipIndex == currentIndex)
                     newClipIndex = Random.Range(0, audioClips.Length);
 
-                // ????????? ??????? ?????????
                 currentIndex = newClipIndex;
 
-                // ????????????? ????? ????????? ??? AudioSource
                 audioSource.clip = audioClips[currentIndex];
 
-                // ????????????? ????? ?????????
                 audioSource.Play();
             }
         }
@@ -547,19 +622,14 @@ public class SpineAnim : MonoBehaviour
     {
         while (true)
         {
-            // ?????????? ????????? ????? ????? 0 ? 1
             float randomValue = Random.Range(0f, 1f);
 
-            // ???????? ????????? ? ??????????? ?? ???????????
             AudioClip selectedClip = (randomValue <= primaryProbability) ? primaryClip : secondaryClips[Random.Range(0, secondaryClips.Length)];
 
-            // ????????????? ????????? ????????? ??? AudioSource
             audioSource.clip = selectedClip;
 
-            // ????????????? ?????????
             audioSource.Play();
 
-            // ???????, ???? ????????? ?? ??????????
             yield return new WaitForSeconds(selectedClip.length);
         }
     }

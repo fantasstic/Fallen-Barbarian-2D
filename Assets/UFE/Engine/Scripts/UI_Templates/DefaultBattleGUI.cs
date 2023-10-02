@@ -389,16 +389,16 @@ public class DefaultBattleGUI : BattleGUI{
 				this.player1GUI.wonRoundsImages != null && 
 				this.player1GUI.wonRoundsImages.Length >= targetNumberOfImages
 			){
-				for (int i = 0; i < targetNumberOfImages; ++i)
+				/*for (int i = 0; i < targetNumberOfImages; ++i)
 				{
 					this.player1GUI.wonRoundsImages[i].enabled = true;
 					this.player1GUI.wonRoundsImages[i].sprite = this.wonRounds.NotFinishedRounds;
-				}
+				}*/
 
-				for (int i = targetNumberOfImages; i < this.player1GUI.wonRoundsImages.Length; ++i)
+				/*for (int i = targetNumberOfImages; i < this.player1GUI.wonRoundsImages.Length; ++i)
 				{
 					this.player1GUI.wonRoundsImages[i].enabled = false;
-				}
+				}*/
 			}
 			else{
 				Debug.LogError(

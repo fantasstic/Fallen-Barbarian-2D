@@ -20,7 +20,7 @@ public class RoundContorllerNew : MonoBehaviour
     private ControlsScript _enemy;
 
     private static bool _secondStart;
-    public static bool EnemyWinner;
+    public bool EnemyWinner;
 
     private void Awake()
     {
@@ -213,7 +213,7 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (_roundEnd)
         {
-            if(_gameUI != null)
+            if(_gameUI != null || EnemyWinner)
             {
                 _gameUI.SetActive(false);
                 Invoke("LoadGoblinScene", 2f);
