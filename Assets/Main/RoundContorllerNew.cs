@@ -5,12 +5,15 @@ using UFE3D;
 using UFENetcode;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public class RoundContorllerNew : MonoBehaviour
 {
     [SerializeField] private float _maxYPos;
     [SerializeField] private MoveInfo _rollMove, _moveKick, _runMove;
     [SerializeField] private RoundContorllerNew _roundContorller;
+    [SerializeField] private List<Sprite> _backGrounds = new List<Sprite>();
+    [SerializeField] private Image _back;
 
     private GameObject _background;
     private GameObject _gameUI;
@@ -18,6 +21,7 @@ public class RoundContorllerNew : MonoBehaviour
     private bool _roundStart;
     private ControlsScript _player;
     private ControlsScript _enemy;
+    private OpenTutor _openTutor;
 
     private static bool _secondStart;
     public bool EnemyWinner;
@@ -37,8 +41,26 @@ public class RoundContorllerNew : MonoBehaviour
         if (_secondStart)
         {
             UFE.StartVersusModeAfterBattleScreen();
+
+            if (PlayerPrefs.GetString("Win") == "Enemy")
+            {
+                _back.gameObject.SetActive(false);
+            }
+            else
+            {
+                int currentBack = UnityEngine.Random.Range(0, _backGrounds.Count);
+                _back.sprite = _backGrounds[currentBack];
+                _back.gameObject.SetActive(true);
+                Invoke("OffBack", 3f);
+            }
+
             /*_background.SetActive(true);*/
         }
+    }
+
+    private void OffBack()
+    {
+        _back.gameObject.SetActive(false);
     }
 
     private void UFE_OnBasicMove(BasicMoveReference basicMove, ControlsScript player)
@@ -142,12 +164,18 @@ public class RoundContorllerNew : MonoBehaviour
 
         if(winner == _enemy)
         {
+            PlayerPrefs.SetString("Win", "Enemy");
             EnemyWinner = true;
         }
-        
+        else
+        {
+            PlayerPrefs.SetString("Win", "Player");
+        }
+
         /*_gameUI.SetActive(false);*/
         UFE.StartVersusModeAfterBattleScreen(0.1f);
         
+
         _roundEnd = true;
 
         /*if (_gameUI != null)

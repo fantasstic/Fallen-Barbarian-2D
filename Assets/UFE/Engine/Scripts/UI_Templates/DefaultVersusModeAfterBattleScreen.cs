@@ -16,8 +16,13 @@ public class DefaultVersusModeAfterBattleScreen : VersusModeAfterBattleScreen{
 
     #region public override methods
 
-    private void Awake()
+    /*private void Awake()
     {
+		LoadMenu();
+    }*/
+
+	private void LoadMenu()
+	{
         GoToMainMenu();
     }
 
@@ -26,12 +31,13 @@ public class DefaultVersusModeAfterBattleScreen : VersusModeAfterBattleScreen{
         base.GoToMainMenu();
     }
 
-    public override void DoFixedUpdate(
+	public override void DoFixedUpdate(
 		IDictionary<InputReferences, InputEvents> player1PreviousInputs,
 		IDictionary<InputReferences, InputEvents> player1CurrentInputs,
 		IDictionary<InputReferences, InputEvents> player2PreviousInputs,
 		IDictionary<InputReferences, InputEvents> player2CurrentInputs
-	){
+	)
+	{
 		base.DoFixedUpdate(player1PreviousInputs, player1CurrentInputs, player2PreviousInputs, player2CurrentInputs);
 
 		this.DefaultNavigationSystem(

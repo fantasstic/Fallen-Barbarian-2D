@@ -88,7 +88,7 @@ public class SpineAnim : MonoBehaviour
     private void Update()
     {
         /*_daysCounter.text = (_animationCount + 1).ToString();*/
-        if (_animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 0)
+        if (_animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 0 || _animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 3)
         {
             _firstAnimPanel.SetActive(true);
             _audioSource.mute = true;
@@ -165,7 +165,7 @@ public class SpineAnim : MonoBehaviour
 
         _previousAnimationCount = _animationCount;
 
-        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0)
+        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 3)
         {
             _animationCountUI.text = "(Auto)";
             _currentSwitchTimer += Time.deltaTime;
@@ -197,7 +197,7 @@ public class SpineAnim : MonoBehaviour
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
         }
-        else if(!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0)
+        else if(!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0 || !_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 3)
         {
             if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0)
             {
@@ -379,7 +379,7 @@ public class SpineAnim : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.J) && _goblicScene.CurrentBadEndSceneIndex != 2)
+        if (Input.GetKeyDown(KeyCode.J) && _goblicScene.CurrentBadEndSceneIndex != 2 && _goblicScene.CurrentBadEndSceneIndex != 3)
         {
             if (AnimationSkins.Count > _skinsCount)
             {
