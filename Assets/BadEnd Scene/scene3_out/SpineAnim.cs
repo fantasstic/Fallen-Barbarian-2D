@@ -9,8 +9,8 @@ public class SpineAnim : MonoBehaviour
 {
     [SerializeField] private GameObject _ui, _panel, _firstAnimPanel;
     [SerializeField] private TMP_Text _animationCountUI,_skinsCountUI, _animationSpeedUI, _zoomUI, _daysCounter;
-    [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource, _pussySource;
-    [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips, _pussyClips;
+    [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource, _pussySource, _lickSource, _hurtSource;
+    [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips, _pussyClips, _lickClips, _hurtClips;
     [SerializeField] private AudioClip _oralMainClip;
     [SerializeField] private GoblinScene _goblicScene;
     [SerializeField] private Transform _zoomedTr;
@@ -21,6 +21,8 @@ public class SpineAnim : MonoBehaviour
     private float _primaryProbability = 0.75f;
     private float _currentSwitchSkins, _autoSkinSwitch = 7f;
     private int _birdClipIndex = 0;
+    private int _hurtClipIndex = 0;
+    private int _lickClipIndex = 0;
     private int _swordClipIndex = 0;
     private int _currentAutoStepClipIndex = 0;
     private int currentClipIndex = 0;
@@ -61,6 +63,13 @@ public class SpineAnim : MonoBehaviour
             _audioSource.Play();
 
         }
+
+        if (_goblicScene.CurrentBadEndSceneIndex == 3 || _goblicScene.CurrentBadEndSceneIndex == 5)
+        {
+            _coughSource.mute = true;
+            _oralSquishSource.mute = true;
+        }
+
         _ui.SetActive(true);
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
@@ -80,15 +89,47 @@ public class SpineAnim : MonoBehaviour
         else
             StartCoroutine(SwitchAudioClipWithInterval(4f, _audioSource, _audioClips, currentClipIndex, true));
 
+        if(_goblicScene.CurrentBadEndSceneIndex == 5)
+        {
+            StartCoroutine(SwitchAudioClipWithInterval(5f, _lickSource, _lickClips, _lickClipIndex, true));
+            StartCoroutine(SwitchAudioClipWithInterval(7f, _hurtSource, _hurtClips, _hurtClipIndex, true));
+        }
+
         StartCoroutine(SwitchAudioClipWithInterval(15f, _birdSource, _birdClips, _birdClipIndex, true));
         StartCoroutine(SwitchAudioThirdClipWithInterval(1f, _coughSource, _coughClips, currentSecondClipIndex, true));
         StartCoroutine(PlayAudioWithProbability(_oralSquishSource, _oralMainClip, _oralCleps, _primaryProbability));
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Sound")
+        {
+            Debug.Log("Play");
+            
+            if(_animationCount == 1)
+            {
+                if(!_audioSource.isPlaying)
+                    _audioSource.Play();
+            }
+            else
+                _audioSource.Play();
+        }
+
+        if(collision.transform.tag == "Lick")
+        {
+            if (!_lickSource.isPlaying)
+                _lickSource.Play();
+        }
+    }
+
     private void Update()
     {
-        /*_daysCounter.text = (_animationCount + 1).ToString();*/
-        if (_animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 0 || _animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 3)
+        /*if (_goblicScene.CurrentBadEndSceneIndex == 3 && _animationCount == 1)
+            _audioSource.loop = false;*/
+        if (_goblicScene.CurrentBadEndSceneIndex == 3 || _goblicScene.CurrentBadEndSceneIndex == 5)
+            _audioSource.loop = false;
+
+        if (_animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 0 || _animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 3 || _animationCount == 0 && _goblicScene.CurrentBadEndSceneIndex == 5)
         {
             _firstAnimPanel.SetActive(true);
             _audioSource.mute = true;
@@ -100,39 +141,83 @@ public class SpineAnim : MonoBehaviour
             _swordSource.mute = true;
         }
 
-        if (_animationCount == 2)
+        if(_goblicScene.CurrentBadEndSceneIndex == 5 && _animationCount == 1)
+        {
+            _lickSource.mute = false;
+        }
+        else if(_goblicScene.CurrentBadEndSceneIndex == 5 && _animationCount != 1)
+        {
+            _lickSource.mute = true;
+        }
+
+        if (_goblicScene.CurrentBadEndSceneIndex == 5 && _animationCount == 2)
+        {
+            _hurtSource.mute = false;
+        }
+        else if(_goblicScene.CurrentBadEndSceneIndex == 5 && _animationCount != 2)
+        {
+            _hurtSource.mute = true;
+        }
+
+        if (_animationCount == 2 && _goblicScene.CurrentBadEndSceneIndex != 3 && _goblicScene.CurrentBadEndSceneIndex != 5)
         {
             _coughSource.mute = false;
             _oralSquishSource.mute = false;
         }
-        else if (_animationCount != 2)
+        else if (_animationCount != 2 && _goblicScene.CurrentBadEndSceneIndex != 3 && _goblicScene.CurrentBadEndSceneIndex != 5)
         {
             _coughSource.mute = true;
             _oralSquishSource.mute = true;
         }
 
-        if (_isAutoMode && _previousAnimationCount == 2)
+        if(_goblicScene.CurrentBadEndSceneIndex != 3 || _goblicScene.CurrentBadEndSceneIndex != 5)
         {
-            if (!_isSoundPlayed && _currentSwitchTimer >= 4) 
+            if (_isAutoMode && _previousAnimationCount == 2)
             {
-                Debug.Log("Play");
+                if (!_isSoundPlayed && _currentSwitchTimer >= 4) 
+                {
+                    Debug.Log("Play");
 
-                int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                    int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
 
-                while (newClipIndex == _currentAutoStepClipIndex)
-                    newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+                    while (newClipIndex == _currentAutoStepClipIndex)
+                        newClipIndex = Random.Range(0, _autoModeStepClips.Length);
 
-                _currentAutoStepClipIndex = newClipIndex;
+                    _currentAutoStepClipIndex = newClipIndex;
 
-                _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
+                    _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
 
-                _autoModeStepSoruce.Play();
+                    _autoModeStepSoruce.Play();
 
-                _isSoundPlayed = true;
+                    _isSoundPlayed = true;
+                }
+            }
+        }
+        else
+        {
+            if (_isAutoMode && _previousAnimationCount == 3)
+            {
+                if (!_isSoundPlayed && _currentSwitchTimer >= 4)
+                {
+                    Debug.Log("Play");
+
+                    int newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+
+                    while (newClipIndex == _currentAutoStepClipIndex)
+                        newClipIndex = Random.Range(0, _autoModeStepClips.Length);
+
+                    _currentAutoStepClipIndex = newClipIndex;
+
+                    _autoModeStepSoruce.clip = _autoModeStepClips[_currentAutoStepClipIndex];
+
+                    _autoModeStepSoruce.Play();
+
+                    _isSoundPlayed = true;
+                }
             }
         }
 
-        if (_previousAnimationCount == 2 && _animationCount != 2)
+        if (_previousAnimationCount == 2 && _animationCount != 2 && _goblicScene.CurrentBadEndSceneIndex != 3 && _goblicScene.CurrentBadEndSceneIndex != 5)
         {
             int newClipIndex = Random.Range(0, _stepClips.Length);
 
@@ -146,26 +231,29 @@ public class SpineAnim : MonoBehaviour
             _stepSource.Play();
         }
 
-        if(_stepSource.isPlaying)
+        if (_goblicScene.CurrentBadEndSceneIndex != 3 && _goblicScene.CurrentBadEndSceneIndex != 5)
         {
-            _audioSource.volume = 0;
-            _coughSource.volume = 0;
-            _oralSquishSource.volume = 0;
-            _autoModeStepSoruce.volume = 0;
-            _swordSource.volume = 0;
-        }
-        else
-        {
-            _audioSource.volume = 1;
-            _coughSource.volume = 1;
-            _oralSquishSource.volume = 1;
-            _autoModeStepSoruce.volume = 1;
-            _swordSource.volume = 1;
+            if(_stepSource.isPlaying)
+            {
+                _audioSource.volume = 0;
+                _coughSource.volume = 0;
+                _oralSquishSource.volume = 0;
+                _autoModeStepSoruce.volume = 0;
+                _swordSource.volume = 0;
+            }
+            else
+            {
+                _audioSource.volume = 1;
+                _coughSource.volume = 1;
+                _oralSquishSource.volume = 1;
+                _autoModeStepSoruce.volume = 1;
+                _swordSource.volume = 1;
+            }
         }
 
         _previousAnimationCount = _animationCount;
 
-        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 3)
+        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 3 )
         {
             _animationCountUI.text = "(Auto)";
             _currentSwitchTimer += Time.deltaTime;
@@ -230,7 +318,7 @@ public class SpineAnim : MonoBehaviour
 
         }
 
-        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 /*|| _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 2*/)
+        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 5)
         {
             _animationCountUI.text = "(Auto)";
             
@@ -301,7 +389,7 @@ public class SpineAnim : MonoBehaviour
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
         }
-        else if (!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1)
+        else if (!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 || !_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 5)
         {
             if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0)
             {
@@ -589,7 +677,8 @@ public class SpineAnim : MonoBehaviour
             
             audioSource.clip = audioClips[currentIndex];
 
-            audioSource.Play();
+            if(_goblicScene.CurrentBadEndSceneIndex != 3)
+                audioSource.Play();
             
         }
     }

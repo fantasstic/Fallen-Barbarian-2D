@@ -14,7 +14,10 @@ public class GoblinScene : MonoBehaviour
     [SerializeField] private GameObject _hair;
     [SerializeField] private GameObject _panel;
 
+    private List<GameObject> _badEndScenesCopy; // Копия исходного списка
+    private bool _shuffleMode = false;
     private bool _badEndAnimationStarted = false;
+    private int _lastTwoIndexes = -1;
     public int CurrentBadEndSceneIndex = 0;
 
     private const string LastPlayedAnimationKey = "LastPlayedAnimationIndex";
@@ -30,10 +33,10 @@ public class GoblinScene : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, _positionToMove.position, _speed * Time.deltaTime);
 
-        if(Input.anyKey && !_badEndAnimationStarted)
+        if (Input.anyKey && !_badEndAnimationStarted)
             StartBadEndAnimation();
 
-        if(Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space))
         {
             LoadBattleScene();
         }
@@ -49,7 +52,7 @@ public class GoblinScene : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void StartBadEndAnimation()
+    /*private void StartBadEndAnimation()
     {
         if (_badEndScenes.Count == 0)
         {
@@ -81,5 +84,75 @@ public class GoblinScene : MonoBehaviour
 
         selectedBadEndScene.SetActive(true);
         
+    }*/
+
+    private void StartBadEndAnimation()
+    {
+        if (!_shuffleMode)
+        {
+            if (_badEndScenes.Count == 0)
+            {
+                Debug.LogWarning("No more bad end scenes available.");
+                return;
+            }
+
+            if (_badEndAnimationStarted)
+            {
+                return;
+            }
+
+            _badEndAnimationStarted = true;
+
+            // Создаем копию исходного списка для перемешивания
+            _badEndScenesCopy = new List<GameObject>(_badEndScenes);
+
+            int lastPlayedIndex = PlayerPrefs.GetInt(LastPlayedAnimationKey, -1);
+
+            do
+            {
+                CurrentBadEndSceneIndex = Random.Range(0, _badEndScenesCopy.Count);
+            } while (CurrentBadEndSceneIndex == lastPlayedIndex || CurrentBadEndSceneIndex == _lastTwoIndexes);
+
+            PlayerPrefs.SetInt(LastPlayedAnimationKey, CurrentBadEndSceneIndex);
+
+            GameObject selectedBadEndScene = _badEndScenesCopy[CurrentBadEndSceneIndex];
+            _badEndScenesCopy.RemoveAt(CurrentBadEndSceneIndex);
+            if (CurrentBadEndSceneIndex == 1)
+                _panel.SetActive(false);
+
+            selectedBadEndScene.SetActive(true);
+
+            _lastTwoIndexes = lastPlayedIndex;
+            if (_badEndScenesCopy.Count == 0)
+            {
+                // Все объекты были показаны без повторений, переключаемся в режим перемешивания
+                _shuffleMode = true;
+            }
+        }
+        else
+        {
+            if (_badEndScenesCopy.Count == 0)
+            {
+                // Все объекты были показаны в режиме перемешивания
+                Debug.LogWarning("All bad end scenes have been shown.");
+                return;
+            }
+
+            if (_badEndAnimationStarted)
+            {
+                return;
+            }
+
+            _badEndAnimationStarted = true;
+
+            int randomIndex = Random.Range(0, _badEndScenesCopy.Count);
+            GameObject selectedBadEndScene = _badEndScenesCopy[randomIndex];
+            _badEndScenesCopy.RemoveAt(randomIndex);
+
+            if (randomIndex == 1)
+                _panel.SetActive(false);
+
+            selectedBadEndScene.SetActive(true);
+        }
     }
 }

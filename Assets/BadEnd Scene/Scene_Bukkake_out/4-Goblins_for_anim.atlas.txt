@@ -1,0 +1,298 @@
+
+4-Goblins_for_anim.png
+size: 2025,1784
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Barb_Boob_L
+  rotate: true
+  xy: 2, 1366
+  size: 220, 270
+  orig: 221, 270
+  offset: 1, 0
+  index: -1
+Barb_Boob_R
+  rotate: true
+  xy: 274, 1321
+  size: 222, 276
+  orig: 223, 276
+  offset: 0, 0
+  index: -1
+Barb_Hair
+  rotate: true
+  xy: 388, 994
+  size: 325, 340
+  orig: 334, 341
+  offset: 9, 0
+  index: -1
+Barb_Hair_back
+  rotate: true
+  xy: 2, 1017
+  size: 302, 384
+  orig: 304, 386
+  offset: 1, 1
+  index: -1
+Barb_Head
+  rotate: true
+  xy: 1074, 1486
+  size: 205, 216
+  orig: 207, 229
+  offset: 1, 3
+  index: -1
+Barb_Leg_l
+  rotate: false
+  xy: 1653, 1155
+  size: 370, 263
+  orig: 370, 264
+  offset: 0, 0
+  index: -1
+Barb_Leg_r
+  rotate: true
+  xy: 819, 1291
+  size: 230, 253
+  orig: 230, 254
+  offset: 0, 1
+  index: -1
+Barb_Nip_L
+  rotate: true
+  xy: 637, 1709
+  size: 73, 78
+  orig: 239, 78
+  offset: 0, 0
+  index: -1
+Barb_Nip_R
+  rotate: true
+  xy: 717, 1708
+  size: 74, 77
+  orig: 74, 77
+  offset: 0, 0
+  index: -1
+Barb_Pupils
+  rotate: false
+  xy: 2, 1754
+  size: 100, 28
+  orig: 114, 34
+  offset: 12, 4
+  index: -1
+Barb_Teeth
+  rotate: false
+  xy: 426, 1742
+  size: 73, 40
+  orig: 75, 42
+  offset: 1, 1
+  index: -1
+Barb_eye_l_back
+  rotate: false
+  xy: 104, 1748
+  size: 123, 34
+  orig: 130, 42
+  offset: 4, 4
+  index: -1
+Bukkake
+  rotate: true
+  xy: 478, 389
+  size: 361, 1466
+  orig: 363, 1468
+  offset: 1, 1
+  index: -1
+Chain_1
+  rotate: false
+  xy: 1307, 752
+  size: 429, 401
+  orig: 430, 408
+  offset: 1, 0
+  index: -1
+Collar
+  rotate: false
+  xy: 501, 1711
+  size: 134, 71
+  orig: 134, 93
+  offset: 0, 21
+  index: -1
+CumTongue
+  rotate: true
+  xy: 229, 1746
+  size: 36, 99
+  orig: 38, 103
+  offset: 1, 1
+  index: -1
+CumTongue2
+  rotate: true
+  xy: 330, 1745
+  size: 37, 94
+  orig: 39, 98
+  offset: 1, 1
+  index: -1
+Goblin_1_penis
+  rotate: false
+  xy: 488, 1545
+  size: 345, 156
+  orig: 345, 156
+  offset: 0, 0
+  index: -1
+Goblin_2_00
+  rotate: true
+  xy: 835, 1523
+  size: 178, 237
+  orig: 179, 237
+  offset: 0, 0
+  index: -1
+Goblin_2_hand
+  rotate: true
+  xy: 2, 568
+  size: 424, 474
+  orig: 424, 475
+  offset: 0, 0
+  index: -1
+Goblin_2_penis
+  rotate: true
+  xy: 552, 1321
+  size: 222, 265
+  orig: 248, 265
+  offset: 0, 0
+  index: -1
+Goblin_3_penis
+  rotate: true
+  xy: 1381, 1166
+  size: 252, 270
+  orig: 252, 270
+  offset: 0, 0
+  index: -1
+Goblin_4
+  rotate: true
+  xy: 730, 837
+  size: 339, 575
+  orig: 340, 576
+  offset: 1, 1
+  index: -1
+Goblin_4_00
+  rotate: true
+  xy: 2, 1588
+  size: 156, 296
+  orig: 156, 296
+  offset: 0, 0
+  index: -1
+Goblin_4_Leg
+  rotate: true
+  xy: 2, 2
+  size: 385, 991
+  orig: 398, 1021
+  offset: 0, 0
+  index: -1
+Goblin_4_hand
+  rotate: false
+  xy: 1292, 1425
+  size: 298, 209
+  orig: 300, 211
+  offset: 1, 1
+  index: -1
+Goblin_4_penis
+  rotate: false
+  xy: 1623, 1634
+  size: 333, 148
+  orig: 333, 159
+  offset: 0, 6
+  index: -1
+Mark1_1
+  rotate: false
+  xy: 300, 1558
+  size: 186, 182
+  orig: 186, 182
+  offset: 0, 0
+  index: -1
+Mark1_2
+  rotate: true
+  xy: 1108, 1696
+  size: 86, 96
+  orig: 86, 96
+  offset: 0, 0
+  index: -1
+Mark2_1
+  rotate: false
+  xy: 1299, 1691
+  size: 133, 91
+  orig: 135, 96
+  offset: 1, 4
+  index: -1
+Mark2_2
+  rotate: true
+  xy: 1434, 1636
+  size: 146, 187
+  orig: 148, 189
+  offset: 1, 1
+  index: -1
+Mark2_3
+  rotate: false
+  xy: 796, 1703
+  size: 310, 79
+  orig: 310, 79
+  offset: 0, 0
+  index: -1
+Mark3
+  rotate: false
+  xy: 1592, 1420
+  size: 247, 212
+  orig: 247, 212
+  offset: 0, 0
+  index: -1
+Mark4
+  rotate: true
+  xy: 1074, 1178
+  size: 245, 305
+  orig: 247, 307
+  offset: 1, 1
+  index: -1
+Mouth Open
+  rotate: false
+  xy: 1206, 1693
+  size: 91, 89
+  orig: 95, 91
+  offset: 1, 1
+  index: -1
+
+4-Goblins_for_anim2.png
+size: 1609,1557
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Goblin_1
+  rotate: true
+  xy: 2, 1158
+  size: 397, 1605
+  orig: 402, 1613
+  offset: 1, 0
+  index: -1
+Goblin_2
+  rotate: true
+  xy: 2, 597
+  size: 559, 1384
+  orig: 637, 1601
+  offset: 5, 207
+  index: -1
+Goblin_3
+  rotate: true
+  xy: 2, 2
+  size: 593, 1410
+  orig: 626, 1454
+  offset: 0, 0
+  index: -1
+
+4-Goblins_for_anim3.png
+size: 1643,1605
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Barb_Body
+  rotate: false
+  xy: 906, 467
+  size: 735, 1136
+  orig: 735, 1153
+  offset: 0, 0
+  index: -1
+back
+  rotate: false
+  xy: 2, 2
+  size: 902, 1601
+  orig: 902, 1602
+  offset: 0, 1
+  index: -1

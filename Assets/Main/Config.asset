@@ -167,7 +167,7 @@ MonoBehaviour:
     finalRound: Final Round
     fight: Fight!
     firstHit: First Hit!
-    combo: '%number% hit combo!'
+    combo: 
     parry: Parry!
     counterHit: Counter!
     victory: '%character% wins!'

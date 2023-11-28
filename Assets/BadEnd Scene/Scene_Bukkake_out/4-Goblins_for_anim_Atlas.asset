@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: 4-Goblins_for_anim_Atlas
+  m_EditorClassIdentifier: 
+  atlasFile: {fileID: 4900000, guid: 070c4edc2d629f34e86207af9776283e, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 40d459d32200f0b4381d48b00b787c6e, type: 2}
+  - {fileID: 2100000, guid: 4b7ab8ef678594a4c8ce19e4752415c6, type: 2}
+  - {fileID: 2100000, guid: 76913581c588f8641986b41d5402e450, type: 2}
