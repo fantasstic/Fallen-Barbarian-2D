@@ -38,6 +38,8 @@ public class RoundContorllerNew : MonoBehaviour
         /*_background = GameObject.Find("Background");
         _background.SetActive(false);*/
 
+        
+
         if (_secondStart)
         {
             UFE.StartVersusModeAfterBattleScreen();
@@ -55,6 +57,13 @@ public class RoundContorllerNew : MonoBehaviour
             }
 
             /*_background.SetActive(true);*/
+        }
+        else
+        {
+            if (!PlayerPrefs.HasKey("ShuffleMode"))
+                PlayerPrefs.SetString("ShuffleMode", "Yes");
+
+            PlayerPrefs.SetString("ShuffleMode", "Yes");
         }
     }
 
@@ -244,7 +253,7 @@ public class RoundContorllerNew : MonoBehaviour
             if(_gameUI != null || EnemyWinner)
             {
                 _gameUI.SetActive(false);
-                Invoke("LoadGoblinScene", 2f);
+                Invoke("LoadGoblinScene", 0.3f);
             }
         }
     }

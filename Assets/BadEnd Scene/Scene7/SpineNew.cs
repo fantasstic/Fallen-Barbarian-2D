@@ -65,14 +65,17 @@ public class SpineNew : MonoBehaviour
         _skinsCountUI.text = "(" + _skinsCount + ")";
         _skinsCount = 0;
         _animationCountUI.text = "(Auto)";
-        
+        _lickSource.mute = true;
+        _hurtSource.mute = true;
 
         StartCoroutine(SwitchAudioClipWithInterval(3f, _swordSource, _swordClips, _swordClipIndex, true));
         StartCoroutine(SwitchAudioClipWithInterval(5f, _lickSource, _lickClips, _lickClipIndex, true));
         StartCoroutine(SwitchAudioClipWithInterval(7f, _hurtSource, _hurtClips, _hurtClipIndex, true));
         StartCoroutine(SwitchAudioClipWithInterval(4f, _audioSource, _audioClips, currentClipIndex, true));
 
-        //StartCoroutine(SwitchAudioClipWithInterval(15f, _birdSource, _birdClips, _birdClipIndex, true));
+        if (_goblicScene.CurrentBadEndSceneIndex == 8)
+            StartCoroutine(SwitchAudioClipWithInterval(4f, _birdSource, _birdClips, _birdClipIndex, true));
+
         StartCoroutine(SwitchAudioThirdClipWithInterval(1f, _coughSource, _coughClips, currentSecondClipIndex, true));
         StartCoroutine(PlayAudioWithProbability(_oralSquishSource, _oralMainClip, _oralCleps, _primaryProbability));
     }
@@ -81,7 +84,6 @@ public class SpineNew : MonoBehaviour
     {
         if (collision.transform.tag == "Sound")
         {
-            Debug.Log("Play");
 
             if (_animationCount == 1)
             {
@@ -90,6 +92,13 @@ public class SpineNew : MonoBehaviour
             }
             else
                 _audioSource.Play();
+        }
+
+        if (collision.transform.tag == "Sound1")
+        {
+            if (!_birdSource.isPlaying)
+                _birdSource.Play();
+        
         }
 
         if (collision.transform.tag == "Lick")
@@ -102,11 +111,16 @@ public class SpineNew : MonoBehaviour
     private void Update()
     {
         _audioSource.loop = false;
+        _birdSource.loop = false;
 
         if (_animationCount == 0 )
         {
             _firstAnimPanel.SetActive(true);
             _audioSource.mute = true;
+
+            if (_goblicScene.CurrentBadEndSceneIndex == 8)
+                _birdSource.mute = true;
+
             _coughSource.mute = true;
             _oralSquishSource.mute = true;
             _swordSource.mute = false;
@@ -114,28 +128,33 @@ public class SpineNew : MonoBehaviour
         else if (_animationCount > 0)
         {
             _audioSource.mute = false;
-            _coughSource.mute = false;
+
+            if (_goblicScene.CurrentBadEndSceneIndex == 8)
+                _birdSource.mute = false;
+
+            if(_goblicScene.CurrentBadEndSceneIndex != 8)
+                _coughSource.mute = false;
             //_oralSquishSource.mute = false;
             _swordSource.mute = true;
         }
 
-        if ( _animationCount == 1)
+        /*if ( _animationCount == 1)
         {
             _lickSource.mute = false;
         }
         else if ( _animationCount != 1)
         {
             _lickSource.mute = true;
-        }
+        }*/
 
-        if ( _animationCount == 2)
+        /*if ( _animationCount == 2)
         {
             _hurtSource.mute = false;
         }
         else if ( _animationCount != 2)
         {
             _hurtSource.mute = true;
-        }
+        }*/
 
 
         _previousAnimationCount = _animationCount;

@@ -25,7 +25,6 @@ public class GoblinScene : MonoBehaviour
     private void Start()
     {
         Invoke("EnableHair", 2.1f);
-        /*Invoke("LoadBattleScene", _sceneDeley);*/
         Invoke("StartBadEndAnimation", _badEndSceneDeley);
     }
 
@@ -52,48 +51,15 @@ public class GoblinScene : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    /*private void StartBadEndAnimation()
-    {
-        if (_badEndScenes.Count == 0)
-        {
-            Debug.LogWarning("No more bad end scenes available.");
-            return;
-        }
-
-        if (_badEndAnimationStarted)
-        {
-            return; 
-        }
-
-        _badEndAnimationStarted = true;
-
-        int lastPlayedIndex = PlayerPrefs.GetInt(LastPlayedAnimationKey, -1);
-
-        do
-        {
-            CurrentBadEndSceneIndex = Random.Range(0, _badEndScenes.Count);
-        } while (CurrentBadEndSceneIndex == lastPlayedIndex);
-
-        PlayerPrefs.SetInt(LastPlayedAnimationKey, CurrentBadEndSceneIndex);
-
-        GameObject selectedBadEndScene = _badEndScenes[CurrentBadEndSceneIndex];
-        _badEndScenes.RemoveAt(CurrentBadEndSceneIndex);
-        if(CurrentBadEndSceneIndex == 1)
-            _panel.SetActive(false);
-
-
-        selectedBadEndScene.SetActive(true);
-        
-    }*/
-
     private void StartBadEndAnimation()
     {
         if (!_shuffleMode)
         {
-            if (_badEndScenes.Count == 0)
+            if (_badEndScenesCopy == null || _badEndScenesCopy.Count == 0)
             {
-                Debug.LogWarning("No more bad end scenes available.");
-                return;
+                // Создаем копию исходного списка для перемешивания только при первом запуске
+                _badEndScenesCopy = new List<GameObject>(_badEndScenes);
+                ShuffleScenes();
             }
 
             if (_badEndAnimationStarted)
@@ -102,9 +68,6 @@ public class GoblinScene : MonoBehaviour
             }
 
             _badEndAnimationStarted = true;
-
-            // Создаем копию исходного списка для перемешивания
-            _badEndScenesCopy = new List<GameObject>(_badEndScenes);
 
             int lastPlayedIndex = PlayerPrefs.GetInt(LastPlayedAnimationKey, -1);
 
@@ -153,6 +116,18 @@ public class GoblinScene : MonoBehaviour
                 _panel.SetActive(false);
 
             selectedBadEndScene.SetActive(true);
+        }
+    }
+
+    private void ShuffleScenes()
+    {
+        // Перемешиваем сцены
+        for (int i = 0; i < _badEndScenesCopy.Count; i++)
+        {
+            int randomIndex = Random.Range(i, _badEndScenesCopy.Count);
+            GameObject temp = _badEndScenesCopy[i];
+            _badEndScenesCopy[i] = _badEndScenesCopy[randomIndex];
+            _badEndScenesCopy[randomIndex] = temp;
         }
     }
 }

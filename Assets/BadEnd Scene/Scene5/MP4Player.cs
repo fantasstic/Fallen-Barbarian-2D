@@ -8,12 +8,13 @@ using UnityEngine.Video;
 public class MP4Player : MonoBehaviour
 {
     [SerializeField] private GameObject _ui; 
-    [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource, _pussySource;
-    [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips, _pussyClips;
+    [SerializeField] private AudioSource _audioSource, _coughSource, _stepSource, _oralSquishSource, _autoModeStepSoruce, _swordSource, _birdSource, _pussySource, _lickSource, _hurtSource;
+    [SerializeField] private AudioClip[] _audioClips, _coughClips, _stepClips, _oralCleps, _autoModeStepClips, _swordClips, _birdClips, _pussyClips, _lickClips, _hurtClips;
     [SerializeField] private Transform _zoomedTr;
     [SerializeField] private float _yOffsetAfterZoom;
     [SerializeField] private TMP_Text _animationCountUI, _skinsCountUI, _animationSpeedUI, _zoomUI, _daysCounter;
     [SerializeField] private AudioClip _oralMainClip;
+    [SerializeField] private GoblinScene _goblinScene;
 
     private Vector3 _initialScale;
     private bool _isZoomed = false;
@@ -40,6 +41,8 @@ public class MP4Player : MonoBehaviour
     private float speedStep = 0.1f;
     private int _birdClipIndex = 0;
     private int _swordClipIndex = 0;
+    private int _hurtClipIndex = 0;
+    private int _lickClipIndex = 0;
     private int currentClipIndex = 0;
     private int currentSecondClipIndex = 0;
     private float _primaryProbability = 0.75f;
@@ -51,6 +54,12 @@ public class MP4Player : MonoBehaviour
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
         
+        if(_goblinScene.CurrentBadEndSceneIndex == 4)
+        {
+            _lickSource.mute = true;
+            _hurtSource.mute = true;
+        }
+
         PlayMediaAtIndex(currentIndex);
 
         StartCoroutine(SwitchAudioClipWithInterval(3f, _swordSource, _swordClips, _swordClipIndex, true));
@@ -60,23 +69,77 @@ public class MP4Player : MonoBehaviour
         StartCoroutine(SwitchAudioClipWithInterval(15f, _birdSource, _birdClips, _birdClipIndex, true));
 
         StartCoroutine(SwitchAudioThirdClipWithInterval(1f, _coughSource, _coughClips, currentSecondClipIndex, true));
+        StartCoroutine(SwitchAudioClipWithInterval(5f, _lickSource, _lickClips, _lickClipIndex, true));
+        StartCoroutine(SwitchAudioClipWithInterval(7f, _hurtSource, _hurtClips, _hurtClipIndex, true));
         /*StartCoroutine(PlayAudioWithProbability(_oralSquishSource, _oralMainClip, _oralCleps, _primaryProbability));*/
     }
 
     private void Update()
     {
-        if (currentIndex == 0 || currentIndex == 4)
+        if ( _goblinScene.CurrentBadEndSceneIndex == 4)
         {
-            _audioSource.mute = true;
-            _swordSource.mute = false;
+           
+            if (currentIndex == 0 || currentIndex == 4)
+            {
+
+                _audioSource.mute = true;
+                _swordSource.mute = false;
+                
+
+            }
+            else if(currentIndex > 0 || currentIndex < 4)
+            {
+                _audioSource.mute = false;
+                _swordSource.mute = true;
+            }
+
+            if (currentIndex == 2)
+                _audioSource.loop = false;
+            else
+                _audioSource.loop = true;
+
+            if (currentIndex == 3)
+                _audioSource.mute = true;
+
+            if (currentIndex == 2 || currentIndex == 3)
+            {
+                _coughSource.mute = false;
+                _oralSquishSource.mute = false;
+            }
+            else if (currentIndex == 0 || currentIndex == 1 || currentIndex == 4)
+            {
+                _coughSource.mute = true;
+                _oralSquishSource.mute = true;
+            }
         }
-        else if (currentIndex > 0 || currentIndex < 4)
+        else if ( _goblinScene.CurrentBadEndSceneIndex == 7)
         {
             _audioSource.mute = false;
             _swordSource.mute = true;
+            _coughSource.mute = true;
+            _oralSquishSource.mute = true;
+            _birdSource.mute = true;
+
+            if (currentIndex == 1)
+            {
+                _lickSource.mute = false;
+            }
+            else if (currentIndex != 1)
+            {
+                _lickSource.mute = true;
+            }
+
+            if (currentIndex == 2)
+            {
+                _hurtSource.mute = false;
+            }
+            else if (currentIndex != 2)
+            {
+                _hurtSource.mute = true;
+            }
         }
 
-        if (currentIndex == 2)
+        /*if (currentIndex == 2)
             _audioSource.loop = false;
         else
             _audioSource.loop = true;
@@ -93,7 +156,7 @@ public class MP4Player : MonoBehaviour
         {
             _coughSource.mute = true;
             _oralSquishSource.mute = true;
-        }
+        }*/
 
         if (isAutoMode)
         {
