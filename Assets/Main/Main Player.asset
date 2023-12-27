@@ -1578,7 +1578,7 @@ MonoBehaviour:
           bodyPart: 0
         reference: 0
         name: 
-        editorToggle: 1
+        editorToggle: 0
         soundEffectsToggle: 0
       blockingCrouchingHit:
         clip1: {fileID: 0}

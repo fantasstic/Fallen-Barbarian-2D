@@ -927,7 +927,7 @@ MonoBehaviour:
   player2_Inputs:
   - inputType: 1
     inputButtonName: P2KeyboardVertical
-    engineRelatedButton: 3
+    engineRelatedButton: 2
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   - {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
   debugOptions:
-    startGameImmediately: 0
+    startGameImmediately: 1
     skipLoadingScreen: 1
     matchType: 0
     debugMode: 1
@@ -1169,7 +1169,7 @@ MonoBehaviour:
     actionListToggle: 0
     actionSequence: []
   aiOptions:
-    engine: 0
+    engine: 1
     attackWhenEnemyIsDown: 0
     moveWhenEnemyIsDown: 1
     inputFrequency: 0.1
@@ -1216,35 +1216,35 @@ MonoBehaviour:
       crouchProbability: 0
       attackProbability: 0
     multiCoreSupport: 1
-    persistentBehavior: 1
+    persistentBehavior: 0
     difficultyToggle: 1
     difficultySettings:
     - difficultyLevel: 2
       overrideTimeBetweenDecisions: 1
-      timeBetweenDecisions: 0
+      timeBetweenDecisions: 0.3
       overrideTimeBetweenActions: 1
-      timeBetweenActions: 0.05
+      timeBetweenActions: 0.1
       overrideAggressiveness: 1
-      aggressiveness: 0.5
+      aggressiveness: 0.3
       overrideRuleCompliance: 1
       ruleCompliance: 0.9
       overrideComboEfficiency: 1
-      comboEfficiency: 1
-      startupBehavior: 3
+      comboEfficiency: 0.2
+      startupBehavior: 4
     selectedDifficultyLevel: 2
     selectedDifficulty:
       difficultyLevel: 2
       overrideTimeBetweenDecisions: 1
-      timeBetweenDecisions: 0
+      timeBetweenDecisions: 0.3
       overrideTimeBetweenActions: 1
-      timeBetweenActions: 0.05
+      timeBetweenActions: 0.1
       overrideAggressiveness: 1
-      aggressiveness: 0.5
+      aggressiveness: 0.3
       overrideRuleCompliance: 1
       ruleCompliance: 0.9
       overrideComboEfficiency: 1
-      comboEfficiency: 1
-      startupBehavior: 3
+      comboEfficiency: 0.2
+      startupBehavior: 4
   networkOptions:
     forceAnimationControl: 0
     disableRootMotion: 0

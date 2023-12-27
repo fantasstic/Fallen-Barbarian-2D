@@ -5767,4 +5767,8 @@ MonoBehaviour:
     attackMovesToggle: 1
   aiInstructionsSet:
   - aiInfo: {fileID: 11400000, guid: ca1b7af9ca8481a4fb9d27162cce6a97, type: 2}
+    behavior: 4
+  - aiInfo: {fileID: 11400000, guid: 2b4661f917e17184fa5380226488657d, type: 2}
+    behavior: 2
+  - aiInfo: {fileID: 11400000, guid: 0cbb4bf9fc37e2540a4b1900a715cbb1, type: 2}
     behavior: 3
