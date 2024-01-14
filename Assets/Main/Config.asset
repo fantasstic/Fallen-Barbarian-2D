@@ -798,7 +798,7 @@ MonoBehaviour:
   player1_Inputs:
   - inputType: 0
     inputButtonName: P1KeyboardHorizontal
-    engineRelatedButton: 0
+    engineRelatedButton: 1
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -928,6 +928,22 @@ MonoBehaviour:
   - inputType: 1
     inputButtonName: P2KeyboardVertical
     engineRelatedButton: 2
+    joystickAxisName: 
+    cInputPositiveKeyName: 
+    cInputPositiveDefaultKey: 
+    cInputPositiveAlternativeKey: 
+    cInputNegativeKeyName: 
+    cInputNegativeDefaultKey: 
+    cInputNegativeAlternativeKey: 
+    inputViewerIcon1: {fileID: 0}
+    inputViewerIcon2: {fileID: 0}
+    inputViewerIcon3: {fileID: 0}
+    inputViewerIcon4: {fileID: 0}
+    inputViewerIcon5: {fileID: 0}
+    inputViewerIcon6: {fileID: 0}
+  - inputType: 2
+    inputButtonName: P1Button7
+    engineRelatedButton: 10
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1099,7 +1115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   - {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
   debugOptions:
-    startGameImmediately: 1
+    startGameImmediately: 0
     skipLoadingScreen: 1
     matchType: 0
     debugMode: 1

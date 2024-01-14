@@ -10129,6 +10129,8 @@ MonoBehaviour:
   _swordSource: {fileID: 0}
   _birdSource: {fileID: 0}
   _pussySource: {fileID: 0}
+  _lickSource: {fileID: 0}
+  _hurtSource: {fileID: 0}
   _audioClips: []
   _coughClips: []
   _stepClips: []
@@ -10137,6 +10139,8 @@ MonoBehaviour:
   _swordClips: []
   _birdClips: []
   _pussyClips: []
+  _lickClips: []
+  _hurtClips: []
   _oralMainClip: {fileID: 0}
   _goblicScene: {fileID: 0}
   _zoomedTr: {fileID: 0}

@@ -9,8 +9,12 @@ public class BotSetuper : BasePlayerSetiuper
 
     protected override void ChangeHairColor()
     {
-        int randomIndex = Random.Range(0, HairColor.Count);
-        currentHairColor = HairColor[randomIndex];
+        /*var enemy = UFE.GetControlsScript(2);*/
+
+        int wins = PlayerPrefs.GetInt("Wins");
+        Debug.Log(wins);
+        //int randomIndex = Random.Range(0, HairColor.Count);
+        currentHairColor = HairColor[wins];
         _hairSpriteRenderer.color = currentHairColor;
         PlayerPrefs.SetFloat("HairColorR", currentHairColor.r);
         PlayerPrefs.SetFloat("HairColorG", currentHairColor.g);

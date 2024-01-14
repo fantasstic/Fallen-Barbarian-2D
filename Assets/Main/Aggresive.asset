@@ -49,11 +49,11 @@ MonoBehaviour:
     autoJump: 1
     jumpBackFrequency: 0
     jumpStraightFrequency: 0
-    jumpForwardFrequency: 5
+    jumpForwardFrequency: 4
     autoBlock: 0
     obeyHitType: 1
-    standBlockAccuracy: 4
-    crouchBlockAccuracy: 3
+    standBlockAccuracy: 3
+    crouchBlockAccuracy: 0
     jumpBlockAccuracy: 0
     autoAttack: 1
     obeyPreferableDistances: 1
@@ -62,7 +62,7 @@ MonoBehaviour:
   aiRules:
   - ruleName: Switch to defense
     events:
-    - enabled: 1
+    - enabled: 0
       boolean: 0
       conditions:
       - enabled: 1
@@ -108,6 +108,110 @@ MonoBehaviour:
       specificMove: {fileID: 0}
       buttonPress: 4
       behavior: 2
+      desirability: 6
+    debugToggle: 0
+    eventsToggle: 1
+    reactionsToggle: 0
+  - ruleName: Rule 2
+    events:
+    - enabled: 1
+      boolean: 0
+      conditions:
+      - enabled: 0
+        boolean: 0
+        targetCharacter: 0
+        conditionType: 5
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 0
+        gaugeStatus: 0
+        playerDistance: 2
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 1
+    reactions:
+    - reactionType: 10
+      moveClassification:
+        attackType: 0
+        hitType: 2
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 1
+        anyHitType: 0
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 6
+    debugToggle: 0
+    eventsToggle: 1
+    reactionsToggle: 1
+  - ruleName: Rule 3
+    events:
+    - enabled: 0
+      boolean: 0
+      conditions:
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 0
+        conditionType: 5
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 0
+        gaugeStatus: 0
+        playerDistance: 1
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 1
+    reactions:
+    - reactionType: 10
+      moveClassification:
+        attackType: 0
+        hitType: 1
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 1
+        anyHitType: 0
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
       desirability: 6
     debugToggle: 0
     eventsToggle: 1

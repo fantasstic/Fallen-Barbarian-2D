@@ -22,6 +22,7 @@ public class RoundContorllerNew : MonoBehaviour
     private ControlsScript _player;
     private ControlsScript _enemy;
     private OpenTutor _openTutor;
+    private int _wins;
 
     private static bool _secondStart;
     public bool EnemyWinner;
@@ -164,6 +165,44 @@ public class RoundContorllerNew : MonoBehaviour
 
         _player = UFE.GetControlsScript(1);
         _enemy = UFE.GetControlsScript(2);
+
+        if(!PlayerPrefs.HasKey("Wins"))
+        {
+            _wins = 0;
+            PlayerPrefs.SetInt("Wins", _wins);
+            _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance1);
+        }
+        else
+        {
+            _wins = PlayerPrefs.GetInt("Wins");
+        }
+
+        switch (_wins)
+        {
+            case 0:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance1);
+                break;
+            case 1:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance2);
+                break;
+            case 2:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance3);
+                break;
+            case 3:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance4);
+                break;
+            case 4:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance5);
+                break;
+            case 5:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance6);
+                break;
+            case 6:
+                _enemy.MoveSet.ChangeMoveStances(CombatStances.Stance7);
+                break;
+
+
+        }
     }
 
     private void OnRoundEnds(ControlsScript winner, ControlsScript loser)
@@ -179,6 +218,16 @@ public class RoundContorllerNew : MonoBehaviour
         else
         {
             PlayerPrefs.SetString("Win", "Player");
+
+            int wins = PlayerPrefs.GetInt("Wins");
+            wins++;
+
+            Debug.Log(wins);
+
+            if(wins > 6)
+                PlayerPrefs.SetInt("Wins", 0);
+            else
+                PlayerPrefs.SetInt("Wins", wins);
         }
 
         /*_gameUI.SetActive(false);*/

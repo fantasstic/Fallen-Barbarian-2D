@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1528491153, guid: 290947d1480294243a72173919bf47d1, type: 3}
-  m_Name: HgAttakMove
+  m_Name: HgAttakBot
   m_EditorClassIdentifier: 
   version: 0
   animationClip: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
     basicMovesToggle: 0
     statesToggle: 0
   selfConditions:
-    basicMoveLimitation: 0c000000
+    basicMoveLimitation: 
     possibleMoveStates: []
     basicMovesToggle: 1
     statesToggle: 1
