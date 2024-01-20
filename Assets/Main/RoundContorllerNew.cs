@@ -62,9 +62,11 @@ public class RoundContorllerNew : MonoBehaviour
         else
         {
             if (!PlayerPrefs.HasKey("ShuffleMode"))
-                PlayerPrefs.SetString("ShuffleMode", "Yes");
+                PlayerPrefs.SetString("ShuffleMode", "No");
 
-            PlayerPrefs.SetString("ShuffleMode", "Yes");
+            PlayerPrefs.SetString("ShuffleMode", "No");
+
+            PlayerPrefs.SetInt("Wins", 0);
         }
     }
 
@@ -207,6 +209,9 @@ public class RoundContorllerNew : MonoBehaviour
 
     private void OnRoundEnds(ControlsScript winner, ControlsScript loser)
     {
+        if (_roundEnd)
+            return;
+
         Debug.Log(winner);
         _gameUI = GameObject.Find("CanvasGroup");
 
@@ -230,17 +235,9 @@ public class RoundContorllerNew : MonoBehaviour
                 PlayerPrefs.SetInt("Wins", wins);
         }
 
-        /*_gameUI.SetActive(false);*/
         UFE.StartVersusModeAfterBattleScreen(0.1f);
         
-
         _roundEnd = true;
-
-        /*if (_gameUI != null)
-            _gameUI.SetActive(false);
-
-        //LoadGoblinScene(); 
-        Invoke("LoadGoblinScene", 2f);*/
     }
 
     private void LoadGoblinScene()

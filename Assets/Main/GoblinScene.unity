@@ -596,7 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _positionToMove: {fileID: 1199342918}
   _speed: 5
-  _sceneDeley: 15
+  _sceneDeley: 0
   _badEndScenes:
   - {fileID: 1612751410}
   - {fileID: 1547422464}
@@ -609,7 +609,6 @@ MonoBehaviour:
   - {fileID: 1650921930}
   _badEndSceneDeley: 6
   _hair: {fileID: 1462840053}
-  _panel: {fileID: 210838631}
   CurrentBadEndSceneIndex: 0
 --- !u!61 &38828363
 BoxCollider2D:
@@ -4427,7 +4426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57152075, y: 0.0165169}
   m_AnchorMax: {x: 0.7064793, y: 0.06914769}
-  m_AnchoredPosition: {x: 232.16187, y: -448.2}
+  m_AnchoredPosition: {x: 232.16074, y: -448.2}
   m_SizeDelta: {x: 259.5491, y: 49.34395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &465104759
@@ -4562,7 +4561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57152075, y: 0.0165169}
   m_AnchorMax: {x: 0.7064793, y: 0.06914769}
-  m_AnchoredPosition: {x: 203.41183, y: -448.2}
+  m_AnchoredPosition: {x: 203.4107, y: -448.2}
   m_SizeDelta: {x: 264.04904, y: 49.34395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502655224
@@ -5402,7 +5401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57152075, y: 0.0165169}
   m_AnchorMax: {x: 0.7064793, y: 0.06914769}
-  m_AnchoredPosition: {x: 232.16187, y: -448.2}
+  m_AnchoredPosition: {x: 232.16074, y: -448.2}
   m_SizeDelta: {x: 259.5491, y: 49.34395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584594841
@@ -6302,7 +6301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &660469212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11616,7 +11615,7 @@ MonoBehaviour:
   - marks/marks_ass
   - marks/marks_body
   - notes/not_ass
-  - notes/not_tits
+  - notes/not_legs
   ZoomFactor: 2
   ZoomSpeed: 2
   AnimationSpeedFactor: 1
@@ -16104,12 +16103,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: {fileID: 1997476914}
   _panel: {fileID: 416977770}
-  _firstAnimPanel: {fileID: 0}
-  _animationCountUI: {fileID: 1051948665}
+  _firstAnimPanel: {fileID: 416977770}
+  _animationCountUI: {fileID: 1737701720}
   _skinsCountUI: {fileID: 249058046}
   _animationSpeedUI: {fileID: 832707206}
   _zoomUI: {fileID: 1235720819}
-  _daysCounter: {fileID: 1737701720}
+  _daysCounter: {fileID: 249058046}
   _audioSource: {fileID: 2072733966}
   _coughSource: {fileID: 109526329}
   _stepSource: {fileID: 956878345}
@@ -18708,7 +18707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.57152075, y: 0.0165169}
   m_AnchorMax: {x: 0.7064793, y: 0.06914769}
-  m_AnchoredPosition: {x: 203.41183, y: -448.2}
+  m_AnchoredPosition: {x: 203.4107, y: -448.2}
   m_SizeDelta: {x: 264.04904, y: 49.34395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1530642882
@@ -21406,7 +21405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1737701719
 RectTransform:
   m_ObjectHideFlags: 0

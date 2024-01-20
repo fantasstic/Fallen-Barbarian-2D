@@ -167,7 +167,7 @@ public class SpineNew : MonoBehaviour
             if (_currentSwitchTimer >= _autoSwitchDelay)
             {
                 _currentSwitchTimer = 0f;
-                _daysCount++;
+               // _daysCount++;
 
                 if (_animationCount < AnimationStates.Count - 1)
                 {
@@ -254,7 +254,7 @@ public class SpineNew : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.D) && _animationCount < 3)
             {
                 _animationCount++;
-                _daysCount++;
+                //_daysCount++;
                 if (/*_animationCount < AnimationStates.Count - 1 &&*/ _animationCount <= 2)
                 {
 

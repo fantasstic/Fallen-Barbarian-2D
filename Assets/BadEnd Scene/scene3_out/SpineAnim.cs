@@ -56,6 +56,7 @@ public class SpineAnim : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(_goblicScene.CurrentBadEndSceneIndex);
         if (_goblicScene.CurrentBadEndSceneIndex == 2)
         {
             _audioSource.loop = false;
@@ -321,12 +322,13 @@ public class SpineAnim : MonoBehaviour
         if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 5)
         {
             _animationCountUI.text = "(Auto)";
-            
+            //_daysCount++;
+
             _currentSwitchTimer += Time.deltaTime;
             if (_currentSwitchTimer >= _autoSwitchDelay)
             {
                 _currentSwitchTimer = 0f;
-                _daysCount++;
+                //_daysCount++;
 
                 if (_animationCount < AnimationStates.Count - 1)
                 {
@@ -492,6 +494,8 @@ public class SpineAnim : MonoBehaviour
             
             _daysCount++;
 
+            //Debug.Log(_daysCount);
+
             if (_isSkinsAutoMode)
             {
                 _isSkinsAutoMode = false;
@@ -511,7 +515,7 @@ public class SpineAnim : MonoBehaviour
             BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
             BadEndAnimation.Initialize(true);
             BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
-            _skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
+            //_skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
         }
         else if (Input.GetKeyDown(KeyCode.A) && _goblicScene.CurrentBadEndSceneIndex == 2)
         {
@@ -525,7 +529,7 @@ public class SpineAnim : MonoBehaviour
             {
                 if(_daysCount > 1)
                 {
-                    _daysCount--;
+                    //_daysCount--;
                 }
                 _skinsCount--;
             }
@@ -533,7 +537,7 @@ public class SpineAnim : MonoBehaviour
             BadEndAnimation.initialSkinName = AnimationSkins[_skinsCount];
             BadEndAnimation.Initialize(true);
             BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
-            _skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
+            //_skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
         }
 
         if (_isSkinsAutoMode && _goblicScene.CurrentBadEndSceneIndex == 2)

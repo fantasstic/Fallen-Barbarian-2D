@@ -12,6 +12,114 @@ public class GoblinScene : MonoBehaviour
     [SerializeField] private List<GameObject> _badEndScenes = new List<GameObject>();
     [SerializeField] private float _badEndSceneDeley;
     [SerializeField] private GameObject _hair;
+
+    private int _lastActiveScene = 0;
+    private bool _badEndAnimationStarted = false;
+    private bool _shuffleMode = false;
+
+    public int CurrentBadEndSceneIndex = 0;
+
+    private void Start()
+    {
+        if(PlayerPrefs.GetString("ShuffleMode") != "No")
+            _shuffleMode = true;
+        else
+            _shuffleMode = false;
+
+        Invoke("EnableHair", 2.1f);
+        /*Invoke("LoadBattleScene", _sceneDeley);*/
+        Invoke("StartBadEndAnimation", _badEndSceneDeley);
+    }
+
+    private void Update()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, _positionToMove.position, _speed * Time.deltaTime);
+
+        if (Input.anyKey && !_badEndAnimationStarted)
+            StartBadEndAnimation();
+
+        if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space))
+        {
+            LoadBattleScene();
+        }
+    }
+
+    private void EnableHair()
+    {
+        _hair.SetActive(true);
+    }
+
+    private void LoadBattleScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void StartBadEndAnimation()
+    {
+        //PlayerPrefs.SetString("ShuffleMode", "Yes");
+
+        if (_badEndScenes.Count == 0)
+        {
+            Debug.LogWarning("No more bad end scenes available.");
+            return;
+        }
+
+        if (_badEndAnimationStarted)
+        {
+            return;
+        }
+
+        _badEndAnimationStarted = true;
+
+        if (_shuffleMode)
+        {
+            int randomIndex = Random.Range(0, _badEndScenes.Count);
+            GameObject selectedBadEndScene = _badEndScenes[randomIndex];
+            //_badEndScenes.RemoveAt(randomIndex);
+            CurrentBadEndSceneIndex = randomIndex;
+
+            selectedBadEndScene.SetActive(true);
+        }
+        else
+        {
+            _lastActiveScene = PlayerPrefs.GetInt("LastPlayedAnimationKey");
+
+            if(_lastActiveScene < _badEndScenes.Count)
+            {
+                _lastActiveScene++;
+                
+                GameObject selectedBadEndScene = _badEndScenes[_lastActiveScene - 1];
+                //_badEndScenes.RemoveAt(randomIndex);
+                CurrentBadEndSceneIndex = _lastActiveScene - 1;
+                PlayerPrefs.SetInt("LastPlayedAnimationKey", _lastActiveScene);
+
+                selectedBadEndScene.SetActive(true);
+                
+            }
+            else
+            {
+                _shuffleMode = true;
+                ShuffleMode();
+            }
+        }
+    }
+
+    private void ShuffleMode()
+    {
+        int randomIndex = Random.Range(0, _badEndScenes.Count);
+        GameObject selectedBadEndScene = _badEndScenes[randomIndex];
+        //_badEndScenes.RemoveAt(randomIndex);
+        CurrentBadEndSceneIndex = randomIndex;
+
+        selectedBadEndScene.SetActive(true);
+    }
+
+    /*[SerializeField] private Transform _positionToMove;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _sceneDeley;
+    [SerializeField] private List<GameObject> _badEndScenes = new List<GameObject>();
+    [SerializeField] private float _badEndSceneDeley;
+    [SerializeField] private GameObject _hair;
     [SerializeField] private GameObject _panel;
 
     private List<GameObject> _badEndScenesCopy; //  опи€ исходного списка
@@ -59,7 +167,7 @@ public class GoblinScene : MonoBehaviour
             {
                 // —оздаем копию исходного списка дл€ перемешивани€ только при первом запуске
                 _badEndScenesCopy = new List<GameObject>(_badEndScenes);
-                ShuffleScenes();
+                //ShuffleScenes();
             }
 
             if (_badEndAnimationStarted)
@@ -129,5 +237,5 @@ public class GoblinScene : MonoBehaviour
             _badEndScenesCopy[i] = _badEndScenesCopy[randomIndex];
             _badEndScenesCopy[randomIndex] = temp;
         }
-    }
+    }*/
 }
