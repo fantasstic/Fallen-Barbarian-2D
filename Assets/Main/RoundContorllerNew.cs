@@ -39,7 +39,6 @@ public class RoundContorllerNew : MonoBehaviour
         /*_background = GameObject.Find("Background");
         _background.SetActive(false);*/
 
-        
 
         if (_secondStart)
         {
@@ -117,14 +116,14 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player2" && move.name == "RollMove" && strokeHitBox.type == HitBoxType.low)
         {
-            playerControl.DamageMe(100, false);
+            playerControl.DamageMe(10, false);
         }
 
         if (player.name == "Player1" && move.name == "RollMove" && strokeHitBox.type == HitBoxType.low)
         {
             Debug.Log("Damage Back");
 
-            enemyControl.DamageMe(100, false);
+            enemyControl.DamageMe(10, false);
         }
 
         if (player.name == "Player2" && move.name == "HgAttackMove" && strokeHitBox.type == HitBoxType.low)

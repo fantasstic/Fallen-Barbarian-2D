@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UFE3D;
+using System.Linq;
 
 public class GoblinScene : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GoblinScene : MonoBehaviour
     [SerializeField] private float _badEndSceneDeley;
     [SerializeField] private GameObject _hair;
 
+    private List<int> _alredyUsedRandomNumbersHistory = new List<int>();
     private int _lastActiveScene = 0;
     private bool _badEndAnimationStarted = false;
     private bool _shuffleMode = false;
@@ -73,12 +75,13 @@ public class GoblinScene : MonoBehaviour
 
         if (_shuffleMode)
         {
-            int randomIndex = Random.Range(0, _badEndScenes.Count);
+            /*int randomIndex = Random.Range(0, _badEndScenes.Count);
             GameObject selectedBadEndScene = _badEndScenes[randomIndex];
             //_badEndScenes.RemoveAt(randomIndex);
             CurrentBadEndSceneIndex = randomIndex;
 
-            selectedBadEndScene.SetActive(true);
+            selectedBadEndScene.SetActive(true);*/
+            NewShuffleMode();
         }
         else
         {
@@ -107,6 +110,45 @@ public class GoblinScene : MonoBehaviour
     private void ShuffleMode()
     {
         int randomIndex = Random.Range(0, _badEndScenes.Count);
+        GameObject selectedBadEndScene = _badEndScenes[randomIndex];
+        //_badEndScenes.RemoveAt(randomIndex);
+        CurrentBadEndSceneIndex = randomIndex;
+
+        selectedBadEndScene.SetActive(true);
+    }
+
+    private System.Random random = new System.Random();
+    private void NewShuffleMode()
+    {
+        int randomIndex;
+
+        // проверка (Х) 
+        if (_badEndScenes.Count == 1)
+        {
+            randomIndex = 0;
+        }
+        else
+        {
+            // смотрим пустая ли история или нет
+            if (_alredyUsedRandomNumbersHistory.Count == 0)
+            {
+                // если пустая то создаем список из всех возможных индексов
+                var allIndexes = Enumerable.Range(0, _badEndScenes.Count);
+                // затем этот список рандомим и сохраняем в истроию
+                _alredyUsedRandomNumbersHistory = allIndexes.OrderBy(x => random.Next()).ToList();
+
+                // далее из этой истории удаляем последний индекс (чтобы он не повторился сразу)
+                if (_alredyUsedRandomNumbersHistory.Contains(CurrentBadEndSceneIndex))
+                    _alredyUsedRandomNumbersHistory.Remove(CurrentBadEndSceneIndex);
+            }
+
+            // ну и потом просто из нашей истории берем первый индекс и сразу же удаляем его из истории и так пока список не заколнчится (а потом опять рандомим его и по кругу)
+            randomIndex = _alredyUsedRandomNumbersHistory[0];
+            _alredyUsedRandomNumbersHistory.RemoveAt(0);
+        }
+
+
+        // ну и дальше логика без изменений
         GameObject selectedBadEndScene = _badEndScenes[randomIndex];
         //_badEndScenes.RemoveAt(randomIndex);
         CurrentBadEndSceneIndex = randomIndex;
