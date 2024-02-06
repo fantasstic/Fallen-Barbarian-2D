@@ -49,7 +49,7 @@ public class StartGame : MonoBehaviour
 
         }
 
-        Player2.characterName = "BLOOD BLONDE";
+        //Player2.characterName = "BLOOD BLONDE";
     }
 
     public void StartGameButton()

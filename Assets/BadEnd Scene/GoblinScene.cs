@@ -13,17 +13,20 @@ public class GoblinScene : MonoBehaviour
     [SerializeField] private List<GameObject> _badEndScenes = new List<GameObject>();
     [SerializeField] private float _badEndSceneDeley;
     [SerializeField] private GameObject _hair;
+    [SerializeField] private bool _shuffleMode = false;
 
     private List<int> _alredyUsedRandomNumbersHistory = new List<int>();
     private int _lastActiveScene = 0;
     private bool _badEndAnimationStarted = false;
-    private bool _shuffleMode = false;
 
     public int CurrentBadEndSceneIndex = 0;
 
     private void Start()
     {
-        if(PlayerPrefs.GetString("ShuffleMode") != "No")
+        if (!PlayerPrefs.HasKey("ShuffleMode"))
+            PlayerPrefs.SetString("ShuffleMode", "No");
+
+        if (PlayerPrefs.GetString("ShuffleMode") != "No")
             _shuffleMode = true;
         else
             _shuffleMode = false;

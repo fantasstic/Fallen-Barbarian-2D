@@ -19,6 +19,7 @@ public class RoundContorllerNew : MonoBehaviour
     private GameObject _gameUI;
     private bool _roundEnd;
     private bool _roundStart;
+    private bool _enemyDamageBack;
     private ControlsScript _player;
     private ControlsScript _enemy;
     private OpenTutor _openTutor;
@@ -65,7 +66,7 @@ public class RoundContorllerNew : MonoBehaviour
 
             PlayerPrefs.SetString("ShuffleMode", "No");
 
-            PlayerPrefs.SetInt("Wins", 0);
+            PlayerPrefs.SetInt("Wins", 1);
         }
     }
 
@@ -139,22 +140,25 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player1" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.low)
         {
-            playerControl.DamageMe(15, false);
+            playerControl.DamageMe(1, false);
         }
 
         if (player.name == "Player2" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.low)
         {
-            enemyControl.DamageMe(15, false);
+            enemyControl.DamageMe(1, false);
         }
 
         if (player.name == "Player1" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.high)
         {
-            enemyControl.DamageMe(15, false);
+            Debug.Log("Damage Back High");
+
+            enemyControl.DamageMe(1, false);
+            //_enemyDamageBack = true;
         }
 
         if (player.name == "Player2" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.high)
         {
-            playerControl.DamageMe(15, false);
+            playerControl.DamageMe(1, false);
         }
     }
 

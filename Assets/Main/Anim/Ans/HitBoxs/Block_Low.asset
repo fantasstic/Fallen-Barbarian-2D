@@ -1041,7 +1041,7 @@ MonoBehaviour:
         _serializedValue: 2147483648
       range: 0
     shape: 1
-    collisionType: 3
+    collisionType: 4
     hitBoxType: 1
   - name: Body
     activeFrames:

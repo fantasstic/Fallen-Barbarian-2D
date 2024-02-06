@@ -82,8 +82,8 @@ MonoBehaviour:
   fixedSpeed: 1
   animSpeedKeyFrame: []
   totalFrames: 15
-  startUpFrames: 12
-  activeFrames: 3
+  startUpFrames: 0
+  activeFrames: 30
   recoveryFrames: 0
   applyRootMotion: 0
   lockXMotion: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
       blocking: 0
       stunned: 0
     basicMovesToggle: 0
-    statesToggle: 1
+    statesToggle: 0
   moveClassification:
     attackType: 1
     hitType: 4
@@ -225,15 +225,15 @@ MonoBehaviour:
   stanceChanges: []
   cameraMovements: []
   hits:
-  - activeFramesBegin: 12
-    activeFramesEnds: 15
+  - activeFramesBegin: 0
+    activeFramesEnds: 30
     hitConfirmType: 0
     throwMove: {fileID: 0}
     techMove: {fileID: 0}
     techable: 1
     resetHitAnimations: 1
     forceStand: 0
-    armorBreaker: 1
+    armorBreaker: 0
     continuousHit: 0
     unblockable: 0
     spaceBetweenHits: 1
@@ -440,7 +440,7 @@ MonoBehaviour:
     overrideEventsToggle: 1
     hitConditionsToggle: 1
     pullInToggle: 0
-    hurtBoxesToggle: 0
+    hurtBoxesToggle: 1
     wallBounceToggle: 0
     groundBounceToggle: 0
     hurtBoxes:
@@ -574,10 +574,10 @@ MonoBehaviour:
           _serializedValue: 0
   blockableArea:
     enabled: 0
-    activeFramesBegin: 0
+    activeFramesBegin: 15
     activeFramesEnds: 52
     bodyPart: 0
-    hitBoxDefinitionIndex: 0
+    hitBoxDefinitionIndex: 3
     shape: 0
     rect:
       serializedVersion: 2

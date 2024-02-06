@@ -522,7 +522,7 @@ public class SpineAnim : MonoBehaviour
             if(_skinsCount == 0)
             {
                 _isSkinsAutoMode = true; 
-                _skinsCountUI.text = "Auto";
+                //_skinsCountUI.text = "Auto";
             }
 
             else 
@@ -543,7 +543,7 @@ public class SpineAnim : MonoBehaviour
         if (_isSkinsAutoMode && _goblicScene.CurrentBadEndSceneIndex == 2)
         {
             _currentSwitchSkins += Time.deltaTime;
-            _skinsCountUI.text = "Auto";
+            //_skinsCountUI.text = "Auto";
 
 
             if (_currentSwitchSkins >= _autoSkinSwitch)
@@ -648,7 +648,11 @@ public class SpineAnim : MonoBehaviour
             UpdateAnimationSpeedAndPitch();
         }
 
-        _daysCounter.text = _daysCount.ToString();
+        if(_goblicScene.CurrentBadEndSceneIndex == 2)
+        {
+            _animationCountUI.text = _daysCount.ToString();
+            _daysCounter.text = _daysCount.ToString();
+        }
     }
 
     private void UpdateAnimationSpeedAndPitch()

@@ -152,7 +152,19 @@ MonoBehaviour:
     statesToggle: 0
   selfConditions:
     basicMoveLimitation: 
-    possibleMoveStates: []
+    possibleMoveStates:
+    - possibleState: 0
+      jumpArc: 0
+      jumpArcBegins: 0
+      jumpArcEnds: 100
+      opponentDistance: 0
+      proximityRangeBegins: 0
+      proximityRangeEnds: 100
+      movingForward: 1
+      movingBack: 1
+      standBy: 1
+      blocking: 1
+      stunned: 1
     basicMovesToggle: 1
     statesToggle: 1
   moveClassification:
@@ -392,7 +404,7 @@ MonoBehaviour:
     selfForceToggle: 1
     stageReactionsToggle: 0
     overrideEventsToggle: 1
-    hitConditionsToggle: 0
+    hitConditionsToggle: 1
     pullInToggle: 0
     hurtBoxesToggle: 1
     wallBounceToggle: 0
