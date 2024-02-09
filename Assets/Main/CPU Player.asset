@@ -24,7 +24,7 @@ MonoBehaviour:
   height: 175
   age: 21
   bloodType: Unknown
-  lifePoints: 10
+  lifePoints: 100
   maxGaugePoints: 0
   characterPrefabStorage: 0
   characterPrefab: {fileID: 6370135527279938734, guid: d303230c88ee3e6469ca3c9b80b73575,

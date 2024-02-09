@@ -36,6 +36,7 @@ public class RoundContorllerNew : MonoBehaviour
         UFE.OnRoundEnds += OnRoundEnds;
         UFE.OnBlock += OnBlock;
         UFE.OnBasicMove += UFE_OnBasicMove;
+        UFE.OnLifePointsChange += OnLifePointsChange;
 
         /*_background = GameObject.Find("Background");
         _background.SetActive(false);*/
@@ -67,6 +68,16 @@ public class RoundContorllerNew : MonoBehaviour
             PlayerPrefs.SetString("ShuffleMode", "No");
 
             PlayerPrefs.SetInt("Wins", 1);
+        }
+    }
+
+    void OnLifePointsChange(float newFloat, ControlsScript player)
+    {
+        Debug.Log(newFloat);
+
+        if(player.name == "Player2")
+        {
+            _enemyDamageBack = false;
         }
     }
 
@@ -140,25 +151,26 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player1" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.low)
         {
-            playerControl.DamageMe(1, false);
+            playerControl.DamageMe(10, false);
         }
 
         if (player.name == "Player2" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.low)
         {
-            enemyControl.DamageMe(1, false);
+            enemyControl.DamageMe(10, false);
         }
 
         if (player.name == "Player1" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.high)
         {
-            Debug.Log("Damage Back High");
-
-            enemyControl.DamageMe(1, false);
-            //_enemyDamageBack = true;
+            if(!_enemyDamageBack)
+            {
+                enemyControl.DamageMe(10, false);
+                _enemyDamageBack = true;
+            }
         }
 
         if (player.name == "Player2" && move.name == "jump_kick_Move" && strokeHitBox.type == HitBoxType.high)
         {
-            playerControl.DamageMe(1, false);
+            playerControl.DamageMe(10, false);
         }
     }
 
@@ -215,6 +227,7 @@ public class RoundContorllerNew : MonoBehaviour
         if (_roundEnd)
             return;
 
+        _roundStart = false;
         Debug.Log(winner);
         _gameUI = GameObject.Find("CanvasGroup");
 
@@ -287,6 +300,11 @@ public class RoundContorllerNew : MonoBehaviour
 
             _player.airRecoveryType = AirRecoveryType.AllowMoves;
             _enemy.airRecoveryType = AirRecoveryType.AllowMoves;
+
+            if (_enemy.transform.position.y >= 6)
+                _enemy.Physics.ForceGrounded();
+
+            //Debug.Log(_enemy.transform.position.y);
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {

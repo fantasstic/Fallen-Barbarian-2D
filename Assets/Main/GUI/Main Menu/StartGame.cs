@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
     private bool _isTutorialActive;
-    private bool _isGameStart, _isGameRunning;
+    private bool _isGameStart, _isGameRunning, _firstStart = true;
     private int _wins;
 
     public UFE3D.CharacterInfo Player1;
@@ -66,9 +66,15 @@ public class StartGame : MonoBehaviour
             {
                 _isGameRunning = true;
                 UFE.StartGame();
-                UFE.SetPlayer1(Player1);
-                UFE.SetPlayer2(Player2);
-                UFE.SetStage("Main");
+                if(_firstStart)
+                {
+
+                    UFE.SetPlayer1(Player1);
+                    UFE.SetPlayer2(Player2);
+                    UFE.SetStage("Main");
+                    _firstStart = false;
+                }
+                //Debug.Log(UFE.GetPlayer1());
             }
         }
     }
@@ -98,6 +104,7 @@ public class StartGame : MonoBehaviour
                 UFE.SetPlayer1(Player1);
                 UFE.SetPlayer2(Player2);
                 UFE.SetStage("Main");
+                //var player = UFE.GetPlayer1();
             }
         }
 
