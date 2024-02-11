@@ -25,7 +25,7 @@ MonoBehaviour:
     hitBoxDefinitionType: 1
   animationSpeed: 1
   _animationSpeed:
-    _serializedValue: 4294967296
+    _serializedValue: 6442450944
   wrapMode: 0
   characterPrefab: {fileID: 6370135527279938734, guid: f3e0394aa77c8294c8bad3dc52b6d8a7,
     type: 3}
@@ -82,9 +82,9 @@ MonoBehaviour:
   speedKeyFrameToggle: 0
   fixedSpeed: 1
   animSpeedKeyFrame: []
-  totalFrames: 40
-  startUpFrames: 33
-  activeFrames: 6
+  totalFrames: 27
+  startUpFrames: 18
+  activeFrames: 8
   recoveryFrames: 1
   applyRootMotion: 0
   lockXMotion: 0
@@ -179,8 +179,8 @@ MonoBehaviour:
   stanceChanges: []
   cameraMovements: []
   hits:
-  - activeFramesBegin: 33
-    activeFramesEnds: 39
+  - activeFramesBegin: 18
+    activeFramesEnds: 26
     hitConfirmType: 0
     throwMove: {fileID: 0}
     techMove: {fileID: 0}

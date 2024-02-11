@@ -71,6 +71,15 @@ public class RoundContorllerNew : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        UFE.OnRoundBegins -= OnRoundBegins;
+        UFE.OnRoundEnds -= OnRoundEnds;
+        UFE.OnBlock -= OnBlock;
+        UFE.OnBasicMove -= UFE_OnBasicMove;
+        UFE.OnLifePointsChange -= OnLifePointsChange;
+    }
+
     void OnLifePointsChange(float newFloat, ControlsScript player)
     {
         Debug.Log(newFloat);
@@ -288,6 +297,12 @@ public class RoundContorllerNew : MonoBehaviour
         }
     }
 
+    private void ForceCharToGround(ControlsScript character)
+    {
+        if (character.transform.position.y >= 6)
+            character.Physics.ForceGrounded();
+    }
+
     private void Update()
     {
         if(_roundStart)
@@ -301,8 +316,11 @@ public class RoundContorllerNew : MonoBehaviour
             _player.airRecoveryType = AirRecoveryType.AllowMoves;
             _enemy.airRecoveryType = AirRecoveryType.AllowMoves;
 
-            if (_enemy.transform.position.y >= 6)
-                _enemy.Physics.ForceGrounded();
+            ForceCharToGround(_enemy);
+            ForceCharToGround(_player);
+
+            /*if (_enemy.transform.position.y >= 6)
+                _enemy.Physics.ForceGrounded();*/
 
             //Debug.Log(_enemy.transform.position.y);
 
