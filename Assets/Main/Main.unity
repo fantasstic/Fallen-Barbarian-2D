@@ -5556,13 +5556,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 663838941}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 850279738}
+        m_TargetAssemblyTypeName: AndroidMove, Assembly-CSharp
+        m_MethodName: Move
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5583,6 +5583,7 @@ MonoBehaviour:
   _moveSetScript: {fileID: 0}
   _config: {fileID: 11400000, guid: 95f0a97a22291b34eae0989d2203ad1a, type: 2}
   _player: {fileID: 0}
+  _gui: {fileID: 0}
 --- !u!114 &850279739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12986,7 +12987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.595825, y: 3.1430054}
+  m_AnchoredPosition: {x: 5.5959473, y: 3.1430664}
   m_SizeDelta: {x: 11.192, y: 6.286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875518988
@@ -13660,64 +13661,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2022739922
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2022739924}
-  - component: {fileID: 2022739923}
-  - component: {fileID: 2022739925}
-  m_Layer: 0
-  m_Name: GUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2022739923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022739922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9014df29a2bc4c54db3e0f668f26cd8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2022739924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022739922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.396322, y: 1.9964625, z: -37.87864}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2022739925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022739922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -820381985, guid: 290947d1480294243a72173919bf47d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deadZone: 0
 --- !u!1 &2072733962
 GameObject:
   m_ObjectHideFlags: 0
