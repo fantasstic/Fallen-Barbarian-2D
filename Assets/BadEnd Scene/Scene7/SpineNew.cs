@@ -46,6 +46,7 @@ public class SpineNew : MonoBehaviour
 
     private bool _isCumStep = false;
     private bool _isSkinsAutoMode = true;
+    public bool _isCum;
     public SkeletonAnimation BadEndAnimation;
     public List<string> AnimationStates = new List<string>();
     public List<string> AnimationSkins = new List<string>();
@@ -110,10 +111,29 @@ public class SpineNew : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(_animationCount);
+        if (_goblicScene.CurrentBadEndSceneIndex == 9)
+        {
+            if (_previousAnimationCount == 2)
+            {
+                if (!_autoModeStepSoruce.isPlaying)
+                    _isCum = true;
+
+                if (_isCum)
+                {
+                    _autoModeStepSoruce.clip = _autoModeStepClips[8];
+                    _autoModeStepSoruce.Play();
+                    _isCum = false;
+                }
+            }
+            else
+                _isCum = false;
+        }
+
         _audioSource.loop = false;
         _birdSource.loop = false;
 
-        if (_animationCount == 0 )
+        if (_animationCount == 0 || _goblicScene.CurrentBadEndSceneIndex == 9 && _animationCount == 2 || _goblicScene.CurrentBadEndSceneIndex == 9 && _animationCount == 3)
         {
             _firstAnimPanel.SetActive(true);
             _audioSource.mute = true;
@@ -215,6 +235,7 @@ public class SpineNew : MonoBehaviour
                         int newClipIndex = Random.Range(0, _pussyClips.Length);
                         _pussySource.clip = _pussyClips[newClipIndex];
                         _pussySource.Play();
+                       
                     }
 
                 }

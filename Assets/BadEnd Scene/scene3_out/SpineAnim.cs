@@ -319,7 +319,7 @@ public class SpineAnim : MonoBehaviour
 
         }
 
-        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 5)
+        if (_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 5 || _isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 9)
         {
             _animationCountUI.text = "(Auto)";
             //_daysCount++;
@@ -353,6 +353,7 @@ public class SpineAnim : MonoBehaviour
                 }
                 else if(_autoModeChangeCounter >= 6)
                 {
+                    //Debug.Log("cum");
                     _autoModeChangeCounter = 0;
                     _autoSwitchDelay = 10f;
                     int variationAnim = Random.Range(0, 2);

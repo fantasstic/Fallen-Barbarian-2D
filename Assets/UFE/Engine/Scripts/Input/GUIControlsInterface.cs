@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FPLibrary;
 
-public sealed class GUIControlsInterface : AbstractInputController
+public class GUIControlsInterface : AbstractInputController
 {
     private Fix64 hAxis = 0;
     private Fix64 vAxis = 0;
@@ -64,7 +64,9 @@ public sealed class GUIControlsInterface : AbstractInputController
                 return new InputEvents(hAxis);
             } else if (inputReference.inputType == InputType.VerticalAxis) { // Sends vAxis value as a Vertical Axis Input Event
                 return new InputEvents(vAxis);
-            } else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button1) { // Sends Button 1 Input Event
+            } else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button1) 
+            { // Sends Button 1 Input Event
+                Debug.Log("allasd");
                 return new InputEvents(b1);
             } else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button2) { // Sends Button 2 Input Event
                 return new InputEvents(b2);

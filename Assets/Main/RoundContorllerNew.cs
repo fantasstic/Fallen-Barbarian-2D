@@ -15,6 +15,7 @@ public class RoundContorllerNew : MonoBehaviour
     [SerializeField] private List<Sprite> _backGrounds = new List<Sprite>();
     [SerializeField] private Image _back;
 
+    [SerializeField] private MoveSetScript _moveSetScript;
     private GameObject _background;
     private GameObject _gameUI;
     private bool _roundEnd;
@@ -31,7 +32,6 @@ public class RoundContorllerNew : MonoBehaviour
     private void Awake()
     {
         _rollMove.hits[0].unblockable = false;
-
         UFE.OnRoundBegins += OnRoundBegins;
         UFE.OnRoundEnds += OnRoundEnds;
         UFE.OnBlock += OnBlock;
@@ -119,12 +119,14 @@ public class RoundContorllerNew : MonoBehaviour
                 {
                     player.Physics.ResetForces(true, false);
                     player.Physics.AddForce(new FPLibrary.FPVector(-25, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
+                    player.stunTime = 1;
                 }
 
                 if (otherPlayer.currentMove.name == _runMove.name)
                 {
                     player.Physics.ResetForces(true, false);
                     player.Physics.AddForce(new FPLibrary.FPVector(-38, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
+                    player.stunTime = 1;
                 }
             }
         }
@@ -143,7 +145,10 @@ public class RoundContorllerNew : MonoBehaviour
         if (player.name == "Player1" && move.name == "RollMove" && strokeHitBox.type == HitBoxType.low)
         {
             Debug.Log("Damage Back");
-
+            _enemy.KillCurrentMove();
+            _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHighKnockdown);
+            _enemy.currentSubState = SubStates.Stunned;
+            _enemy.stunTime = 1;
             enemyControl.DamageMe(10, false);
         }
 
@@ -172,8 +177,14 @@ public class RoundContorllerNew : MonoBehaviour
         {
             if(!_enemyDamageBack)
             {
+                _enemy.KillCurrentMove();
+                _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHighKnockdown);
+                _enemy.currentSubState = SubStates.Stunned;
+                _enemy.stunTime = 1;
+                _enemy.currentState = PossibleStates.Down;
                 enemyControl.DamageMe(10, false);
                 _enemyDamageBack = true;
+                //_enemy.Physics.ForceGrounded();
             }
         }
 
@@ -186,11 +197,11 @@ public class RoundContorllerNew : MonoBehaviour
     private void OnRoundBegins(int newInt)
     {
         Debug.Log("OnRoundBegins");
-
         _roundStart = true;
 
         _player = UFE.GetControlsScript(1);
         _enemy = UFE.GetControlsScript(2);
+        _moveSetScript = _enemy.GetComponentInChildren<MoveSetScript>();
 
         if(!PlayerPrefs.HasKey("Wins"))
         {

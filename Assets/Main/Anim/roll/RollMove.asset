@@ -248,7 +248,7 @@ MonoBehaviour:
     downHit: 1
     resetPreviousHitStun: 0
     resetCrumples: 0
-    customStunValues: 0
+    customStunValues: 1
     overrideHitEffects: 0
     hitEffects:
       hitParticle: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
@@ -315,7 +315,7 @@ MonoBehaviour:
     overrideHitAnimation: 0
     newHitAnimation: 27
     hitStrength: 1
-    hitStunType: 1
+    hitStunType: 2
     hitStunOnHit: 0
     _hitStunOnHit:
       _serializedValue: 4294967296

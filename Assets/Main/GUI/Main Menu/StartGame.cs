@@ -40,7 +40,7 @@ public class StartGame : MonoBehaviour
                 Player2.characterName = "PINKY";
                 break;
             case 5:
-                Player2.characterName = "MEGA BLONDE";
+                Player2.characterName = "ORANGIE";
                 break;
             case 6:
                 Player2.characterName = "RED HEAD";

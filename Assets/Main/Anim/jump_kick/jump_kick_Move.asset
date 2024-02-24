@@ -249,7 +249,7 @@ MonoBehaviour:
     downHit: 0
     resetPreviousHitStun: 0
     resetCrumples: 0
-    customStunValues: 0
+    customStunValues: 1
     overrideHitEffects: 0
     hitEffects:
       hitParticle: {fileID: 0}
@@ -316,13 +316,13 @@ MonoBehaviour:
     overrideHitAnimation: 0
     newHitAnimation: 27
     hitStrength: 1
-    hitStunType: 1
+    hitStunType: 2
     hitStunOnHit: 0
     _hitStunOnHit:
-      _serializedValue: 0
+      _serializedValue: 4294967296
     hitStunOnBlock: 0
     _hitStunOnBlock:
-      _serializedValue: 0
+      _serializedValue: 4294967296
     frameAdvantageOnHit: 0
     frameAdvantageOnBlock: 0
     damageScaling: 0
@@ -432,7 +432,7 @@ MonoBehaviour:
         z:
           _serializedValue: 0
     damageOptionsToggle: 1
-    hitStunOptionsToggle: 0
+    hitStunOptionsToggle: 1
     forceOptionsToggle: 1
     opponentForceToggle: 0
     selfForceToggle: 1
