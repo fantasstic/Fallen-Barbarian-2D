@@ -14,8 +14,9 @@ public class RoundContorllerNew : MonoBehaviour
     [SerializeField] private RoundContorllerNew _roundContorller;
     [SerializeField] private List<Sprite> _backGrounds = new List<Sprite>();
     [SerializeField] private Image _back;
-
     [SerializeField] private MoveSetScript _moveSetScript;
+    [SerializeField] private GameObject _buttonManager;
+
     private GameObject _background;
     private GameObject _gameUI;
     private bool _roundEnd;
@@ -199,6 +200,9 @@ public class RoundContorllerNew : MonoBehaviour
         Debug.Log("OnRoundBegins");
         _roundStart = true;
 
+        if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+            _buttonManager.SetActive(true);
+
         _player = UFE.GetControlsScript(1);
         _enemy = UFE.GetControlsScript(2);
         _moveSetScript = _enemy.GetComponentInChildren<MoveSetScript>();
@@ -247,6 +251,10 @@ public class RoundContorllerNew : MonoBehaviour
         if (_roundEnd)
             return;
 
+        if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+            _buttonManager.SetActive(false);
+
+        //_buttonManager.SetActive(false);
         _roundStart = false;
         Debug.Log(winner);
         _gameUI = GameObject.Find("CanvasGroup");
@@ -318,6 +326,8 @@ public class RoundContorllerNew : MonoBehaviour
     {
         if(_roundStart)
         {
+            //Debug.Log(Input.GetAxis("P2JoystickVertical"));
+
             CheckHitInJump(_enemy, ref _lastEnemyYPos);
             CheckHitInJump(_player, ref _lastPlayerYPos);
 

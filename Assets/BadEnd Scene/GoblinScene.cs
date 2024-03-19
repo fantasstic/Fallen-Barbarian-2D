@@ -54,7 +54,7 @@ public class GoblinScene : MonoBehaviour
         _hair.SetActive(true);
     }
 
-    private void LoadBattleScene()
+    public void LoadBattleScene()
     {
         SceneManager.LoadScene(0);
     }

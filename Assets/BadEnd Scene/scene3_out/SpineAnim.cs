@@ -70,8 +70,9 @@ public class SpineAnim : MonoBehaviour
             _coughSource.mute = true;
             _oralSquishSource.mute = true;
         }
-
-        _ui.SetActive(true);
+        if (UFE.config.inputOptions.inputManagerType != InputManagerType.CustomClass)
+            _ui.SetActive(true);
+            
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
 

@@ -1,0 +1,188 @@
+{ "skeleton": { "images": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "BG", "bone": "root", "attachment": "BG" },
+	{ "name": "Shadow", "bone": "root", "attachment": "Shadow" },
+	{ "name": "Spider_leg_4", "bone": "root", "attachment": "Spider_leg_4" },
+	{ "name": "Spider_leg_3", "bone": "root", "attachment": "Spider_leg_3" },
+	{ "name": "Spider_leg_2", "bone": "root", "attachment": "Spider_leg_2" },
+	{ "name": "Spider_leg_1", "bone": "root", "attachment": "Spider_leg_1" },
+	{ "name": "Web_inter_1_2", "bone": "root", "attachment": "Web_inter_1_2" },
+	{ "name": "Spider_head", "bone": "root", "attachment": "Spider_head" },
+	{ "name": "slime_1", "bone": "root", "attachment": "slime_1" },
+	{ "name": "slime_1_3", "bone": "root", "attachment": "slime_1_3" },
+	{ "name": "slime_1_2", "bone": "root", "attachment": "slime_1_2" },
+	{ "name": "Barb_hair_back", "bone": "root", "attachment": "Barb_hair_back" },
+	{ "name": "Barb_body", "bone": "root", "attachment": "Barb_body" },
+	{ "name": "Web_inter_3", "bone": "root", "attachment": "Web_inter_3" },
+	{ "name": "Web_inter_1", "bone": "root", "attachment": "Web_inter_1" },
+	{ "name": "Barb_head", "bone": "root", "attachment": "Barb_head" },
+	{ "name": "Barb_hair_top", "bone": "root", "attachment": "Barb_hair_top" },
+	{ "name": "Barb_eyebrow_R", "bone": "root", "attachment": "Barb_eyebrow_R" },
+	{ "name": "Barb_eyebrow_L", "bone": "root", "attachment": "Barb_eyebrow_L" },
+	{ "name": "Barb_eye_L", "bone": "root", "attachment": "Barb_eye_L" },
+	{ "name": "Barb_eye_L_line", "bone": "root", "attachment": "Barb_eye_L_line" },
+	{ "name": "Barb_eye_R", "bone": "root", "attachment": "Barb_eye_R" },
+	{ "name": "Barb_eye_R_line", "bone": "root", "attachment": "Barb_eye_R_line" },
+	{ "name": "Barb_mouth", "bone": "root", "attachment": "Barb_mouth" },
+	{ "name": "Barb_mouth_line", "bone": "root", "attachment": "Barb_mouth_line" },
+	{ "name": "Barb_nose_line", "bone": "root", "attachment": "Barb_nose_line" },
+	{ "name": "Barb_boob_L", "bone": "root", "attachment": "Barb_boob_L" },
+	{ "name": "Barb_nip_L", "bone": "root", "attachment": "Barb_nip_L" },
+	{ "name": "Barb_boob_R", "bone": "root", "attachment": "Barb_boob_R" },
+	{ "name": "Barb_nip_R", "bone": "root", "attachment": "Barb_nip_R" },
+	{ "name": "Web_inter_2_2", "bone": "root", "attachment": "Web_inter_2_2" },
+	{ "name": "Barb_stomach", "bone": "root", "attachment": "Barb_stomach" },
+	{ "name": "Barb_legs", "bone": "root", "attachment": "Barb_legs" },
+	{ "name": "Web_inter_2", "bone": "root", "attachment": "Web_inter_2" },
+	{ "name": "slime2", "bone": "root", "attachment": "slime2" },
+	{ "name": "Spider_dick", "bone": "root", "attachment": "Spider_dick" },
+	{ "name": "Spider_dick_2", "bone": "root", "attachment": "Spider_dick_2" },
+	{ "name": "Spider_Red", "bone": "root", "attachment": "Spider_Red" },
+	{ "name": "Spider_legs", "bone": "root", "attachment": "Spider_legs" },
+	{ "name": "Web_inter_6", "bone": "root", "attachment": "Web_inter_6" },
+	{ "name": "Spider_body", "bone": "root", "attachment": "Spider_body" },
+	{ "name": "Web_inter_4", "bone": "root", "attachment": "Web_inter_4" },
+	{ "name": "Web_inter_5", "bone": "root", "attachment": "Web_inter_5" },
+	{ "name": "Spider_leg_5", "bone": "root", "attachment": "Spider_leg_5" }
+],
+"skins": {
+	"default": {
+		"BG": {
+			"BG": { "x": 1600, "y": -1400, "width": 3202, "height": 1802 }
+		},
+		"Shadow": {
+			"Shadow": { "x": 1675.5, "y": -1716.5, "width": 2541, "height": 1097 }
+		},
+		"Spider_leg_4": {
+			"Spider_leg_4": { "x": 2082.5, "y": -1247, "width": 229, "height": 1026 }
+		},
+		"Spider_leg_3": {
+			"Spider_leg_3": { "x": 1982.5, "y": -1084.5, "width": 239, "height": 631 }
+		},
+		"Spider_leg_2": {
+			"Spider_leg_2": { "x": 1783, "y": -1101.5, "width": 198, "height": 529 }
+		},
+		"Spider_leg_1": {
+			"Spider_leg_1": { "x": 1298, "y": -1225, "width": 390, "height": 832 }
+		},
+		"Web_inter_1_2": {
+			"Web_inter_1_2": { "x": 1485.5, "y": -1366.5, "width": 83, "height": 515 }
+		},
+		"Spider_head": {
+			"Spider_head": { "x": 2315, "y": -941, "width": 290, "height": 460 }
+		},
+		"slime_1": {
+			"slime_1": { "x": 2380.5, "y": -1209, "width": 137, "height": 372 }
+		},
+		"slime_1_3": {
+			"slime_1_3": { "x": 2315.5, "y": -1085.5, "width": 25, "height": 33 }
+		},
+		"slime_1_2": {
+			"slime_1_2": { "x": 2293, "y": -1175, "width": 46, "height": 170 }
+		},
+		"Barb_hair_back": {
+			"Barb_hair_back": { "x": 1810, "y": -1285.5, "width": 436, "height": 487 }
+		},
+		"Barb_body": {
+			"Barb_body": { "x": 1854, "y": -1370.5, "width": 1052, "height": 759 }
+		},
+		"Web_inter_3": {
+			"Web_inter_3": { "x": 2329.5, "y": -1482.5, "width": 565, "height": 307 }
+		},
+		"Web_inter_1": {
+			"Web_inter_1": { "x": 1126.5, "y": -1357, "width": 675, "height": 578 }
+		},
+		"Barb_head": {
+			"Barb_head": { "x": 1736, "y": -1212.5, "width": 214, "height": 285 }
+		},
+		"Barb_hair_top": {
+			"Barb_hair_top": { "x": 1738, "y": -1130, "width": 220, "height": 172 }
+		},
+		"Barb_eyebrow_R": {
+			"Barb_eyebrow_R": { "x": 1754, "y": -1177.5, "width": 64, "height": 25 }
+		},
+		"Barb_eyebrow_L": {
+			"Barb_eyebrow_L": { "x": 1678.5, "y": -1200, "width": 51, "height": 50 }
+		},
+		"Barb_eye_L": {
+			"Barb_eye_L": { "x": 1687.5, "y": -1228.5, "width": 35, "height": 31 }
+		},
+		"Barb_eye_L_line": {
+			"Barb_eye_L_line": { "x": 1686.5, "y": -1232, "width": 53, "height": 46 }
+		},
+		"Barb_eye_R": {
+			"Barb_eye_R": { "x": 1768, "y": -1202, "width": 36, "height": 24 }
+		},
+		"Barb_eye_R_line": {
+			"Barb_eye_R_line": { "x": 1775.5, "y": -1198.5, "width": 61, "height": 39 }
+		},
+		"Barb_mouth": {
+			"Barb_mouth": { "x": 1750, "y": -1292.5, "width": 76, "height": 53 }
+		},
+		"Barb_mouth_line": {
+			"Barb_mouth_line": { "x": 1752, "y": -1293, "width": 84, "height": 66 }
+		},
+		"Barb_nose_line": {
+			"Barb_nose_line": { "x": 1728.5, "y": -1262, "width": 17, "height": 20 }
+		},
+		"Barb_boob_L": {
+			"Barb_boob_L": { "x": 1633, "y": -1451, "width": 270, "height": 220 }
+		},
+		"Barb_nip_L": {
+			"Barb_nip_L": { "x": 1563, "y": -1393.5, "width": 126, "height": 101 }
+		},
+		"Barb_boob_R": {
+			"Barb_boob_R": { "x": 1834, "y": -1476.5, "width": 290, "height": 231 }
+		},
+		"Barb_nip_R": {
+			"Barb_nip_R": { "x": 1909, "y": -1408.5, "width": 116, "height": 81 }
+		},
+		"Web_inter_2_2": {
+			"Web_inter_2_2": { "x": 952.5, "y": -1753, "width": 111, "height": 198 }
+		},
+		"Barb_stomach": {
+			"Barb_stomach": { "x": 1663.5, "y": -1530, "width": 433, "height": 342 }
+		},
+		"Barb_legs": {
+			"Barb_legs": { "x": 1488, "y": -1859, "width": 2690, "height": 814 }
+		},
+		"Web_inter_2": {
+			"Web_inter_2": { "x": 1155, "y": -1724.5, "width": 314, "height": 495 }
+		},
+		"slime2": {
+			"slime2": { "x": 1524, "y": -1900, "width": 434, "height": 374 }
+		},
+		"Spider_dick": {
+			"Spider_dick": { "x": 1322.5, "y": -1424, "width": 521, "height": 708 }
+		},
+		"Spider_dick_2": {
+			"Spider_dick_2": { "x": 1537.5, "y": -1723.5, "width": 117, "height": 121 }
+		},
+		"Spider_Red": {
+			"Spider_Red": { "x": 1435, "y": -1004.5, "width": 1192, "height": 855 }
+		},
+		"Spider_legs": {
+			"Spider_legs": { "x": 2702, "y": -1172.5, "width": 716, "height": 1299 }
+		},
+		"Web_inter_6": {
+			"Web_inter_6": { "x": 573.5, "y": -1983.5, "width": 921, "height": 509 }
+		},
+		"Spider_body": {
+			"Spider_body": { "x": 1485, "y": -1003, "width": 2302, "height": 1766 }
+		},
+		"Web_inter_4": {
+			"Web_inter_4": { "x": 1852, "y": -1765, "width": 244, "height": 500 }
+		},
+		"Web_inter_5": {
+			"Web_inter_5": { "x": 2533, "y": -2006.5, "width": 826, "height": 589 }
+		},
+		"Spider_leg_5": {
+			"Spider_leg_5": { "x": 2040, "y": -1411.5, "width": 530, "height": 1547 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

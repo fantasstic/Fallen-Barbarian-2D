@@ -140,6 +140,7 @@ MonoBehaviour:
   pauseScreen: {fileID: 11400000, guid: 6241d31f6482b42a88a8e7c8b62e2716, type: 3}
   networkPlayerPointer: {fileID: 0}
   pointerTimer: 4
+  ESCText: {fileID: 100034}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

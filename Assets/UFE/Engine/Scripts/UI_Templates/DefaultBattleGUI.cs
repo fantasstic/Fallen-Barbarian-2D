@@ -370,9 +370,14 @@ public class DefaultBattleGUI : BattleGUI{
 	}
 	#endregion
 
+	public GameObject ESCText;
+
 	#region protected override methods
 	protected override void OnGameBegin (ControlsScript cPlayer1, ControlsScript cPlayer2, StageOptions stage){
 		base.OnGameBegin (cPlayer1, cPlayer2, stage);
+
+		if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+			ESCText.SetActive(false);
 
 		if (this.wonRounds.NotFinishedRounds == null){
 			Debug.LogError("\"Not Finished Rounds\" Sprite not found! Make sure you have set the sprite correctly in the Editor");

@@ -799,7 +799,7 @@ MonoBehaviour:
   - inputType: 0
     inputButtonName: P1KeyboardHorizontal
     engineRelatedButton: 1
-    joystickAxisName: 
+    joystickAxisName: P1JoystickHorizontal
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
     cInputPositiveAlternativeKey: 
@@ -815,7 +815,7 @@ MonoBehaviour:
   - inputType: 1
     inputButtonName: P1KeyboardVertical
     engineRelatedButton: 3
-    joystickAxisName: 
+    joystickAxisName: P2JoystickVertical
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
     cInputPositiveAlternativeKey: 

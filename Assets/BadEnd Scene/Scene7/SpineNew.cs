@@ -56,7 +56,8 @@ public class SpineNew : MonoBehaviour
 
     void Start()
     {
-        _ui.SetActive(true);
+        if (UFE.config.inputOptions.inputManagerType != InputManagerType.CustomClass)
+            _ui.SetActive(true);
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
 
@@ -157,25 +158,6 @@ public class SpineNew : MonoBehaviour
             //_oralSquishSource.mute = false;
             _swordSource.mute = true;
         }
-
-        /*if ( _animationCount == 1)
-        {
-            _lickSource.mute = false;
-        }
-        else if ( _animationCount != 1)
-        {
-            _lickSource.mute = true;
-        }*/
-
-        /*if ( _animationCount == 2)
-        {
-            _hurtSource.mute = false;
-        }
-        else if ( _animationCount != 2)
-        {
-            _hurtSource.mute = true;
-        }*/
-
 
         _previousAnimationCount = _animationCount;
 

@@ -15,10 +15,19 @@ public class DefaultMainMenuScreen : MainMenuScreen{
 
 	public Button buttonNetwork;
 	public Button buttonBluetooth;
-	#endregion
+	public GameObject ButtonManager;
+    #endregion
 
-	#region public override methods
-	public override void DoFixedUpdate(
+    private void Start()
+    {
+		ButtonManager = GameObject.Find("ButtonManager");
+
+        if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+            ButtonManager.SetActive(false);
+    }
+
+    #region public override methods
+    public override void DoFixedUpdate(
 		IDictionary<InputReferences, InputEvents> player1PreviousInputs,
 		IDictionary<InputReferences, InputEvents> player1CurrentInputs,
 		IDictionary<InputReferences, InputEvents> player2PreviousInputs,
