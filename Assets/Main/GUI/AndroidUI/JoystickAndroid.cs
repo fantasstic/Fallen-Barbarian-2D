@@ -90,8 +90,7 @@ public class JoystickAndroid : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
     private void Update()
     {
-
-        if(isMovingBackward)
+        if (isMovingBackward)
             _interface.BackButtonPressed = true;
         else
             _interface.BackButtonPressed = false;

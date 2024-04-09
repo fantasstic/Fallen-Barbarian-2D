@@ -10,10 +10,15 @@ public class TextureIntroScreen : IntroScreen{
 	public float delayBeforePlayingMusic = 0.1f;
 	public float delayBeforeGoingToMenu = 3f;
 	public float minDelayBeforeSkipping = 0.1f;
-	#endregion
+    #endregion
 
-	#region public override methods
-	public override void OnShow (){
+    private void Start()
+    {
+        //UFE.config.inputOptions.inputManagerType = InputManagerType.UnityInputManager;
+    }
+
+    #region public override methods
+    public override void OnShow (){
 		base.OnShow ();
 
 		if (this.music != null){

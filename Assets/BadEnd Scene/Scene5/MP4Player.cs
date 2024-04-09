@@ -14,6 +14,7 @@ public class MP4Player : MonoBehaviour
     [SerializeField] private float _yOffsetAfterZoom;
     [SerializeField] private TMP_Text _animationCountUI, _skinsCountUI, _animationSpeedUI, _zoomUI, _daysCounter;
     [SerializeField] private AudioClip _oralMainClip;
+    [SerializeField] private Transform _cursor;
     [SerializeField] private GoblinScene _goblinScene;
 
     private Vector3 _initialScale;
@@ -47,10 +48,18 @@ public class MP4Player : MonoBehaviour
     private int currentSecondClipIndex = 0;
     private float _primaryProbability = 0.75f;
     private float initialSpeedPercent = 0.0f;
+    private bool rightPressed = false;
+    public bool leftPressed = false;
+    private bool upPressed = false;
+    private bool downPressed = false;
 
     private void Start()
     {
-        _ui.SetActive(true);
+        RuntimePlatform platform = Application.platform;
+
+        if (platform != RuntimePlatform.Android)
+            _ui.SetActive(true);
+
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
         
@@ -76,6 +85,9 @@ public class MP4Player : MonoBehaviour
 
     private void Update()
     {
+        float horizontalInput = Input.GetAxisRaw("P1JoystickHorizontal");
+        float verticalInput = Input.GetAxisRaw("P1JoystickVertical");
+
         if ( _goblinScene.CurrentBadEndSceneIndex == 4)
         {
            
@@ -176,8 +188,9 @@ public class MP4Player : MonoBehaviour
                 PlayMediaAtIndex(currentIndex);
             }
 
-            if (Input.GetKeyDown(KeyCode.D) && isAutoMode)
+            if (Input.GetKeyDown(KeyCode.D) && isAutoMode || horizontalInput > 0 && !rightPressed && isAutoMode)
             {
+                rightPressed = true;
                 isAutoMode = false;
                 currentIndex = 0;
                 PlayMediaAtIndex(currentIndex);
@@ -187,19 +200,21 @@ public class MP4Player : MonoBehaviour
         {
             _animationCountUI.text = "(" + (currentIndex + 1).ToString() + ")";
 
-            if (Input.GetKeyDown(KeyCode.A) && currentIndex > 0)
+            if (Input.GetKeyDown(KeyCode.A) && currentIndex > 0 || horizontalInput < 0 && !leftPressed && currentIndex > 0)
             {
+                leftPressed = true;
                 currentIndex--;
                 PlayMediaAtIndex(currentIndex);
             }
-            else if (Input.GetKeyDown(KeyCode.D) && currentIndex < videoClips.Length - 1)
+            else if (Input.GetKeyDown(KeyCode.D) && currentIndex < videoClips.Length - 1 || horizontalInput > 0 && !rightPressed && currentIndex < videoClips.Length - 1)
             {
+                rightPressed = true;
                 currentIndex++;
                 Debug.Log(currentIndex);
                 PlayMediaAtIndex(currentIndex);
             }
 
-            if (Input.GetKeyDown(KeyCode.A) && currentIndex == 0)
+            if (Input.GetKeyDown(KeyCode.A) && currentIndex == 0 || horizontalInput < 0 && !leftPressed && currentIndex == 0)
             {
                 isAutoMode = true;
             }
@@ -234,8 +249,39 @@ public class MP4Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("P1Button7"))
         {
+            if (!_isZoomed)
+            {
+                Vector3 mousePosition = new Vector3(_cursor.position.x, _cursor.position.y, -_cursor.position.z);
+
+                var zoom = _zoomedTr.localScale * ZoomFactor;
+                zoom.z = 1;
+                _zoomedTr.localScale = zoom;
+
+                var pos = _zoomedTr.position + mousePosition * (1 - ZoomFactor);
+                pos.y += _yOffsetAfterZoom;
+                _zoomedTr.position = pos;
+
+
+                _isZoomed = true;
+                //_panel.SetActive(false);
+                _zoomUI.text = "Back";
+
+            }
+            else
+            {
+                _zoomedTr.localScale = _initialScale;
+                _zoomedTr.position = _initialPosition;
+                _isZoomed = false;
+                //_panel.SetActive(true);
+                _zoomUI.text = "Zoom";
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) || verticalInput > 0 && !upPressed)
+        {
+            upPressed = true;
             playbackSpeed = Mathf.Min(playbackSpeed + speedStep, maxSpeed);
            // videoPlayer.playbackSpeed = playbackSpeed;
             SetPlaybackSpeed(playbackSpeed);
@@ -243,14 +289,23 @@ public class MP4Player : MonoBehaviour
             _coughSource.pitch += 0.1f;
             UpdateSpeedText();
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || verticalInput < 0 && !downPressed)
         {
+            downPressed = true;
             playbackSpeed = Mathf.Max(playbackSpeed - speedStep, minSpeed);
             //videoPlayer.playbackSpeed = playbackSpeed;
             SetPlaybackSpeed(playbackSpeed);
             _audioSource.pitch -= 0.1f;
             _coughSource.pitch -= 0.1f;
             UpdateSpeedText();
+        }
+
+        if (horizontalInput == 0 && verticalInput == 0)
+        {
+            rightPressed = false;
+            leftPressed = false;
+            upPressed = false;
+            downPressed = false;
         }
         //_animationSpeedUI.text = (CalculatePercentFromSpeed(playbackSpeed) * 10).ToString("F0") + "%";
     }

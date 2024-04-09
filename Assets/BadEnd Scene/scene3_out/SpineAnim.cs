@@ -16,6 +16,7 @@ public class SpineAnim : MonoBehaviour
     [SerializeField] private Transform _zoomedTr;
     [SerializeField] private List<string> _skinNames = new List<string>();
     [SerializeField] private string _animName;
+    [SerializeField] private Transform _cursor;
     [SerializeField] private float _yOffsetAfterZoom;
 
     private float _primaryProbability = 0.75f;
@@ -45,6 +46,11 @@ public class SpineAnim : MonoBehaviour
     private int _autoModeChangeCounter = 0;
     private int _daysCount = 1;
 
+    private bool rightPressed = false;
+    public bool leftPressed = false;
+    private bool upPressed = false;
+    private bool downPressed = false;
+
     private bool _isCumStep = false;
     private bool _isSkinsAutoMode = true;
     public SkeletonAnimation BadEndAnimation;
@@ -70,7 +76,9 @@ public class SpineAnim : MonoBehaviour
             _coughSource.mute = true;
             _oralSquishSource.mute = true;
         }
-        if (UFE.config.inputOptions.inputManagerType != InputManagerType.CustomClass)
+        RuntimePlatform platform = Application.platform;
+
+        if (platform != RuntimePlatform.Android)
             _ui.SetActive(true);
             
         _initialScale = _zoomedTr.localScale;
@@ -126,6 +134,8 @@ public class SpineAnim : MonoBehaviour
 
     private void Update()
     {
+        float horizontalInput = Input.GetAxisRaw("P1JoystickHorizontal");
+        float verticalInput = Input.GetAxisRaw("P1JoystickVertical");
         /*if (_goblicScene.CurrentBadEndSceneIndex == 3 && _animationCount == 1)
             _audioSource.loop = false;*/
         if (_goblicScene.CurrentBadEndSceneIndex == 3 || _goblicScene.CurrentBadEndSceneIndex == 5)
@@ -278,8 +288,9 @@ public class SpineAnim : MonoBehaviour
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             }
 
-            if (Input.GetKeyDown(KeyCode.D) && _isAutoMode)
+            if (Input.GetKeyDown(KeyCode.D) && _isAutoMode || horizontalInput > 0 && !rightPressed && _isAutoMode)
             {
+                rightPressed = true;
                 _daysCount++;
                 _isAutoMode = false;
                 _isFirstAnimation = true;
@@ -289,14 +300,16 @@ public class SpineAnim : MonoBehaviour
         }
         else if(!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 0 || !_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 3)
         {
-            if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0)
+            if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0 || horizontalInput < 0 && !leftPressed && _animationCount > 0)
             {
+                leftPressed = true;
                 _animationCount--;
                 BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
                 _daysCount++;
             }
-            else if (Input.GetKeyDown(KeyCode.D) && _animationCount < AnimationStates.Count - 1)
+            else if (Input.GetKeyDown(KeyCode.D) && _animationCount < AnimationStates.Count - 1 || horizontalInput > 0 && !rightPressed && _animationCount < AnimationStates.Count - 1)
             {
+                rightPressed = true;
                 _animationCount++;
                 _daysCount++;
                 _isFirstAnimation = false;
@@ -304,7 +317,7 @@ public class SpineAnim : MonoBehaviour
                 Debug.Log(_animationCount);
             }
 
-            if (Input.GetKeyDown(KeyCode.A) && _animationCount == 0)
+            if (Input.GetKeyDown(KeyCode.A) && _animationCount == 0 || horizontalInput < 0 && !leftPressed && _animationCount == 0)
             {
                 if (!_isFirstAnimation)
                 {
@@ -384,8 +397,9 @@ public class SpineAnim : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.D) && _isAutoMode)
+            if (Input.GetKeyDown(KeyCode.D) && _isAutoMode || horizontalInput > 0 && !rightPressed && _isAutoMode)
             {
+                rightPressed = true;
                 _isAutoMode = false;
                 _daysCount++;
                 _isFirstAnimation = true;
@@ -395,10 +409,10 @@ public class SpineAnim : MonoBehaviour
         }
         else if (!_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 1 || !_isAutoMode && _goblicScene.CurrentBadEndSceneIndex == 5)
         {
-            if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0)
+            if (Input.GetKeyDown(KeyCode.A) && _animationCount > 0 || horizontalInput < 0 && !leftPressed && _animationCount > 0)
             {
                 Debug.Log("1");
-
+                leftPressed = true;
                 _animationCount--;
                 _daysCount++;
                 if (_animationCount == 2)
@@ -414,8 +428,9 @@ public class SpineAnim : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyDown(KeyCode.D) && _animationCount < 3)
+            else if (Input.GetKeyDown(KeyCode.D) && _animationCount < 3 || horizontalInput > 0 && !rightPressed && _animationCount < 3) 
             {
+                rightPressed = true;
                 _animationCount++;
                 _daysCount++;
                 if (/*_animationCount < AnimationStates.Count - 1 &&*/ _animationCount <= 2)
@@ -455,7 +470,7 @@ public class SpineAnim : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.A) && _animationCount == 0)
+            if (Input.GetKeyDown(KeyCode.A) && _animationCount == 0 || horizontalInput < 0 && !leftPressed && _animationCount == 0)
             {
                 if (!_isFirstAnimation)
                 {
@@ -471,7 +486,7 @@ public class SpineAnim : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.J) && _goblicScene.CurrentBadEndSceneIndex != 2 && _goblicScene.CurrentBadEndSceneIndex != 3)
+        if (Input.GetKeyDown(KeyCode.J) && _goblicScene.CurrentBadEndSceneIndex != 2 && _goblicScene.CurrentBadEndSceneIndex != 3 || Input.GetButtonDown("P1Button2") && _goblicScene.CurrentBadEndSceneIndex != 2 && _goblicScene.CurrentBadEndSceneIndex != 3)
         {
             if (AnimationSkins.Count > _skinsCount)
             {
@@ -491,9 +506,9 @@ public class SpineAnim : MonoBehaviour
             _skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && _goblicScene.CurrentBadEndSceneIndex == 2)
+        if (Input.GetKeyDown(KeyCode.D) && _goblicScene.CurrentBadEndSceneIndex == 2 || horizontalInput > 0 && !rightPressed && _goblicScene.CurrentBadEndSceneIndex == 2)
         {
-            
+            rightPressed = true;
             _daysCount++;
 
             //Debug.Log(_daysCount);
@@ -519,9 +534,10 @@ public class SpineAnim : MonoBehaviour
             BadEndAnimation.AnimationState.SetAnimation(0, AnimationStates[_animationCount], true);
             //_skinsCountUI.text = "(" + (_skinsCount).ToString() + ")";
         }
-        else if (Input.GetKeyDown(KeyCode.A) && _goblicScene.CurrentBadEndSceneIndex == 2)
+        else if (Input.GetKeyDown(KeyCode.A) && _goblicScene.CurrentBadEndSceneIndex == 2 || horizontalInput < 0 && !leftPressed && _goblicScene.CurrentBadEndSceneIndex == 2)
         {
-            if(_skinsCount == 0)
+            leftPressed = true;
+            if (_skinsCount == 0)
             {
                 _isSkinsAutoMode = true; 
                 //_skinsCountUI.text = "Auto";
@@ -633,16 +649,48 @@ public class SpineAnim : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("P1Button7"))
         {
+            if (!_isZoomed)
+            {
+                Vector3 mousePosition = new Vector3(_cursor.position.x, _cursor.position.y, -_cursor.position.z);
+
+                var zoom = _zoomedTr.localScale * ZoomFactor;
+                zoom.z = 1;
+                _zoomedTr.localScale = zoom;
+
+                var pos = _zoomedTr.position + mousePosition * (1 - ZoomFactor);
+                pos.y += _yOffsetAfterZoom;
+                _zoomedTr.position = pos;
+
+
+                _isZoomed = true;
+                _panel.SetActive(false);
+                _zoomUI.text = "Back";
+
+            }
+            else
+            {
+                _zoomedTr.localScale = _initialScale;
+                _zoomedTr.position = _initialPosition;
+                _isZoomed = false;
+                _panel.SetActive(true);
+                _zoomUI.text = "Zoom";
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) || verticalInput > 0 && !upPressed)
+        {
+            upPressed = true;
             AnimationSpeedFactor += _initialAnimationSpeedFactor * 0.1f;
             if (AnimationSpeedFactor > _maxAnimationSpeedFactor * _initialAnimationSpeedFactor)
                 AnimationSpeedFactor = _maxAnimationSpeedFactor * _initialAnimationSpeedFactor;
 
             UpdateAnimationSpeedAndPitch();
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || verticalInput < 0 && !downPressed)
         {
+            downPressed = true;
             AnimationSpeedFactor -= _initialAnimationSpeedFactor * 0.1f;
             if (AnimationSpeedFactor < _minAnimationSpeedFactor * _initialAnimationSpeedFactor)
                 AnimationSpeedFactor = _minAnimationSpeedFactor * _initialAnimationSpeedFactor;
@@ -654,6 +702,14 @@ public class SpineAnim : MonoBehaviour
         {
             _animationCountUI.text = _daysCount.ToString();
             _daysCounter.text = _daysCount.ToString();
+        }
+
+        if (horizontalInput == 0 && verticalInput == 0)
+        {
+            rightPressed = false;
+            leftPressed = false;
+            upPressed = false;
+            downPressed = false;
         }
     }
 

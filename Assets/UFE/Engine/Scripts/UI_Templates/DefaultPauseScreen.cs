@@ -5,6 +5,7 @@ public class DefaultPauseScreen : PauseScreen{
 	#region public instance fields
 	public UFEScreen backToMenuConfirmationDialog;
 	public UFEScreen[] screens;
+	private RoundContorllerNew _controller;
 	#endregion
 
 	#region protected instance fields
@@ -17,7 +18,20 @@ public class DefaultPauseScreen : PauseScreen{
 		this.HideBackToMenuConfirmationDialog(true);
 	}
 
-	public virtual void HideBackToMenuConfirmationDialog(bool triggerOnShowScreenEvent){
+    private void Start()
+    {
+        _controller = Camera.main.GetComponent<RoundContorllerNew>();
+    }
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Cancel") && !_controller.IsMainScreen)
+		{
+			GoToScreen(0);
+        }
+    }
+
+    public virtual void HideBackToMenuConfirmationDialog(bool triggerOnShowScreenEvent){
 		if (this.backToMenuConfirmationDialog != null){
 			for (int i = 0; i < this.screens.Length; ++i){
 				if (this.screens[i] != null){
@@ -47,6 +61,10 @@ public class DefaultPauseScreen : PauseScreen{
 			}
 		}
 
+		if(index == 0) 
+			_controller.IsMainScreen = true;
+		else
+			_controller.IsMainScreen = false;
 		this.currentScreen = index;
 	}
 

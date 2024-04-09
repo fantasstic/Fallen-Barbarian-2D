@@ -23,12 +23,17 @@ public class DefaultOptionsScreen : OptionsScreen{
 	public float sliderSpeed = 0.1f;
 	public bool stopPreviousSoundEffectsOnLoad = false;
 	public float delayBeforePlayingMusic = 0.1f;
-	#endregion
-	
-	#region protected instance properties
-	// This property is used for preventing the Unity GUI from updating 
-	// the values of certain variables when the screen isn't visible
-	protected bool visible = false;
+    #endregion
+
+    private void Start()
+    {
+        
+    }
+
+    #region protected instance properties
+    // This property is used for preventing the Unity GUI from updating 
+    // the values of certain variables when the screen isn't visible
+    protected bool visible = false;
 	#endregion
 	
 	#region public override methods

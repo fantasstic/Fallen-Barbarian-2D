@@ -33,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 22400004}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -766,9 +766,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -981,9 +981,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.74509805}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.74509805}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.74509805}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.74509805}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -1011,7 +1011,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: SetAIDifficulty
         m_Mode: 2
         m_Arguments:
@@ -1575,9 +1575,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.74509805}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.74509805}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.74509805}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.74509805}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -1605,7 +1605,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 2
         m_Arguments:
@@ -1912,9 +1912,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -1938,7 +1938,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: ToggleDebugMode
         m_Mode: 1
         m_Arguments:
@@ -2165,9 +2165,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -2659,9 +2659,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.74509805}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.74509805}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.74509805}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.74509805}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -2689,7 +2689,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: SetSoundFXVolume
         m_Mode: 2
         m_Arguments:
@@ -2843,9 +2843,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.8941177, g: 0.8941177, b: 0.8941177, a: 0.5019608}
-    m_HighlightedColor: {r: 0.8980393, g: 0.8980393, b: 0.8980393, a: 0.69803923}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_PressedColor: {r: 0.8941177, g: 0.8941177, b: 0.8941177, a: 1}
-    m_SelectedColor: {r: 0.8980393, g: 0.8980393, b: 0.8980393, a: 0.69803923}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -2869,7 +2869,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: ToggleAIEngine
         m_Mode: 1
         m_Arguments:
@@ -3140,9 +3140,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -3166,7 +3166,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: ToggleMusic
         m_Mode: 1
         m_Arguments:
@@ -3670,9 +3670,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
-    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_HighlightedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_PressedColor: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 0.69803923}
-    m_SelectedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.69803923}
+    m_SelectedColor: {r: 1, g: 0.023529412, b: 0.023529412, a: 0.69803923}
     m_DisabledColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 0.5019608}
     m_ColorMultiplier: 2
     m_FadeDuration: 0.1
@@ -3696,7 +3696,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400056}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DefaultOptionsScreen, Assembly-CSharp
         m_MethodName: ToggleSoundFX
         m_Mode: 1
         m_Arguments:

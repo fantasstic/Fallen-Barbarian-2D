@@ -798,7 +798,7 @@ MonoBehaviour:
   player1_Inputs:
   - inputType: 0
     inputButtonName: P1KeyboardHorizontal
-    engineRelatedButton: 1
+    engineRelatedButton: 0
     joystickAxisName: P1JoystickHorizontal
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -815,7 +815,7 @@ MonoBehaviour:
   - inputType: 1
     inputButtonName: P1KeyboardVertical
     engineRelatedButton: 3
-    joystickAxisName: P2JoystickVertical
+    joystickAxisName: P1JoystickVertical
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
     cInputPositiveAlternativeKey: 
@@ -911,6 +911,38 @@ MonoBehaviour:
   - inputType: 2
     inputButtonName: P1Button7
     engineRelatedButton: 10
+    joystickAxisName: 
+    cInputPositiveKeyName: 
+    cInputPositiveDefaultKey: 
+    cInputPositiveAlternativeKey: 
+    cInputNegativeKeyName: 
+    cInputNegativeDefaultKey: 
+    cInputNegativeAlternativeKey: 
+    inputViewerIcon1: {fileID: 0}
+    inputViewerIcon2: {fileID: 0}
+    inputViewerIcon3: {fileID: 0}
+    inputViewerIcon4: {fileID: 0}
+    inputViewerIcon5: {fileID: 0}
+    inputViewerIcon6: {fileID: 0}
+  - inputType: 2
+    inputButtonName: Submit
+    engineRelatedButton: 15
+    joystickAxisName: 
+    cInputPositiveKeyName: 
+    cInputPositiveDefaultKey: 
+    cInputPositiveAlternativeKey: 
+    cInputNegativeKeyName: 
+    cInputNegativeDefaultKey: 
+    cInputNegativeAlternativeKey: 
+    inputViewerIcon1: {fileID: 0}
+    inputViewerIcon2: {fileID: 0}
+    inputViewerIcon3: {fileID: 0}
+    inputViewerIcon4: {fileID: 0}
+    inputViewerIcon5: {fileID: 0}
+    inputViewerIcon6: {fileID: 0}
+  - inputType: 2
+    inputButtonName: Cancel
+    engineRelatedButton: 14
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1054,7 +1086,7 @@ MonoBehaviour:
     inputViewerIcon5: {fileID: 0}
     inputViewerIcon6: {fileID: 0}
   inputOptions:
-    inputManagerType: 0
+    inputManagerType: 4
     cInputAllowDuplicates: 0
     cInputGravity: 3
     cInputSensitivity: 3
@@ -1063,9 +1095,9 @@ MonoBehaviour:
     controlFreakPrefab: {fileID: 0}
     controlFreak2Prefab: {fileID: 0}
     controlFreakDeadZone: 0.5
-    forceDigitalInput: 1
-    confirmButton: 4
-    cancelButton: 0
+    forceDigitalInput: 0
+    confirmButton: 15
+    cancelButton: 14
   stages:
   - stageName: Main
     stageLoadingMethod: 0

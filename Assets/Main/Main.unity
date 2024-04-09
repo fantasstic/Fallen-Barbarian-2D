@@ -6776,6 +6776,7 @@ GameObject:
   - component: {fileID: 1054287060}
   - component: {fileID: 1054287059}
   - component: {fileID: 1054287058}
+  - component: {fileID: 1054287062}
   m_Layer: 5
   m_Name: CanvasMover
   m_TagString: Untagged
@@ -6867,6 +6868,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1054287062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054287057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca754d587cefca4a91b8c0535ed8abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardThreshold: 0.5
+  backwardThreshold: -0.5
+  upThreshold: 0.5
+  downThreshold: -0.5
+  bottomRightThreshold: 0.5
+  bottomLeftThreshold: -0.5
+  _interface: {fileID: 663838946}
+  isMovingForward: 0
+  isMovingBackward: 0
+  isMovingUp: 0
+  isMovingDown: 0
+  isMovingBottomRight: 0
+  isMovingBottomLeft: 0
 --- !u!1 &1060924438
 GameObject:
   m_ObjectHideFlags: 0
@@ -13741,7 +13767,6 @@ GameObject:
   - component: {fileID: 2072733964}
   - component: {fileID: 2072733963}
   - component: {fileID: 2072733966}
-  - component: {fileID: 2072733968}
   - component: {fileID: 2072733967}
   m_Layer: 0
   m_Name: Camera
@@ -13954,21 +13979,9 @@ MonoBehaviour:
   _back: {fileID: 1875518988}
   _moveSetScript: {fileID: 0}
   _buttonManager: {fileID: 2016285488}
+  RoundStart: 0
+  IsMainScreen: 1
   EnemyWinner: 0
---- !u!114 &2072733968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072733962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cca754d587cefca4a91b8c0535ed8abc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
 --- !u!1001 &4549761722261296005
 PrefabInstance:
   m_ObjectHideFlags: 0

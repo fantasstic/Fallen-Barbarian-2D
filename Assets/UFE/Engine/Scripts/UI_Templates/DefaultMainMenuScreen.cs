@@ -4,8 +4,10 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class DefaultMainMenuScreen : MainMenuScreen{
-	#region public instance fields
-	public AudioClip onLoadSound;
+    #region public instance fields
+
+    private RoundContorllerNew _controller;
+    public AudioClip onLoadSound;
 	public AudioClip music;
 	public AudioClip selectSound;
 	public AudioClip cancelSound;
@@ -22,7 +24,11 @@ public class DefaultMainMenuScreen : MainMenuScreen{
     {
 		ButtonManager = GameObject.Find("ButtonManager");
 
-        if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+		//UFE.config.inputOptions.inputManagerType = InputManagerType.UnityInputManager;
+		_controller = Camera.main.GetComponent<RoundContorllerNew>();
+		_controller.RoundStart = false;
+
+		if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
             ButtonManager.SetActive(false);
     }
 

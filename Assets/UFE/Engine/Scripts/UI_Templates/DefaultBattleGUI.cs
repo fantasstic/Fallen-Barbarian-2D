@@ -371,15 +371,55 @@ public class DefaultBattleGUI : BattleGUI{
 	#endregion
 
 	public GameObject ESCText;
+	public Image PauseButton;
+    private bool _gamepadConnected;
 
-	#region protected override methods
-	protected override void OnGameBegin (ControlsScript cPlayer1, ControlsScript cPlayer2, StageOptions stage){
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+
+
+        return _gamepadConnected;
+    }
+
+    #region protected override methods
+    protected override void OnGameBegin (ControlsScript cPlayer1, ControlsScript cPlayer2, StageOptions stage){
 		base.OnGameBegin (cPlayer1, cPlayer2, stage);
 
-		if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+        RuntimePlatform platform = Application.platform;
+
+        if (platform == RuntimePlatform.Android)
 			ESCText.SetActive(false);
 
-		if (this.wonRounds.NotFinishedRounds == null){
+		if(CheckGamepadConnection())
+		{
+			Text text = ESCText.GetComponent<Text>();
+			text.text = "       - Menu";
+			PauseButton.gameObject.SetActive(true);
+		}
+		else
+		{
+            Text text = ESCText.GetComponent<Text>();
+            text.text = "ESC - Menu";
+            PauseButton.gameObject.SetActive(false);
+
+        }
+
+        if (this.wonRounds.NotFinishedRounds == null){
 			Debug.LogError("\"Not Finished Rounds\" Sprite not found! Make sure you have set the sprite correctly in the Editor");
 		}else if (this.wonRounds.WonRounds == null){
 			Debug.LogError("\"Won Rounds\" Sprite not found! Make sure you have set the sprite correctly in the Editor");

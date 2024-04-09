@@ -43,7 +43,7 @@ public class GoblinScene : MonoBehaviour
         if (Input.anyKey && !_badEndAnimationStarted)
             StartBadEndAnimation();
 
-        if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Menu"))
         {
             LoadBattleScene();
         }

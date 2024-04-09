@@ -12,6 +12,9 @@ public class OpenTutor : MonoBehaviour
     private RoundContorllerNew _controller;
 
     public GameObject Tutorial;
+    public Image Image;
+    public Sprite[] Sprites;
+    private bool _gamepadConnected;
 
     private void Awake()
     {
@@ -71,5 +74,39 @@ public class OpenTutor : MonoBehaviour
             Tutorial.SetActive(false);
             _isActive = false;
         }
+    }
+
+    public void ChageImage()
+    {
+        if (CheckGamepadConnection())
+        {
+            Image.sprite = Sprites[1];
+        }
+        else
+        {
+            Image.sprite = Sprites[0];
+        }
+    }
+
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+
+
+        return _gamepadConnected;
     }
 }

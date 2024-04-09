@@ -20,18 +20,22 @@ public class RoundContorllerNew : MonoBehaviour
     private GameObject _background;
     private GameObject _gameUI;
     private bool _roundEnd;
-    private bool _roundStart;
+    public bool RoundStart;
     private bool _enemyDamageBack;
     private ControlsScript _player;
     private ControlsScript _enemy;
     private OpenTutor _openTutor;
     private int _wins;
+    private bool _gamepadConnected = false;
+    public bool IsMainScreen = true;
 
     private static bool _secondStart;
     public bool EnemyWinner;
 
     private void Awake()
     {
+
+
         _rollMove.hits[0].unblockable = false;
         UFE.OnRoundBegins += OnRoundBegins;
         UFE.OnRoundEnds += OnRoundEnds;
@@ -198,9 +202,11 @@ public class RoundContorllerNew : MonoBehaviour
     private void OnRoundBegins(int newInt)
     {
         Debug.Log("OnRoundBegins");
-        _roundStart = true;
+        RoundStart = true;
 
-        if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
+        RuntimePlatform platform = Application.platform;
+
+        if (platform == RuntimePlatform.Android)
             _buttonManager.SetActive(true);
 
         _player = UFE.GetControlsScript(1);
@@ -255,7 +261,7 @@ public class RoundContorllerNew : MonoBehaviour
             _buttonManager.SetActive(false);
 
         //_buttonManager.SetActive(false);
-        _roundStart = false;
+        RoundStart = false;
         Debug.Log(winner);
         _gameUI = GameObject.Find("CanvasGroup");
 
@@ -324,7 +330,7 @@ public class RoundContorllerNew : MonoBehaviour
 
     private void Update()
     {
-        if(_roundStart)
+        if(RoundStart)
         {
             //Debug.Log(Input.GetAxis("P2JoystickVertical"));
 
@@ -345,12 +351,18 @@ public class RoundContorllerNew : MonoBehaviour
 
             //Debug.Log(_enemy.transform.position.y);
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Menu") && IsMainScreen)
             {
                 if(UFE.isPaused())
+                {
                     UFE.PauseGame(false);
+                    IsMainScreen = true;
+                }
                 else
+                {
                     UFE.PauseGame(true);
+                    IsMainScreen = true;
+                }
             }
         }
 
@@ -362,5 +374,27 @@ public class RoundContorllerNew : MonoBehaviour
                 Invoke("LoadGoblinScene", 0.3f);
             }
         }
+    }
+
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+
+
+        return _gamepadConnected;
     }
 }

@@ -14,12 +14,15 @@ public class CustomInterface : AbstractInputController
     private bool b1;
     private bool b2;
     private bool b10;
+    private bool b12;
+    private RoundContorllerNew _controller;
 
     public bool BackButtonPressed, Button2Pressed, Button1Pressed, ForwardButtonPressed, JumpButtonPressed, CrouchButtonPressed, RollForwardButtonPressed, RollBackButtonPressed;
 
     private void Start()
     {
         _pauseButton.onClick.AddListener(OnPauseButtonClick);
+        _controller = Camera.main.GetComponent<RoundContorllerNew>();
     }
 
     private void OnDestroy()
@@ -35,34 +38,57 @@ public class CustomInterface : AbstractInputController
 
     private void Update()
     {
-        if (Button1Pressed)
-            b1 = true;
+        if (Input.GetButtonDown("Submit") && !_controller.RoundStart || Input.GetButtonDown("Submit") && UFE.isPaused())
+            b12 = true;
         else
+            b12 = false;
+
+        /*else
+            b12 = false;*/
+
+        //Debug.Log(vAxis);
+        if (Button1Pressed)
+        {
+            if(!_controller.RoundStart || _controller.RoundStart && UFE.isPaused())
+                vAxis = 1;
+            b1 = true;
+
+        }
+        else
+        {
+            if (!_controller.RoundStart || _controller.RoundStart && UFE.isPaused())
+                vAxis = 0;
             b1 = false;
+
+        }
 
         if (BackButtonPressed)
             hAxis = -1;
-        else if(ForwardButtonPressed)
+        else if (ForwardButtonPressed)
             hAxis = 1;
         else
             hAxis = 0;
 
-        if (JumpButtonPressed)
+        if (JumpButtonPressed && !UFE.isPaused())
             vAxis = 1;
-        else if(CrouchButtonPressed)
+        else if (CrouchButtonPressed)
         {
             vAxis = -1;
             b1 = true;
         }
         else
-            vAxis = 0;
+        {
+            if (_controller.RoundStart && !UFE.isPaused())
+                vAxis = 0;
+
+        }
 
         if (Button2Pressed)
             b2 = true;
         else
             b2 = false;
 
-        if(RollForwardButtonPressed)
+        if (RollForwardButtonPressed)
         {
             vAxis = -1;
             hAxis = 1;
@@ -93,7 +119,7 @@ public class CustomInterface : AbstractInputController
             }
             else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button1)
             { // Sends Button 1 Input Event
-                Debug.Log("allasd1: " + b1);
+                //Debug.Log("allasd1: " + b1);
                 return new InputEvents(b1);
             }
             else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button2)
@@ -104,6 +130,10 @@ public class CustomInterface : AbstractInputController
             else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button11)
             {
                 return new InputEvents(b10);
+            }
+            else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button12)
+            {
+                return new InputEvents(b12);
             }
             //else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button9)
             //{ // Sends Button 2 Input Event

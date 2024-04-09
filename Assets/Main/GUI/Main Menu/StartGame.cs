@@ -9,10 +9,11 @@ public class StartGame : MonoBehaviour
     private bool _isTutorialActive;
     private bool _isGameStart, _isGameRunning, _firstStart = true;
     private int _wins;
+    private bool _gamepadConnected = false;
 
     public UFE3D.CharacterInfo Player1;
     public UFE3D.CharacterInfo Player2;
-    public GameObject MoveTutorial;
+    public GameObject MoveTutorial, GamePadTutorial;
 
     private void Start()
     {
@@ -54,12 +55,24 @@ public class StartGame : MonoBehaviour
 
     public void StartGameButton()
     {
-        if(!_isGameRunning)
+        /*RuntimePlatform platform = Application.platform;
+
+        if (platform == RuntimePlatform.Android || CheckGamepadConnection())
+            UFE.config.inputOptions.inputManagerType = InputManagerType.CustomClass;
+        else
+            UFE.config.inputOptions.inputManagerType = InputManagerType.UnityInputManager;*/
+
+        if (!_isGameRunning)
         {
 
             if (!PlayerPrefs.HasKey("FirstGame") || PlayerPrefs.GetString("FirstGame") == "Yes")
             {
-                MoveTutorial.SetActive(true);
+                bool mover = CheckGamepadConnection();
+                if (!mover)
+                    MoveTutorial.SetActive(true);
+                else
+                    GamePadTutorial.SetActive(true);
+
                 _isTutorialActive = true;
             }
             else
@@ -98,6 +111,7 @@ public class StartGame : MonoBehaviour
             if (PlayerPrefs.GetString("FirstGame") == "Yes" && Input.anyKey)
             {
                 MoveTutorial.SetActive(false);
+                GamePadTutorial.SetActive(false);
                 PlayerPrefs.SetString("FirstGame", "No");
                 _isGameRunning = true;
                 UFE.StartGame();
@@ -108,11 +122,35 @@ public class StartGame : MonoBehaviour
             }
         }
 
-        if (!_isGameStart && !_isTutorialActive && Input.GetKeyDown(KeyCode.Space))
+        if (!_isGameStart && !_isTutorialActive && Input.GetKeyDown(KeyCode.Space) || !_isGameStart && !_isTutorialActive && Input.GetButtonDown("P1Start") 
+            || !_isGameStart && !_isTutorialActive && Input.GetButtonDown("Submit") && UFE.currentScreen.name == "VersusModeAfterBattleScreen(Clone)"
+            || !_isGameStart && !_isTutorialActive && Input.GetButtonDown("Cancel") && UFE.currentScreen.name == "VersusModeAfterBattleScreen(Clone)")
         {
             _isGameStart = true;
             Debug.Log("StartGameButton called");
             StartGameButton();
         }
+    }
+
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+        
+
+        return _gamepadConnected;
     }
 }
