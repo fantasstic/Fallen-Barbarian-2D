@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    [SerializeField] private UFE3D.GlobalInfo _globalInfo;
+
     private bool _isTutorialActive;
     private bool _isGameStart, _isGameRunning, _firstStart = true;
     private int _wins;
@@ -22,29 +24,36 @@ public class StartGame : MonoBehaviour
         Debug.Log(_isTutorialActive);
 
         _wins = PlayerPrefs.GetInt("Wins");
-
+       // _wins = 4;
         switch (_wins)
         {
             case 0:
                 Player2.characterName = "BLOOD BLONDE";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryEasy;
                 break;
             case 1:
                 Player2.characterName = "GREENCH";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryEasy;
                 break;
             case 2:
                 Player2.characterName = "BLUE ICE";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.Easy;
                 break;
             case 3:
                 Player2.characterName = "PURPLE KILLER";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
                 break;
             case 4:
                 Player2.characterName = "PINKY";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
                 break;
             case 5:
                 Player2.characterName = "ORANGIE";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
                 break;
             case 6:
                 Player2.characterName = "RED HEAD";
+                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
                 break;
 
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   version: 0
   profilePictureSmall: {fileID: 2800000, guid: 8713aa93b06530c4983a07976bfca2f2, type: 3}
   profilePictureBig: {fileID: 2800000, guid: ecc2db6fcb292584dbf3df8ef6c097c4, type: 3}
-  characterName: GREENCH
+  characterName: BLUE ICE
   gender: 2
   characterDescription: 
   selectionAnimation: {fileID: 0}
@@ -3825,7 +3825,7 @@ MonoBehaviour:
           bodyPart: 0
         reference: 0
         name: 
-        editorToggle: 0
+        editorToggle: 1
         soundEffectsToggle: 0
       getHitLow:
         clip1: {fileID: 0}
@@ -34005,7 +34005,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 63bc1ba712a16d540947d8091d559ee4, type: 2}
     - {fileID: 11400000, guid: 7f794dca6fc10024fa667c12730c0986, type: 2}
     - {fileID: 11400000, guid: 3208a7f8de0c57f43ad1cb2723b7e69f, type: 2}
-    - {fileID: 11400000, guid: 72a9ba582b1437940be0ba5a3560aefe, type: 2}
+    - {fileID: 11400000, guid: d1f271e32d13afa4983123741ef0f37b, type: 2}
     - {fileID: 11400000, guid: b2bec4330ee60fe4887b11b69d5fc4f8, type: 2}
     - {fileID: 11400000, guid: 16351c32863c81541afbd78d68048529, type: 2}
     - {fileID: 11400000, guid: a179d9c4f0da4934cbb66e4fe53cc346, type: 2}
@@ -39659,11 +39659,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 63bc1ba712a16d540947d8091d559ee4, type: 2}
     - {fileID: 11400000, guid: 7f794dca6fc10024fa667c12730c0986, type: 2}
     - {fileID: 11400000, guid: 3208a7f8de0c57f43ad1cb2723b7e69f, type: 2}
-    - {fileID: 11400000, guid: 72a9ba582b1437940be0ba5a3560aefe, type: 2}
+    - {fileID: 11400000, guid: d1f271e32d13afa4983123741ef0f37b, type: 2}
     - {fileID: 11400000, guid: b2bec4330ee60fe4887b11b69d5fc4f8, type: 2}
     - {fileID: 11400000, guid: 16351c32863c81541afbd78d68048529, type: 2}
     - {fileID: 11400000, guid: a179d9c4f0da4934cbb66e4fe53cc346, type: 2}
-    - {fileID: 11400000, guid: b4a4d9de1d4627045af52eb4a99e11b0, type: 2}
+    - {fileID: 11400000, guid: bc26d7ecd8d64a543803b2c2e63af5ba, type: 2}
     - {fileID: 11400000, guid: ab9885b6fb4fcdb40880bad545c56e2f, type: 2}
     enabledBasicMovesToggle: 1
     basicMovesToggle: 1
@@ -39671,7 +39671,7 @@ MonoBehaviour:
   aiInstructionsSet:
   - aiInfo: {fileID: 11400000, guid: ca1b7af9ca8481a4fb9d27162cce6a97, type: 2}
     behavior: 4
-  - aiInfo: {fileID: 11400000, guid: 2b4661f917e17184fa5380226488657d, type: 2}
+  - aiInfo: {fileID: 11400000, guid: 044842a06c15ad74989b296d12346ee5, type: 2}
+    behavior: 1
+  - aiInfo: {fileID: 11400000, guid: aeec711a21f7233459b829b72726b409, type: 2}
     behavior: 2
-  - aiInfo: {fileID: 11400000, guid: 0cbb4bf9fc37e2540a4b1900a715cbb1, type: 2}
-    behavior: 3

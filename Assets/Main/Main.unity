@@ -10515,7 +10515,9 @@ MonoBehaviour:
   _zoomedTr: {fileID: 0}
   _skinNames: []
   _animName: 
+  _cursor: {fileID: 0}
   _yOffsetAfterZoom: 0
+  leftPressed: 0
   BadEndAnimation: {fileID: 1612751413}
   AnimationStates: []
   AnimationSkins: []
@@ -13954,6 +13956,7 @@ MonoBehaviour:
   _rollMove: {fileID: 11400000, guid: 63bc1ba712a16d540947d8091d559ee4, type: 2}
   _moveKick: {fileID: 11400000, guid: c4b51d4e060961344bd490e0adf17339, type: 2}
   _runMove: {fileID: 11400000, guid: 16351c32863c81541afbd78d68048529, type: 2}
+  _kickBot: {fileID: 11400000, guid: d8bce897603ebd940bce702b592bd9d7, type: 2}
   _roundContorller: {fileID: 2072733967}
   _backGrounds:
   - {fileID: 21300000, guid: 72e9ed64617837b44871259f68a5baca, type: 3}
@@ -13979,6 +13982,7 @@ MonoBehaviour:
   _back: {fileID: 1875518988}
   _moveSetScript: {fileID: 0}
   _buttonManager: {fileID: 2016285488}
+  _globalInfo: {fileID: 11400000, guid: 95f0a97a22291b34eae0989d2203ad1a, type: 2}
   RoundStart: 0
   IsMainScreen: 1
   EnemyWinner: 0

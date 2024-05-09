@@ -10,12 +10,13 @@ using UnityEngine.UI;
 public class RoundContorllerNew : MonoBehaviour
 {
     [SerializeField] private float _maxYPos;
-    [SerializeField] private MoveInfo _rollMove, _moveKick, _runMove;
+    [SerializeField] private MoveInfo _rollMove, _moveKick, _runMove, _kickBot;
     [SerializeField] private RoundContorllerNew _roundContorller;
     [SerializeField] private List<Sprite> _backGrounds = new List<Sprite>();
     [SerializeField] private Image _back;
     [SerializeField] private MoveSetScript _moveSetScript;
     [SerializeField] private GameObject _buttonManager;
+    [SerializeField] private UFE3D.GlobalInfo _globalInfo;
 
     private GameObject _background;
     private GameObject _gameUI;
@@ -87,8 +88,6 @@ public class RoundContorllerNew : MonoBehaviour
 
     void OnLifePointsChange(float newFloat, ControlsScript player)
     {
-        Debug.Log(newFloat);
-
         if(player.name == "Player2")
         {
             _enemyDamageBack = false;
@@ -120,19 +119,20 @@ public class RoundContorllerNew : MonoBehaviour
             {
                 var otherPlayer = _enemy == player ? _player : _enemy;
 
-                if (otherPlayer.currentMove.name == _moveKick.name)
+                if (otherPlayer.currentMove.name == _moveKick.name || otherPlayer.currentMove.name == _kickBot.name)
                 {
+                    Debug.Log("Kick");
                     player.Physics.ResetForces(true, false);
                     player.Physics.AddForce(new FPLibrary.FPVector(-25, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
-                    player.stunTime = 1;
+                    player.stunTime = 0.5f;
                 }
 
-                if (otherPlayer.currentMove.name == _runMove.name)
+                /*if (otherPlayer.currentMove.name == _runMove.name)
                 {
                     player.Physics.ResetForces(true, false);
                     player.Physics.AddForce(new FPLibrary.FPVector(-38, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
                     player.stunTime = 1;
-                }
+                }*/
             }
         }
     }
@@ -197,6 +197,24 @@ public class RoundContorllerNew : MonoBehaviour
         {
             playerControl.DamageMe(10, false);
         }
+
+        if (player.name == "Player1" && move.name == "Attack_Low_Bot" && strokeHitBox.type == HitBoxType.low)
+        {
+            _enemy.KillCurrentMove();
+            _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHigh);
+            _enemy.currentSubState = SubStates.Stunned;
+            _enemy.stunTime = 0.5f;
+            _enemy.currentState = PossibleStates.Stand;
+        }
+
+        if (player.name == "Player1" && move.name == "HgAttakBot" && strokeHitBox.type == HitBoxType.high)
+        {
+            _enemy.KillCurrentMove();
+            _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHigh);
+            _enemy.currentSubState = SubStates.Stunned;
+            _enemy.stunTime = 0.5f;
+            _enemy.currentState = PossibleStates.Stand;
+        }
     }
 
     private void OnRoundBegins(int newInt)
@@ -221,8 +239,11 @@ public class RoundContorllerNew : MonoBehaviour
         }
         else
         {
+            //_wins = 4;
             _wins = PlayerPrefs.GetInt("Wins");
         }
+
+        Debug.Log(_wins);
 
         switch (_wins)
         {
@@ -280,7 +301,7 @@ public class RoundContorllerNew : MonoBehaviour
             Debug.Log(wins);
 
             if(wins > 6)
-                PlayerPrefs.SetInt("Wins", 0);
+                PlayerPrefs.SetInt("Wins", 1);
             else
                 PlayerPrefs.SetInt("Wins", wins);
         }

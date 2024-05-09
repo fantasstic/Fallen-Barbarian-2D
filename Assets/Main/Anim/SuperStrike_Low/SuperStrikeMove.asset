@@ -25,7 +25,7 @@ MonoBehaviour:
     hitBoxDefinitionType: 1
   animationSpeed: 1
   _animationSpeed:
-    _serializedValue: 2147483648
+    _serializedValue: 4294967296
   wrapMode: 1
   characterPrefab: {fileID: 0}
   moveName: Super Strike
@@ -81,10 +81,10 @@ MonoBehaviour:
   speedKeyFrameToggle: 0
   fixedSpeed: 1
   animSpeedKeyFrame: []
-  totalFrames: 94
-  startUpFrames: 70
-  activeFrames: 13
-  recoveryFrames: 11
+  totalFrames: 46
+  startUpFrames: 34
+  activeFrames: 7
+  recoveryFrames: 5
   applyRootMotion: 0
   lockXMotion: 0
   lockYMotion: 0
@@ -190,8 +190,8 @@ MonoBehaviour:
   stanceChanges: []
   cameraMovements: []
   hits:
-  - activeFramesBegin: 70
-    activeFramesEnds: 83
+  - activeFramesBegin: 34
+    activeFramesEnds: 41
     hitConfirmType: 0
     throwMove: {fileID: 0}
     techMove: {fileID: 0}
@@ -294,10 +294,10 @@ MonoBehaviour:
     damageType: 0
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 214748364800
+      _serializedValue: 71296458752
     damageOnBlock: 0
     _damageOnBlock:
-      _serializedValue: 214748364800
+      _serializedValue: 71296458752
     doesntKill: 0
     hitType: 1
     resetPreviousHorizontalPush: 0

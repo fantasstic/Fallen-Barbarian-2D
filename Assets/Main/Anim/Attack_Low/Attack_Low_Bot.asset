@@ -164,7 +164,7 @@ MonoBehaviour:
       movingBack: 1
       standBy: 1
       blocking: 1
-      stunned: 1
+      stunned: 0
     basicMovesToggle: 1
     statesToggle: 1
   moveClassification:
@@ -295,7 +295,7 @@ MonoBehaviour:
     damageType: 0
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 107374182400
+      _serializedValue: 34359738368
     damageOnBlock: 0
     _damageOnBlock:
       _serializedValue: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
         z:
           _serializedValue: 0
   blockableArea:
-    enabled: 1
+    enabled: 0
     activeFramesBegin: 0
     activeFramesEnds: 35
     bodyPart: 0

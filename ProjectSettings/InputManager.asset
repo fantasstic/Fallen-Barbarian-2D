@@ -629,4 +629,20 @@ InputManager:
     type: 2
     axis: 3
     joyNum: 1
+  - serializedVersion: 3
+    m_Name: P2Button7
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: ']'
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
   m_UsePhysicalKeys: 1

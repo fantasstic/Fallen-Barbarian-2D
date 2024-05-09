@@ -164,11 +164,11 @@ MonoBehaviour:
       movingBack: 1
       standBy: 1
       blocking: 1
-      stunned: 1
+      stunned: 0
     basicMovesToggle: 1
     statesToggle: 1
   moveClassification:
-    attackType: 1
+    attackType: 0
     hitType: 2
     startupSpeed: 1
     recoverySpeed: 1
@@ -295,7 +295,7 @@ MonoBehaviour:
     damageType: 0
     damageOnHit: 0
     _damageOnHit:
-      _serializedValue: 107374182400
+      _serializedValue: 34359738368
     damageOnBlock: 0
     _damageOnBlock:
       _serializedValue: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
         _serializedValue: 0
       z:
         _serializedValue: 0
-    resetPreviousHorizontal: 0
+    resetPreviousHorizontal: 1
     resetPreviousVertical: 0
     appliedForce: {x: 0, y: 0}
     _appliedForce:
@@ -405,7 +405,7 @@ MonoBehaviour:
     stageReactionsToggle: 0
     overrideEventsToggle: 1
     hitConditionsToggle: 1
-    pullInToggle: 0
+    pullInToggle: 1
     hurtBoxesToggle: 1
     wallBounceToggle: 0
     groundBounceToggle: 0

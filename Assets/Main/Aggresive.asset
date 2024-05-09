@@ -44,12 +44,12 @@ MonoBehaviour:
     preferableCombatDistance: 1
     attacksAtPreferableDistance: 5
     autoMove: 1
-    restOnLocation: 1
+    restOnLocation: 0
     moveFrequency: 3
     autoJump: 1
     jumpBackFrequency: 0
     jumpStraightFrequency: 0
-    jumpForwardFrequency: 4
+    jumpForwardFrequency: 3
     autoBlock: 0
     obeyHitType: 1
     standBlockAccuracy: 3
@@ -57,69 +57,17 @@ MonoBehaviour:
     jumpBlockAccuracy: 0
     autoAttack: 1
     obeyPreferableDistances: 1
-    attackFrequency: 6
+    attackFrequency: 5
     debugToggle: 1
   aiRules:
-  - ruleName: Switch to defense
-    events:
-    - enabled: 0
-      boolean: 0
-      conditions:
-      - enabled: 1
-        boolean: 0
-        targetCharacter: 0
-        conditionType: 3
-        horizontalMovement: 1
-        verticalMovement: 1
-        movementSpeed: 0
-        healthStatus: 2
-        gaugeStatus: 0
-        playerDistance: 3
-        jumping: 0
-        blocking: 1
-        moveClassification:
-          attackType: 0
-          hitType: 0
-          startupSpeed: 0
-          recoverySpeed: 0
-          hitConfirmType: 0
-          preferableDistance: 0
-          gaugeUsage: 0
-          anyAttackType: 1
-          anyHitType: 1
-          anyHitConfirmType: 1
-        moveFrameData: 0
-        moveDamage: 0
-      conditionsToggle: 1
-    reactions:
-    - reactionType: 11
-      moveClassification:
-        attackType: 0
-        hitType: 0
-        startupSpeed: 0
-        recoverySpeed: 0
-        hitConfirmType: 0
-        preferableDistance: 0
-        gaugeUsage: 0
-        anyAttackType: 1
-        anyHitType: 1
-        anyHitConfirmType: 1
-      moveDamage: 0
-      specificMove: {fileID: 0}
-      buttonPress: 4
-      behavior: 2
-      desirability: 6
-    debugToggle: 0
-    eventsToggle: 1
-    reactionsToggle: 0
-  - ruleName: Rule 2
+  - ruleName: Dive Close
     events:
     - enabled: 1
       boolean: 0
       conditions:
-      - enabled: 0
+      - enabled: 1
         boolean: 0
-        targetCharacter: 0
+        targetCharacter: 1
         conditionType: 5
         horizontalMovement: 1
         verticalMovement: 1
@@ -146,39 +94,56 @@ MonoBehaviour:
     reactions:
     - reactionType: 10
       moveClassification:
-        attackType: 0
-        hitType: 2
+        attackType: 4
+        hitType: 3
         startupSpeed: 0
         recoverySpeed: 0
         hitConfirmType: 0
         preferableDistance: 0
         gaugeUsage: 0
-        anyAttackType: 1
-        anyHitType: 0
+        anyAttackType: 0
+        anyHitType: 1
         anyHitConfirmType: 1
       moveDamage: 0
       specificMove: {fileID: 0}
       buttonPress: 4
       behavior: 0
-      desirability: 6
+      desirability: 4
+    - reactionType: 10
+      moveClassification:
+        attackType: 2
+        hitType: 0
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 0
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 5
     debugToggle: 0
-    eventsToggle: 1
-    reactionsToggle: 1
-  - ruleName: Rule 3
+    eventsToggle: 0
+    reactionsToggle: 0
+  - ruleName: Dive Far
     events:
-    - enabled: 0
+    - enabled: 1
       boolean: 0
       conditions:
       - enabled: 1
         boolean: 0
-        targetCharacter: 0
+        targetCharacter: 1
         conditionType: 5
         horizontalMovement: 1
         verticalMovement: 1
         movementSpeed: 0
         healthStatus: 0
         gaugeStatus: 0
-        playerDistance: 1
+        playerDistance: 4
         jumping: 0
         blocking: 1
         moveClassification:
@@ -198,15 +163,205 @@ MonoBehaviour:
     reactions:
     - reactionType: 10
       moveClassification:
-        attackType: 0
-        hitType: 1
+        attackType: 4
+        hitType: 0
         startupSpeed: 0
         recoverySpeed: 0
         hitConfirmType: 0
         preferableDistance: 0
         gaugeUsage: 0
-        anyAttackType: 1
-        anyHitType: 0
+        anyAttackType: 0
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 5
+    - reactionType: 10
+      moveClassification:
+        attackType: 2
+        hitType: 0
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 0
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 4
+    debugToggle: 0
+    eventsToggle: 0
+    reactionsToggle: 0
+  - ruleName: Dive Very far
+    events:
+    - enabled: 1
+      boolean: 0
+      conditions:
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 1
+        conditionType: 5
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 0
+        gaugeStatus: 0
+        playerDistance: 5
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 0
+    reactions:
+    - reactionType: 10
+      moveClassification:
+        attackType: 4
+        hitType: 0
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 0
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 5
+    - reactionType: 10
+      moveClassification:
+        attackType: 2
+        hitType: 0
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 0
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 4
+    debugToggle: 0
+    eventsToggle: 0
+    reactionsToggle: 0
+  - ruleName: Super
+    events:
+    - enabled: 1
+      boolean: 0
+      conditions:
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 1
+        conditionType: 5
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 0
+        gaugeStatus: 0
+        playerDistance: 2
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 1
+    reactions:
+    - reactionType: 10
+      moveClassification:
+        attackType: 1
+        hitType: 4
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 2
+        gaugeUsage: 0
+        anyAttackType: 0
+        anyHitType: 1
+        anyHitConfirmType: 1
+      moveDamage: 0
+      specificMove: {fileID: 0}
+      buttonPress: 4
+      behavior: 0
+      desirability: 6
+    debugToggle: 1
+    eventsToggle: 0
+    reactionsToggle: 0
+  - ruleName: Mid
+    events:
+    - enabled: 1
+      boolean: 0
+      conditions:
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 1
+        conditionType: 5
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 0
+        gaugeStatus: 0
+        playerDistance: 3
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 1
+    reactions:
+    - reactionType: 10
+      moveClassification:
+        attackType: 4
+        hitType: 0
+        startupSpeed: 0
+        recoverySpeed: 0
+        hitConfirmType: 0
+        preferableDistance: 0
+        gaugeUsage: 0
+        anyAttackType: 0
+        anyHitType: 1
         anyHitConfirmType: 1
       moveDamage: 0
       specificMove: {fileID: 0}
@@ -214,8 +369,43 @@ MonoBehaviour:
       behavior: 0
       desirability: 6
     debugToggle: 0
+    eventsToggle: 0
+    reactionsToggle: 0
+  - ruleName: Rule 6
+    events:
+    - enabled: 0
+      boolean: 0
+      conditions:
+      - enabled: 1
+        boolean: 0
+        targetCharacter: 0
+        conditionType: 5
+        horizontalMovement: 1
+        verticalMovement: 1
+        movementSpeed: 0
+        healthStatus: 0
+        gaugeStatus: 0
+        playerDistance: 6
+        jumping: 0
+        blocking: 1
+        moveClassification:
+          attackType: 0
+          hitType: 0
+          startupSpeed: 0
+          recoverySpeed: 0
+          hitConfirmType: 0
+          preferableDistance: 0
+          gaugeUsage: 0
+          anyAttackType: 1
+          anyHitType: 1
+          anyHitConfirmType: 1
+        moveFrameData: 0
+        moveDamage: 0
+      conditionsToggle: 1
+    reactions: []
+    debugToggle: 0
     eventsToggle: 1
-    reactionsToggle: 1
+    reactionsToggle: 0
   aiDefinitions:
     damage:
       veryWeak: 0.05
@@ -224,8 +414,8 @@ MonoBehaviour:
       strong: 0.2
       veryStrong: 0.25
     distance:
-      veryClose: 0.05
-      close: 0.25
+      veryClose: 0.053
+      close: 0.35
       mid: 0.5
       far: 0.75
       veryFar: 0.95

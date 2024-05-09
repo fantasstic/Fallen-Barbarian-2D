@@ -52,6 +52,7 @@ public class MP4Player : MonoBehaviour
     public bool leftPressed = false;
     private bool upPressed = false;
     private bool downPressed = false;
+    private bool _gamepadConnected;
 
     private void Start()
     {
@@ -59,6 +60,11 @@ public class MP4Player : MonoBehaviour
 
         if (platform != RuntimePlatform.Android)
             _ui.SetActive(true);
+
+        if (CheckGamepadConnection())
+            _cursor.gameObject.SetActive(true);
+        else
+            _cursor.gameObject.SetActive(false);
 
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
@@ -418,5 +424,27 @@ public class MP4Player : MonoBehaviour
 
             UpdateIndex(index);
         }
+    }
+
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+
+
+        return _gamepadConnected;
     }
 }

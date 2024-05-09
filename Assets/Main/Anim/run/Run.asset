@@ -172,7 +172,7 @@ MonoBehaviour:
     basicMovesToggle: 1
     statesToggle: 1
   moveClassification:
-    attackType: 0
+    attackType: 4
     hitType: 0
     startupSpeed: 0
     recoverySpeed: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
     _damageOnBlock:
       _serializedValue: 0
     doesntKill: 0
-    hitType: 5
+    hitType: 0
     resetPreviousHorizontalPush: 0
     resetPreviousVerticalPush: 0
     applyDifferentAirForce: 0

@@ -803,6 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3dd8035eff4c84386d1dd53edfd0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _globalInfo: {fileID: 0}
   Player1: {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   Player2: {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
   MoveTutorial: {fileID: 1377440647233432984}
@@ -981,6 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3dd8035eff4c84386d1dd53edfd0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _globalInfo: {fileID: 11400000, guid: 95f0a97a22291b34eae0989d2203ad1a, type: 2}
   Player1: {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   Player2: {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
   MoveTutorial: {fileID: 1377440647233432984}

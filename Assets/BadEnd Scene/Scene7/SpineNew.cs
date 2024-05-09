@@ -61,16 +61,28 @@ public class SpineNew : MonoBehaviour
     public float ZoomFactor = 0.5f;
     public float ZoomSpeed = 2f;
     public float AnimationSpeedFactor = 1f;
+    public bool LickPlay = false;
+    private bool _gamepadConnected;
 
     void Start()
     {
+        
+        //_lickSource.mute = true;
         if (_goblicScene.CurrentBadEndSceneIndex > 9)
             _goblicScene.CurrentBadEndSceneIndex = 8;
 
         RuntimePlatform platform = Application.platform;
 
         if (platform != RuntimePlatform.Android)
+        {
             _ui.SetActive(true);
+        }
+
+        if (CheckGamepadConnection())
+            _cursor.gameObject.SetActive(true);
+        else
+            _cursor.gameObject.SetActive(false);
+
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
 
@@ -80,7 +92,6 @@ public class SpineNew : MonoBehaviour
         _skinsCountUI.text = "(" + _skinsCount + ")";
         _skinsCount = 0;
         _animationCountUI.text = "(Auto)";
-        _lickSource.mute = true;
         _hurtSource.mute = true;
 
         StartCoroutine(SwitchAudioClipWithInterval(3f, _swordSource, _swordClips, _swordClipIndex, true));
@@ -116,7 +127,7 @@ public class SpineNew : MonoBehaviour
         
         }
 
-        if (collision.transform.tag == "Lick")
+        if (collision.transform.tag == "Lick" || LickPlay)
         {
             if (!_lickSource.isPlaying)
                 _lickSource.Play();
@@ -522,6 +533,28 @@ public class SpineNew : MonoBehaviour
 
             yield return new WaitForSeconds(selectedClip.length);
         }
+    }
+
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+
+
+        return _gamepadConnected;
     }
 }
 

@@ -798,7 +798,7 @@ MonoBehaviour:
   player1_Inputs:
   - inputType: 0
     inputButtonName: P1KeyboardHorizontal
-    engineRelatedButton: 0
+    engineRelatedButton: 1
     joystickAxisName: P1JoystickHorizontal
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1085,6 +1085,22 @@ MonoBehaviour:
     inputViewerIcon4: {fileID: 0}
     inputViewerIcon5: {fileID: 0}
     inputViewerIcon6: {fileID: 0}
+  - inputType: 2
+    inputButtonName: P2Button7
+    engineRelatedButton: 9
+    joystickAxisName: 
+    cInputPositiveKeyName: 
+    cInputPositiveDefaultKey: 
+    cInputPositiveAlternativeKey: 
+    cInputNegativeKeyName: 
+    cInputNegativeDefaultKey: 
+    cInputNegativeAlternativeKey: 
+    inputViewerIcon1: {fileID: 0}
+    inputViewerIcon2: {fileID: 0}
+    inputViewerIcon3: {fileID: 0}
+    inputViewerIcon4: {fileID: 0}
+    inputViewerIcon5: {fileID: 0}
+    inputViewerIcon6: {fileID: 0}
   inputOptions:
     inputManagerType: 4
     cInputAllowDuplicates: 0
@@ -1164,14 +1180,14 @@ MonoBehaviour:
     desyncErrorLog: 0
     stateTrackerTest: 0
     p1DebugInfo:
-      toggle: 0
-      currentMove: 0
+      toggle: 1
+      currentMove: 1
       position: 0
       lifePoints: 0
       gaugePoints: 0
-      currentState: 0
-      currentSubState: 0
-      stunTime: 0
+      currentState: 1
+      currentSubState: 1
+      stunTime: 1
       comboHits: 0
       comboDamage: 0
       inputs: 0
@@ -1179,18 +1195,18 @@ MonoBehaviour:
       aiWeightList: 0
     p2DebugInfo:
       toggle: 1
-      currentMove: 0
+      currentMove: 1
       position: 0
       lifePoints: 0
       gaugePoints: 0
-      currentState: 0
-      currentSubState: 0
-      stunTime: 0
+      currentState: 1
+      currentSubState: 1
+      stunTime: 1
       comboHits: 0
       comboDamage: 0
       inputs: 0
       buttonSequence: 0
-      aiWeightList: 1
+      aiWeightList: 0
   trainingModeOptions:
     inputInfo: 0
     freezeTime: 0
@@ -1267,7 +1283,7 @@ MonoBehaviour:
     persistentBehavior: 0
     difficultyToggle: 1
     difficultySettings:
-    - difficultyLevel: 2
+    - difficultyLevel: 4
       overrideTimeBetweenDecisions: 1
       timeBetweenDecisions: 0.3
       overrideTimeBetweenActions: 1
@@ -1279,20 +1295,44 @@ MonoBehaviour:
       overrideComboEfficiency: 1
       comboEfficiency: 0.2
       startupBehavior: 4
-    selectedDifficultyLevel: 2
+    - difficultyLevel: 0
+      overrideTimeBetweenDecisions: 1
+      timeBetweenDecisions: 0.5
+      overrideTimeBetweenActions: 1
+      timeBetweenActions: 0.3
+      overrideAggressiveness: 1
+      aggressiveness: 0.1
+      overrideRuleCompliance: 1
+      ruleCompliance: 0.606
+      overrideComboEfficiency: 1
+      comboEfficiency: 0.2
+      startupBehavior: 1
+    - difficultyLevel: 1
+      overrideTimeBetweenDecisions: 1
+      timeBetweenDecisions: 0.4
+      overrideTimeBetweenActions: 1
+      timeBetweenActions: 0.2
+      overrideAggressiveness: 1
+      aggressiveness: 0.2
+      overrideRuleCompliance: 1
+      ruleCompliance: 0.3
+      overrideComboEfficiency: 1
+      comboEfficiency: 0.2
+      startupBehavior: 2
+    selectedDifficultyLevel: 0
     selectedDifficulty:
-      difficultyLevel: 2
+      difficultyLevel: 0
       overrideTimeBetweenDecisions: 1
-      timeBetweenDecisions: 0.3
+      timeBetweenDecisions: 0.5
       overrideTimeBetweenActions: 1
-      timeBetweenActions: 0.1
+      timeBetweenActions: 0.3
       overrideAggressiveness: 1
-      aggressiveness: 0.3
+      aggressiveness: 0.1
       overrideRuleCompliance: 1
-      ruleCompliance: 0.9
+      ruleCompliance: 0.606
       overrideComboEfficiency: 1
       comboEfficiency: 0.2
-      startupBehavior: 4
+      startupBehavior: 1
   networkOptions:
     forceAnimationControl: 0
     disableRootMotion: 0

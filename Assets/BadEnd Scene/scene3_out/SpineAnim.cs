@@ -59,6 +59,7 @@ public class SpineAnim : MonoBehaviour
     public float ZoomFactor = 0.5f;
     public float ZoomSpeed = 2f;
     public float AnimationSpeedFactor = 1f;
+    private bool _gamepadConnected;
 
     void Start()
     {
@@ -80,7 +81,12 @@ public class SpineAnim : MonoBehaviour
 
         if (platform != RuntimePlatform.Android)
             _ui.SetActive(true);
-            
+
+        if (CheckGamepadConnection())
+            _cursor.gameObject.SetActive(true);
+        else
+            _cursor.gameObject.SetActive(false);
+
         _initialScale = _zoomedTr.localScale;
         _initialPosition = _zoomedTr.position;
 
@@ -787,6 +793,28 @@ public class SpineAnim : MonoBehaviour
 
             yield return new WaitForSeconds(selectedClip.length);
         }
+    }
+
+    private bool CheckGamepadConnection()
+    {
+        string[] joystickNames = Input.GetJoystickNames();
+        foreach (string joystickName in joystickNames)
+        {
+            if (!string.IsNullOrEmpty(joystickName))
+            {
+                _gamepadConnected = true;
+                Debug.Log("Геймпад подключен.");
+                //return;
+            }
+            else
+            {
+                _gamepadConnected = false;
+                Debug.Log("Геймпад не подключен.");
+            }
+        }
+
+
+        return _gamepadConnected;
     }
 }
 

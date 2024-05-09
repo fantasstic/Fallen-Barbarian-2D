@@ -25,7 +25,7 @@ MonoBehaviour:
     hitBoxDefinitionType: 1
   animationSpeed: 1
   _animationSpeed:
-    _serializedValue: 4294967296
+    _serializedValue: 8589934592
   wrapMode: 1
   characterPrefab: {fileID: 6370135527279938734, guid: f3e0394aa77c8294c8bad3dc52b6d8a7,
     type: 3}
@@ -82,7 +82,7 @@ MonoBehaviour:
   speedKeyFrameToggle: 0
   fixedSpeed: 1
   animSpeedKeyFrame: []
-  totalFrames: 47
+  totalFrames: 24
   startUpFrames: 0
   activeFrames: 1
   recoveryFrames: 2

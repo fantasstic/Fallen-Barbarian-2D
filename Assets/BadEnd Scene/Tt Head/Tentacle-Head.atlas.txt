@@ -1,0 +1,188 @@
+
+Tentacle-Head.png
+size: 1796,1796
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Alien_body
+  rotate: false
+  xy: 2, 38
+  size: 617, 853
+  orig: 926, 853
+  offset: 0, 0
+  index: -1
+Alien_hand_L
+  rotate: false
+  xy: 621, 187
+  size: 437, 472
+  orig: 459, 493
+  offset: 6, 21
+  index: -1
+Alien_hand_L_2
+  rotate: false
+  xy: 961, 39
+  size: 81, 146
+  orig: 81, 146
+  offset: 0, 0
+  index: -1
+Alien_hand_R
+  rotate: false
+  xy: 1060, 322
+  size: 249, 337
+  orig: 249, 338
+  offset: 0, 1
+  index: -1
+Alien_tentscle_1
+  rotate: true
+  xy: 1311, 312
+  size: 347, 136
+  orig: 348, 138
+  offset: 0, 0
+  index: -1
+Alien_tentscle_2
+  rotate: true
+  xy: 1605, 1405
+  size: 389, 178
+  orig: 389, 187
+  offset: 0, 9
+  index: -1
+Alien_tentscle_3
+  rotate: true
+  xy: 1605, 1061
+  size: 342, 172
+  orig: 342, 172
+  offset: 0, 0
+  index: -1
+Alien_tentscle_4
+  rotate: true
+  xy: 1670, 260
+  size: 137, 86
+  orig: 142, 90
+  offset: 4, 4
+  index: -1
+Alien_tentscle_5
+  rotate: false
+  xy: 1615, 883
+  size: 179, 176
+  orig: 192, 176
+  offset: 9, 0
+  index: -1
+Alien_tentscle_6
+  rotate: true
+  xy: 1635, 399
+  size: 293, 138
+  orig: 297, 161
+  offset: 2, 20
+  index: -1
+Alien_tentscle_Oral
+  rotate: true
+  xy: 1420, 9
+  size: 301, 100
+  orig: 306, 106
+  offset: 2, 6
+  index: -1
+BG
+  rotate: false
+  xy: 2, 893
+  size: 1601, 901
+  orig: 1601, 901
+  offset: 0, 0
+  index: -1
+Barb_body
+  rotate: false
+  xy: 1449, 369
+  size: 184, 308
+  orig: 432, 570
+  offset: 95, 1
+  index: -1
+Barb_breast_L
+  rotate: true
+  xy: 1630, 107
+  size: 109, 106
+  orig: 124, 107
+  offset: 15, 0
+  index: -1
+Barb_breast_R
+  rotate: true
+  xy: 1630, 9
+  size: 96, 101
+  orig: 116, 102
+  offset: 20, 1
+  index: -1
+Barb_eye
+  rotate: false
+  xy: 1264, 18
+  size: 27, 32
+  orig: 27, 32
+  offset: 0, 0
+  index: -1
+Barb_eye_closed
+  rotate: true
+  xy: 2, 2
+  size: 34, 26
+  orig: 34, 28
+  offset: 0, 2
+  index: -1
+Barb_hair
+  rotate: true
+  xy: 621, 31
+  size: 154, 338
+  orig: 165, 338
+  offset: 11, 0
+  index: -1
+Barb_hand_L
+  rotate: false
+  xy: 1264, 52
+  size: 154, 258
+  orig: 158, 261
+  offset: 4, 3
+  index: -1
+Barb_hand_R
+  rotate: false
+  xy: 1368, 679
+  size: 245, 212
+  orig: 256, 212
+  offset: 7, 0
+  index: -1
+Barb_head
+  rotate: false
+  xy: 1522, 74
+  size: 106, 142
+  orig: 106, 142
+  offset: 0, 0
+  index: -1
+Barb_leg
+  rotate: false
+  xy: 621, 661
+  size: 745, 230
+  orig: 759, 265
+  offset: 13, 0
+  index: -1
+Cum_1
+  rotate: false
+  xy: 1615, 694
+  size: 161, 187
+  orig: 175, 203
+  offset: 14, 0
+  index: -1
+Cum_2
+  rotate: false
+  xy: 1522, 218
+  size: 146, 149
+  orig: 146, 149
+  offset: 0, 0
+  index: -1
+Cum_3
+  rotate: true
+  xy: 1449, 313
+  size: 54, 67
+  orig: 54, 71
+  offset: 0, 4
+  index: -1
+Layer 2
+  rotate: false
+  xy: 1060, 17
+  size: 202, 303
+  orig: 202, 303
+  offset: 0, 0
+  index: -1
