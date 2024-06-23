@@ -15,6 +15,7 @@ public class DefaultMainMenuScreen : MainMenuScreen{
 	public bool stopPreviousSoundEffectsOnLoad = false;
 	public float delayBeforePlayingMusic = 0.1f;
 
+	public GameObject PatreonButton, DiscordButton;
 	public Button buttonNetwork;
 	public Button buttonBluetooth;
 	public GameObject ButtonManager;
@@ -22,6 +23,22 @@ public class DefaultMainMenuScreen : MainMenuScreen{
 
     private void Start()
     {
+        if (PlayerPrefs.GetString("PSFW") == "Yes")
+		{
+            PatreonButton.gameObject.SetActive(false);
+            DiscordButton.gameObject.SetActive(false);
+
+        }
+        else
+		{
+            PatreonButton.gameObject.SetActive(true);
+            DiscordButton.gameObject.SetActive(true);
+
+		}
+
+        if (!PlayerPrefs.HasKey("SFW"))
+			PlayerPrefs.SetString("SFW", "No");
+
 		ButtonManager = GameObject.Find("ButtonManager");
 
 		//UFE.config.inputOptions.inputManagerType = InputManagerType.UnityInputManager;

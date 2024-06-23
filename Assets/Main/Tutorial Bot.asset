@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -81809874, guid: 290947d1480294243a72173919bf47d1, type: 3}
-  m_Name: CPU Player
+  m_Name: Tutorial Bot
   m_EditorClassIdentifier: 
   version: 0
   profilePictureSmall: {fileID: 2800000, guid: 8713aa93b06530c4983a07976bfca2f2, type: 3}
   profilePictureBig: {fileID: 2800000, guid: ecc2db6fcb292584dbf3df8ef6c097c4, type: 3}
-  characterName: GREENCH
+  characterName: Tutorial
   gender: 2
   characterDescription: 
   selectionAnimation: {fileID: 0}
@@ -5746,10 +5746,10 @@ MonoBehaviour:
         name: 
         editorToggle: 0
         soundEffectsToggle: 0
-      moveEnabled: 1
-      jumpEnabled: 1
-      crouchEnabled: 1
-      blockEnabled: 1
+      moveEnabled: 0
+      jumpEnabled: 0
+      crouchEnabled: 0
+      blockEnabled: 0
       parryEnabled: 0
     attackMoves:
     - {fileID: 11400000, guid: b2bec4330ee60fe4887b11b69d5fc4f8, type: 2}
@@ -39669,11 +39669,11 @@ MonoBehaviour:
     basicMovesToggle: 1
     attackMovesToggle: 1
   aiInstructionsSet:
-  - aiInfo: {fileID: 11400000, guid: ca1b7af9ca8481a4fb9d27162cce6a97, type: 2}
+  - aiInfo: {fileID: 11400000, guid: 2b6b6fd7a264fbc4b844f91ce2bf32bd, type: 2}
     behavior: 4
-  - aiInfo: {fileID: 11400000, guid: 044842a06c15ad74989b296d12346ee5, type: 2}
+  - aiInfo: {fileID: 11400000, guid: 2b6b6fd7a264fbc4b844f91ce2bf32bd, type: 2}
     behavior: 1
-  - aiInfo: {fileID: 11400000, guid: aeec711a21f7233459b829b72726b409, type: 2}
+  - aiInfo: {fileID: 11400000, guid: 2b6b6fd7a264fbc4b844f91ce2bf32bd, type: 2}
     behavior: 2
   - aiInfo: {fileID: 11400000, guid: 2b6b6fd7a264fbc4b844f91ce2bf32bd, type: 2}
     behavior: 3

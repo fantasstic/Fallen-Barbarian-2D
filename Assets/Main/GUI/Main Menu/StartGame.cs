@@ -15,7 +15,9 @@ public class StartGame : MonoBehaviour
 
     public UFE3D.CharacterInfo Player1;
     public UFE3D.CharacterInfo Player2;
+    public UFE3D.CharacterInfo Player3;
     public GameObject MoveTutorial, GamePadTutorial;
+    public bool _isTuttorialMode;
 
     private void Start()
     {
@@ -24,42 +26,57 @@ public class StartGame : MonoBehaviour
         Debug.Log(_isTutorialActive);
 
         _wins = PlayerPrefs.GetInt("Wins");
-       // _wins = 4;
-        switch (_wins)
+        //_wins = 3;
+
+        if(!_isTuttorialMode)
         {
-            case 0:
-                Player2.characterName = "BLOOD BLONDE";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryEasy;
-                break;
-            case 1:
-                Player2.characterName = "GREENCH";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryEasy;
-                break;
-            case 2:
-                Player2.characterName = "BLUE ICE";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.Easy;
-                break;
-            case 3:
-                Player2.characterName = "PURPLE KILLER";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
-                break;
-            case 4:
-                Player2.characterName = "PINKY";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
-                break;
-            case 5:
-                Player2.characterName = "ORANGIE";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
-                break;
-            case 6:
-                Player2.characterName = "RED HEAD";
-                _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
-                break;
+
+            switch (_wins)
+            {
+                case 0:
+                    Player2.characterName = "BLOOD BLONDE";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryEasy;
+                    break;
+                case 1:
+                    Player2.characterName = "GREENCH";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryEasy;
+                    break;
+                case 2:
+                    Player2.characterName = "BLUE ICE";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.Easy;
+                    break;
+                case 3:
+                    Player2.characterName = "PURPLE KILLER";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
+                    break;
+                case 4:
+                    Player2.characterName = "PINKY";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
+                    break;
+                case 5:
+                    Player2.characterName = "ORANGIE";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
+                    break;
+                case 6:
+                    Player2.characterName = "RED HEAD";
+                    _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.VeryHard;
+                    break;
 
 
+            }
+        }
+        else
+        {
+            Player2.characterName = "Tutorial";
+            _globalInfo.aiOptions.selectedDifficultyLevel = AIDifficultyLevel.Impossible;
         }
 
         //Player2.characterName = "BLOOD BLONDE";
+    }
+
+    public void TutorialButton()
+    {
+        UFE.StartTrainingMode();
     }
 
     public void StartGameButton()
@@ -87,11 +104,15 @@ public class StartGame : MonoBehaviour
             else
             {
                 _isGameRunning = true;
-                UFE.StartGame();
-                if(_firstStart)
+                Debug.Log(UFE.gameMode);
+                //UFE.gameMode = GameMode.ChallengeMode;
+                UFE.StartTrainingMode();
+                //UFE.StartGame();
+                if (_firstStart)
                 {
 
                     UFE.SetPlayer1(Player1);
+
                     UFE.SetPlayer2(Player2);
                     UFE.SetStage("Main");
                     _firstStart = false;
@@ -125,7 +146,8 @@ public class StartGame : MonoBehaviour
                 _isGameRunning = true;
                 UFE.StartGame();
                 UFE.SetPlayer1(Player1);
-                UFE.SetPlayer2(Player2);
+                UFE.SetPlayer2(Player3);
+                //UFE.SetPlayer2(Player2);
                 UFE.SetStage("Main");
                 //var player = UFE.GetPlayer1();
             }

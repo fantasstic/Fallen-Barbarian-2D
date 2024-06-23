@@ -12,7 +12,7 @@ public class GoblinScene : MonoBehaviour
     [SerializeField] private float _sceneDeley;
     [SerializeField] private List<GameObject> _badEndScenes = new List<GameObject>();
     [SerializeField] private float _badEndSceneDeley;
-    [SerializeField] private GameObject _hair;
+    [SerializeField] private GameObject _hair, _blur1, _blur2;
     [SerializeField] private bool _shuffleMode = false;
 
     private List<int> _alredyUsedRandomNumbersHistory = new List<int>();
@@ -20,9 +20,13 @@ public class GoblinScene : MonoBehaviour
     private bool _badEndAnimationStarted = false;
 
     public int CurrentBadEndSceneIndex = 0;
+    public bool IsTestMod;
 
     private void Start()
     {
+        if(PlayerPrefs.GetString("PSFW") == "Yes")
+            LoadBattleScene();
+
         if (!PlayerPrefs.HasKey("ShuffleMode"))
             PlayerPrefs.SetString("ShuffleMode", "No");
 
@@ -31,9 +35,24 @@ public class GoblinScene : MonoBehaviour
         else
             _shuffleMode = false;
 
+        if (PlayerPrefs.GetString("SFW") == "Yes")
+        {
+            _blur1.SetActive(true);
+            _blur2.SetActive(false);
+        }
+        else
+        {
+            _blur1.SetActive(false);
+            _blur2.SetActive(false);
+        }
+
         Invoke("EnableHair", 2.1f);
         /*Invoke("LoadBattleScene", _sceneDeley);*/
-        Invoke("StartBadEndAnimation", _badEndSceneDeley);
+
+        if (PlayerPrefs.GetString("SFW") == "Yes")
+            Invoke("LoadBattleScene", _badEndSceneDeley);
+        else
+            Invoke("StartBadEndAnimation", _badEndSceneDeley);
     }
 
     private void Update()
@@ -41,7 +60,12 @@ public class GoblinScene : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, _positionToMove.position, _speed * Time.deltaTime);
 
         if (Input.anyKey && !_badEndAnimationStarted)
-            StartBadEndAnimation();
+        {
+            if(PlayerPrefs.GetString("SFW") == "Yes")
+                LoadBattleScene();
+            else
+                StartBadEndAnimation();
+        }    
 
         if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Menu"))
         {
@@ -51,6 +75,11 @@ public class GoblinScene : MonoBehaviour
 
     private void EnableHair()
     {
+        if(PlayerPrefs.GetString("SFW") == "Yes")
+        {
+            _blur1.SetActive(false);
+            _blur2.SetActive(true);
+        }
         _hair.SetActive(true);
     }
 
@@ -61,7 +90,12 @@ public class GoblinScene : MonoBehaviour
 
     private void StartBadEndAnimation()
     {
-        //PlayerPrefs.SetString("ShuffleMode", "Yes");
+        if(IsTestMod)
+        {
+            int scenesCount = _badEndScenes.Count;
+            _badEndScenes[scenesCount - 1].SetActive(true);
+            return;
+        }
 
         if (_badEndScenes.Count == 0)
         {
@@ -78,12 +112,7 @@ public class GoblinScene : MonoBehaviour
 
         if (_shuffleMode)
         {
-            /*int randomIndex = Random.Range(0, _badEndScenes.Count);
-            GameObject selectedBadEndScene = _badEndScenes[randomIndex];
-            //_badEndScenes.RemoveAt(randomIndex);
-            CurrentBadEndSceneIndex = randomIndex;
-
-            selectedBadEndScene.SetActive(true);*/
+            
             NewShuffleMode();
         }
         else

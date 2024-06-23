@@ -4572,6 +4572,7 @@ GameObject:
   - component: {fileID: 663838942}
   - component: {fileID: 663838945}
   - component: {fileID: 663838946}
+  - component: {fileID: 663838947}
   m_Layer: 0
   m_Name: UFE Manager
   m_TagString: Untagged
@@ -4639,7 +4640,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
+  m_RepeatDelay: 0.1
   m_ForceModuleActive: 0
 --- !u!114 &663838946
 MonoBehaviour:
@@ -4662,6 +4663,18 @@ MonoBehaviour:
   CrouchButtonPressed: 0
   RollForwardButtonPressed: 0
   RollBackButtonPressed: 0
+--- !u!114 &663838947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663838941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: febe8807e8d36c447bc5b6fb182f6d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &673168869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,6 +6084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 987561280}
   - component: {fileID: 987561279}
+  - component: {fileID: 987561281}
   m_Layer: 0
   m_Name: MapPoole
   m_TagString: Untagged
@@ -6109,6 +6123,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987561281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987561278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001df1e666155ac409fac89c2920cbf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1462327970484030, guid: f01c1eba69de19e44b04d8d651aaac37, type: 3}
+  poolSize: 10
 --- !u!1 &992010434
 GameObject:
   m_ObjectHideFlags: 0
@@ -13770,6 +13798,7 @@ GameObject:
   - component: {fileID: 2072733963}
   - component: {fileID: 2072733966}
   - component: {fileID: 2072733967}
+  - component: {fileID: 2072733968}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -13983,9 +14012,23 @@ MonoBehaviour:
   _moveSetScript: {fileID: 0}
   _buttonManager: {fileID: 2016285488}
   _globalInfo: {fileID: 11400000, guid: 95f0a97a22291b34eae0989d2203ad1a, type: 2}
+  _fallEffectPool: {fileID: 987561281}
   RoundStart: 0
   IsMainScreen: 1
+  CanJump: 0
   EnemyWinner: 0
+--- !u!114 &2072733968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072733962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313a4bbe92a68ea449107dc1e91a0169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4549761722261296005
 PrefabInstance:
   m_ObjectHideFlags: 0

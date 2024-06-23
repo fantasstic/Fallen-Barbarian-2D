@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
   m_Name: cum-bowl_SkeletonData
   m_EditorClassIdentifier: 
-  atlasAssets: []
+  atlasAssets:
+  - {fileID: 11400000, guid: ecb4b5dd731b0074098145c72e7a5d58, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 82f8b060a0c8a0948b9be24b710f4c6e, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 2715dedec99a18341927935dfa8dfb28, type: 3}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []
-  defaultMix: 0
+  defaultMix: 0.2
   controller: {fileID: 0}

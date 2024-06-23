@@ -24,7 +24,7 @@ MonoBehaviour:
     movementDuration: 0.4
     buttonSequenceInterval: 1
     attackDesirabilityCalculation: 2
-    defaultDesirability: 0
+    defaultDesirability: 6
     playRandomMoves: 0
     reactionParameters:
       attackWhenEnemyIsDown: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
       strong: 0.2
       veryStrong: 0.25
     distance:
-      veryClose: 0.053
+      veryClose: 0.01
       close: 0.35
       mid: 0.5
       far: 0.75

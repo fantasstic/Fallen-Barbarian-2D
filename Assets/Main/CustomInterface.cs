@@ -50,7 +50,10 @@ public class CustomInterface : AbstractInputController
         if (Button1Pressed)
         {
             if(!_controller.RoundStart || _controller.RoundStart && UFE.isPaused())
+            {
                 vAxis = 1;
+
+            }
             b1 = true;
 
         }
@@ -114,7 +117,6 @@ public class CustomInterface : AbstractInputController
             }
             else if (inputReference.inputType == InputType.VerticalAxis)
             { // Sends vAxis value as a Vertical Axis Input Event
-                //Debug.Log("allasd01");
                 return new InputEvents(vAxis);
             }
             else if (inputReference.inputType == InputType.Button && inputReference.engineRelatedButton == ButtonPress.Button1)

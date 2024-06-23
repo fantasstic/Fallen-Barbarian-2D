@@ -123,11 +123,15 @@ MonoBehaviour:
       ending: {fileID: 0}
       fightsGroups: []
       showStoryInEditor: 0
-    selectableCharactersInStoryMode: 0000000001000000
-    selectableCharactersInVersusMode: 0000000001000000
+    selectableCharactersInStoryMode: 000000000100000002000000
+    selectableCharactersInVersusMode: 000000000100000002000000
     characterStories:
-      _keys: 0000000001000000
+      _keys: 000000000100000002000000
       _values:
+      - opening: {fileID: 0}
+        ending: {fileID: 0}
+        fightsGroups: []
+        showStoryInEditor: 0
       - opening: {fileID: 0}
         ending: {fileID: 0}
         fightsGroups: []
@@ -332,9 +336,9 @@ MonoBehaviour:
     overrideBlockHitEffects: 0
     blockHitEffects:
       hitParticle: {fileID: 0}
-      killTime: 0
+      killTime: 1
       hitSound: {fileID: 0}
-      spawnPoint: 1
+      spawnPoint: 0
       freezingTime: 0
       _freezingTime:
         _serializedValue: 0
@@ -346,14 +350,14 @@ MonoBehaviour:
       _hitStop:
         _serializedValue: 0
       mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
       shakeDensity: 0.8
       _shakeDensity:
         _serializedValue: 3435973888
       _shakeCameraDensity:
         _serializedValue: 3435973888
-      editorToggle: 0
+      editorToggle: 1
     parryType: 0
     parryTiming: 0
     _parryTiming:
@@ -387,7 +391,7 @@ MonoBehaviour:
         _serializedValue: 3435973888
       _shakeCameraDensity:
         _serializedValue: 3435973888
-      editorToggle: 1
+      editorToggle: 0
     parryColor: {r: 0, g: 0, b: 0, a: 0}
     allowAirParry: 0
     highlightWhenParry: 0
@@ -406,7 +410,7 @@ MonoBehaviour:
         _serializedValue: 429496736
       hideHitBoxesOnFrame: 10
       hideHitBoxes: 0
-      editorToggle: 1
+      editorToggle: 0
       hasQuickStand: 0
       predefinedPushForce: {x: 0, y: 0}
       _predefinedPushForce:
@@ -536,7 +540,7 @@ MonoBehaviour:
         _serializedValue: 429496736
       hideHitBoxesOnFrame: 10
       hideHitBoxes: 0
-      editorToggle: 1
+      editorToggle: 0
       hasQuickStand: 0
       predefinedPushForce: {x: 0, y: 0}
       _predefinedPushForce:
@@ -578,12 +582,12 @@ MonoBehaviour:
         _serializedValue: 3435973888
       _shakeCameraDensity:
         _serializedValue: 3435973888
-      editorToggle: 1
+      editorToggle: 0
     mediumHit:
       hitParticle: {fileID: 0}
-      killTime: 0
+      killTime: 1
       hitSound: {fileID: 0}
-      spawnPoint: 1
+      spawnPoint: 2
       freezingTime: 0
       _freezingTime:
         _serializedValue: 0
@@ -595,8 +599,8 @@ MonoBehaviour:
       _hitStop:
         _serializedValue: 0
       mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
       shakeDensity: 0.8
       _shakeDensity:
         _serializedValue: 3435973888
@@ -653,9 +657,9 @@ MonoBehaviour:
       editorToggle: 0
     customHit1:
       hitParticle: {fileID: 0}
-      killTime: 0
+      killTime: 1
       hitSound: {fileID: 0}
-      spawnPoint: 1
+      spawnPoint: 2
       freezingTime: 0
       _freezingTime:
         _serializedValue: 0
@@ -667,8 +671,8 @@ MonoBehaviour:
       _hitStop:
         _serializedValue: 0
       mirrorOn2PSide: 0
-      shakeCharacterOnHit: 1
-      shakeCameraOnHit: 1
+      shakeCharacterOnHit: 0
+      shakeCameraOnHit: 0
       shakeDensity: 0.8
       _shakeDensity:
         _serializedValue: 3435973888
@@ -798,7 +802,7 @@ MonoBehaviour:
   player1_Inputs:
   - inputType: 0
     inputButtonName: P1KeyboardHorizontal
-    engineRelatedButton: 1
+    engineRelatedButton: 0
     joystickAxisName: P1JoystickHorizontal
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -959,7 +963,7 @@ MonoBehaviour:
   player2_Inputs:
   - inputType: 1
     inputButtonName: P2KeyboardVertical
-    engineRelatedButton: 2
+    engineRelatedButton: 3
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1162,6 +1166,7 @@ MonoBehaviour:
   characters:
   - {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   - {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
+  - {fileID: 11400000, guid: b0b780c9c41eaaf4dbf1233c6379a5fa, type: 2}
   debugOptions:
     startGameImmediately: 0
     skipLoadingScreen: 1
@@ -1185,9 +1190,9 @@ MonoBehaviour:
       position: 0
       lifePoints: 0
       gaugePoints: 0
-      currentState: 1
-      currentSubState: 1
-      stunTime: 1
+      currentState: 0
+      currentSubState: 0
+      stunTime: 0
       comboHits: 0
       comboDamage: 0
       inputs: 0
@@ -1199,14 +1204,14 @@ MonoBehaviour:
       position: 0
       lifePoints: 0
       gaugePoints: 0
-      currentState: 1
-      currentSubState: 1
-      stunTime: 1
+      currentState: 0
+      currentSubState: 0
+      stunTime: 0
       comboHits: 0
       comboDamage: 0
       inputs: 0
       buttonSequence: 0
-      aiWeightList: 0
+      aiWeightList: 1
   trainingModeOptions:
     inputInfo: 0
     freezeTime: 0
@@ -1221,17 +1226,22 @@ MonoBehaviour:
     refillTime: 3
   challengeModeOptions:
   - challengeName: Challenge 1
-    description: 
+    description: Pinok
     character: {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
     opCharacter: {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
     ai: {fileID: 0}
-    isCombo: 0
+    isCombo: 1
     aiOpponent: 0
-    resetData: 0
-    repeats: 1
+    resetData: 1
+    repeats: 3
     challengeSequence: 0
-    actionListToggle: 0
-    actionSequence: []
+    actionListToggle: 1
+    actionSequence:
+    - actionType: 1
+      specialMove: {fileID: 11400000, guid: c4b51d4e060961344bd490e0adf17339, type: 2}
+      basicMove: 0
+      button: 0
+      onlyAllowThisButton: 0
   aiOptions:
     engine: 1
     attackWhenEnemyIsDown: 0
@@ -1319,20 +1329,32 @@ MonoBehaviour:
       overrideComboEfficiency: 1
       comboEfficiency: 0.2
       startupBehavior: 2
-    selectedDifficultyLevel: 0
+    - difficultyLevel: 5
+      overrideTimeBetweenDecisions: 0
+      timeBetweenDecisions: 0
+      overrideTimeBetweenActions: 0
+      timeBetweenActions: 0.05
+      overrideAggressiveness: 0
+      aggressiveness: 0.5
+      overrideRuleCompliance: 0
+      ruleCompliance: 0.9
+      overrideComboEfficiency: 0
+      comboEfficiency: 1
+      startupBehavior: 3
+    selectedDifficultyLevel: 5
     selectedDifficulty:
-      difficultyLevel: 0
-      overrideTimeBetweenDecisions: 1
-      timeBetweenDecisions: 0.5
-      overrideTimeBetweenActions: 1
-      timeBetweenActions: 0.3
-      overrideAggressiveness: 1
-      aggressiveness: 0.1
-      overrideRuleCompliance: 1
-      ruleCompliance: 0.606
-      overrideComboEfficiency: 1
-      comboEfficiency: 0.2
-      startupBehavior: 1
+      difficultyLevel: 5
+      overrideTimeBetweenDecisions: 0
+      timeBetweenDecisions: 0
+      overrideTimeBetweenActions: 0
+      timeBetweenActions: 0.05
+      overrideAggressiveness: 0
+      aggressiveness: 0.5
+      overrideRuleCompliance: 0
+      ruleCompliance: 0.9
+      overrideComboEfficiency: 0
+      comboEfficiency: 1
+      startupBehavior: 3
   networkOptions:
     forceAnimationControl: 0
     disableRootMotion: 0

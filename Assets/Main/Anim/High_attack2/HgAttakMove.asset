@@ -151,7 +151,7 @@ MonoBehaviour:
     basicMovesToggle: 0
     statesToggle: 0
   selfConditions:
-    basicMoveLimitation: 0c000000
+    basicMoveLimitation: 0c0000000d000000
     possibleMoveStates: []
     basicMovesToggle: 1
     statesToggle: 1

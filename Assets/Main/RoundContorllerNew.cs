@@ -17,6 +17,7 @@ public class RoundContorllerNew : MonoBehaviour
     [SerializeField] private MoveSetScript _moveSetScript;
     [SerializeField] private GameObject _buttonManager;
     [SerializeField] private UFE3D.GlobalInfo _globalInfo;
+    [SerializeField] private ObjectPool _fallEffectPool;
 
     private GameObject _background;
     private GameObject _gameUI;
@@ -29,24 +30,19 @@ public class RoundContorllerNew : MonoBehaviour
     private int _wins;
     private bool _gamepadConnected = false;
     public bool IsMainScreen = true;
+    public bool CanJump;
 
     private static bool _secondStart;
     public bool EnemyWinner;
 
     private void Awake()
     {
-
-
         _rollMove.hits[0].unblockable = false;
         UFE.OnRoundBegins += OnRoundBegins;
         UFE.OnRoundEnds += OnRoundEnds;
         UFE.OnBlock += OnBlock;
         UFE.OnBasicMove += UFE_OnBasicMove;
         UFE.OnLifePointsChange += OnLifePointsChange;
-
-        /*_background = GameObject.Find("Background");
-        _background.SetActive(false);*/
-
 
         if (_secondStart)
         {
@@ -64,7 +60,6 @@ public class RoundContorllerNew : MonoBehaviour
                 Invoke("OffBack", 3f);
             }
 
-            /*_background.SetActive(true);*/
         }
         else
         {
@@ -101,10 +96,16 @@ public class RoundContorllerNew : MonoBehaviour
 
     private void UFE_OnBasicMove(BasicMoveReference basicMove, ControlsScript player)
     {
+        
+
         if (basicMove == BasicMoveReference.BlockingHighHit || basicMove == BasicMoveReference.BlockingHighPose)
         {
+            if(CanJump)
+            {
+                Debug.Log("Jump");
+                player.Physics.Jump();
+            }
             _rollMove.hits[0].unblockable = true;
-            Debug.Log(_rollMove.hits[0].unblockable);
         }
         else
         {
@@ -121,7 +122,6 @@ public class RoundContorllerNew : MonoBehaviour
 
                 if (otherPlayer.currentMove.name == _moveKick.name || otherPlayer.currentMove.name == _kickBot.name)
                 {
-                    Debug.Log("Kick");
                     player.Physics.ResetForces(true, false);
                     player.Physics.AddForce(new FPLibrary.FPVector(-25, 0, 0), otherPlayer.transform.position.x > player.transform.position.x ? 1 : -1);
                     player.stunTime = 0.5f;
@@ -134,7 +134,32 @@ public class RoundContorllerNew : MonoBehaviour
                     player.stunTime = 1;
                 }*/
             }
+
+            if(basicMove == BasicMoveReference.HitStandingHighKnockdown || basicMove == BasicMoveReference.HitStandingMidKnockdown)
+            {
+                //var otherPlayer = _enemy == player ? _player : _enemy;
+
+                StartCoroutine(CreateEffectWithDelay(0.3f, player));
+            }
         }
+    }
+
+    private IEnumerator CreateEffectWithDelay(float delay, ControlsScript player)
+    {
+        yield return new WaitForSeconds(delay);
+        Vector3 spawnPos = player.transform.position;
+        if (player.mirror == 1)
+        {
+            spawnPos.x += 3; // Спавн эффект левее игрока
+        }
+        else
+        {
+            spawnPos.x -= 3; // Спавн эффект правее игрока
+        }
+
+        GameObject effect = _fallEffectPool.GetObject();
+        effect.transform.position = spawnPos;
+        effect.transform.rotation = Quaternion.identity;
     }
 
     private void OnBlock(HitBox strokeHitBox, MoveInfo move, ControlsScript player)
@@ -149,7 +174,8 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player1" && move.name == "RollMove" && strokeHitBox.type == HitBoxType.low)
         {
-            Debug.Log("Damage Back");
+            player.blockStunned = false;
+
             _enemy.KillCurrentMove();
             _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHighKnockdown);
             _enemy.currentSubState = SubStates.Stunned;
@@ -164,7 +190,6 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player1" && move.name == "HgAttackMove" && strokeHitBox.type == HitBoxType.low)
         {
-            Debug.Log("Damage Back");
             playerControl.DamageMe(10, false);
         }
 
@@ -182,6 +207,7 @@ public class RoundContorllerNew : MonoBehaviour
         {
             if(!_enemyDamageBack)
             {
+                player.blockStunned = false;
                 _enemy.KillCurrentMove();
                 _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHighKnockdown);
                 _enemy.currentSubState = SubStates.Stunned;
@@ -189,7 +215,6 @@ public class RoundContorllerNew : MonoBehaviour
                 _enemy.currentState = PossibleStates.Down;
                 enemyControl.DamageMe(10, false);
                 _enemyDamageBack = true;
-                //_enemy.Physics.ForceGrounded();
             }
         }
 
@@ -200,6 +225,8 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player1" && move.name == "Attack_Low_Bot" && strokeHitBox.type == HitBoxType.low)
         {
+            player.blockStunned = false;
+
             _enemy.KillCurrentMove();
             _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHigh);
             _enemy.currentSubState = SubStates.Stunned;
@@ -209,6 +236,8 @@ public class RoundContorllerNew : MonoBehaviour
 
         if (player.name == "Player1" && move.name == "HgAttakBot" && strokeHitBox.type == HitBoxType.high)
         {
+            player.blockStunned = false;
+
             _enemy.KillCurrentMove();
             _moveSetScript.PlayBasicMove(_moveSetScript.basicMoves.getHitHigh);
             _enemy.currentSubState = SubStates.Stunned;
@@ -219,7 +248,6 @@ public class RoundContorllerNew : MonoBehaviour
 
     private void OnRoundBegins(int newInt)
     {
-        Debug.Log("OnRoundBegins");
         RoundStart = true;
 
         RuntimePlatform platform = Application.platform;
@@ -243,7 +271,8 @@ public class RoundContorllerNew : MonoBehaviour
             _wins = PlayerPrefs.GetInt("Wins");
         }
 
-        Debug.Log(_wins);
+        
+        //_wins = 3;
 
         switch (_wins)
         {
@@ -281,7 +310,6 @@ public class RoundContorllerNew : MonoBehaviour
         if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
             _buttonManager.SetActive(false);
 
-        //_buttonManager.SetActive(false);
         RoundStart = false;
         Debug.Log(winner);
         _gameUI = GameObject.Find("CanvasGroup");
@@ -353,8 +381,6 @@ public class RoundContorllerNew : MonoBehaviour
     {
         if(RoundStart)
         {
-            //Debug.Log(Input.GetAxis("P2JoystickVertical"));
-
             CheckHitInJump(_enemy, ref _lastEnemyYPos);
             CheckHitInJump(_player, ref _lastPlayerYPos);
 
@@ -366,11 +392,6 @@ public class RoundContorllerNew : MonoBehaviour
 
             ForceCharToGround(_enemy);
             ForceCharToGround(_player);
-
-            /*if (_enemy.transform.position.y >= 6)
-                _enemy.Physics.ForceGrounded();*/
-
-            //Debug.Log(_enemy.transform.position.y);
 
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Menu") && IsMainScreen)
             {
@@ -385,6 +406,20 @@ public class RoundContorllerNew : MonoBehaviour
                     IsMainScreen = true;
                 }
             }
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                /*if(_player.currentBasicMove == BasicMoveReference.BlockingHighHit || _player.currentBasicMove == BasicMoveReference.BlockingHighPose || _player.currentBasicMove == BasicMoveReference.BlockingCrouchingPose)
+                {
+                    _player.Physics.Jump();
+                }*/
+                if (_player.isBlocking)
+                {
+                    _player.currentSubState = SubStates.Resting;
+                    _player.Physics.Jump();
+                }
+            }
+            //Debug.Log(_player.stunTime);
         }
 
         if (_roundEnd)
@@ -406,7 +441,6 @@ public class RoundContorllerNew : MonoBehaviour
             {
                 _gamepadConnected = true;
                 Debug.Log("Геймпад подключен.");
-                //return;
             }
             else
             {

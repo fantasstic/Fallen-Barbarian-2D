@@ -1,0 +1,299 @@
+
+cum-bowl.png
+size: 2048,1745
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bowl
+  rotate: false
+  xy: 1080, 896
+  size: 457, 295
+  orig: 457, 334
+  offset: 0, 39
+  index: -1
+bowl_back
+  rotate: false
+  xy: 872, 1580
+  size: 446, 105
+  orig: 446, 105
+  offset: 0, 0
+  index: -1
+cum_1_drop
+  rotate: true
+  xy: 1036, 1700
+  size: 43, 96
+  orig: 43, 96
+  offset: 0, 0
+  index: -1
+cum_2_drop
+  rotate: true
+  xy: 100, 1713
+  size: 30, 71
+  orig: 30, 71
+  offset: 0, 0
+  index: -1
+cum_back
+  rotate: true
+  xy: 620, 906
+  size: 294, 458
+  orig: 295, 458
+  offset: 0, 0
+  index: -1
+cum_bowl
+  rotate: false
+  xy: 869, 1405
+  size: 392, 173
+  orig: 393, 174
+  offset: 0, 1
+  index: -1
+cum_bowl_1
+  rotate: false
+  xy: 173, 1711
+  size: 259, 32
+  orig: 259, 32
+  offset: 0, 0
+  index: -1
+cum_face
+  rotate: false
+  xy: 1263, 1279
+  size: 253, 244
+  orig: 254, 244
+  offset: 0, 0
+  index: -1
+cum_face_1
+  rotate: true
+  xy: 1581, 1464
+  size: 176, 222
+  orig: 176, 222
+  offset: 0, 0
+  index: -1
+cum_face_2
+  rotate: false
+  xy: 1682, 1642
+  size: 133, 101
+  orig: 133, 101
+  offset: 0, 0
+  index: -1
+cum_face_3
+  rotate: true
+  xy: 434, 1711
+  size: 32, 143
+  orig: 32, 143
+  offset: 0, 0
+  index: -1
+cum_face_4
+  rotate: false
+  xy: 1193, 1694
+  size: 83, 49
+  orig: 83, 49
+  offset: 0, 0
+  index: -1
+cum_face_5
+  rotate: false
+  xy: 579, 1711
+  size: 259, 32
+  orig: 259, 32
+  offset: 0, 0
+  index: -1
+hair_1
+  rotate: true
+  xy: 928, 489
+  size: 405, 457
+  orig: 498, 459
+  offset: 0, 0
+  index: -1
+hair_2
+  rotate: true
+  xy: 429, 500
+  size: 404, 497
+  orig: 404, 497
+  offset: 0, 0
+  index: -1
+hand
+  rotate: false
+  xy: 1077, 2
+  size: 734, 427
+  orig: 734, 427
+  offset: 0, 0
+  index: -1
+leg
+  rotate: true
+  xy: 2, 629
+  size: 364, 425
+  orig: 786, 492
+  offset: 0, 0
+  index: -1
+ork_1_ball_1
+  rotate: true
+  xy: 1320, 1525
+  size: 154, 259
+  orig: 154, 259
+  offset: 0, 0
+  index: -1
+ork_1_ball_2
+  rotate: true
+  xy: 1817, 1587
+  size: 156, 226
+  orig: 156, 226
+  offset: 0, 0
+  index: -1
+ork_1_body
+  rotate: true
+  xy: 708, 1202
+  size: 201, 552
+  orig: 201, 552
+  offset: 0, 0
+  index: -1
+ork_1_dick
+  rotate: false
+  xy: 2, 1331
+  size: 360, 189
+  orig: 360, 189
+  offset: 0, 0
+  index: -1
+ork_1_leg_1
+  rotate: true
+  xy: 1278, 1687
+  size: 56, 158
+  orig: 56, 158
+  offset: 0, 0
+  index: -1
+ork_1_leg_2
+  rotate: true
+  xy: 1387, 431
+  size: 407, 419
+  orig: 407, 419
+  offset: 0, 0
+  index: -1
+ork_2_body
+  rotate: true
+  xy: 1438, 1681
+  size: 62, 242
+  orig: 62, 242
+  offset: 0, 0
+  index: -1
+ork_2_dick
+  rotate: false
+  xy: 1805, 1402
+  size: 241, 183
+  orig: 241, 183
+  offset: 0, 0
+  index: -1
+ork_2_hand
+  rotate: false
+  xy: 2, 995
+  size: 616, 251
+  orig: 616, 251
+  offset: 0, 0
+  index: -1
+ork_2_leg
+  rotate: true
+  xy: 1518, 1193
+  size: 207, 519
+  orig: 207, 519
+  offset: 0, 0
+  index: -1
+ropes
+  rotate: false
+  xy: 2, 72
+  size: 1073, 415
+  orig: 1073, 415
+  offset: 0, 0
+  index: -1
+stick_1
+  rotate: true
+  xy: 2, 1622
+  size: 87, 868
+  orig: 87, 868
+  offset: 0, 0
+  index: -1
+stick_2
+  rotate: true
+  xy: 2, 1522
+  size: 98, 865
+  orig: 98, 865
+  offset: 0, 0
+  index: -1
+tit
+  rotate: true
+  xy: 364, 1248
+  size: 272, 342
+  orig: 272, 342
+  offset: 0, 0
+  index: -1
+woman_eye
+  rotate: false
+  xy: 1134, 1700
+  size: 57, 43
+  orig: 57, 43
+  offset: 0, 0
+  index: -1
+woman_eyebow
+  rotate: false
+  xy: 896, 1709
+  size: 78, 34
+  orig: 78, 34
+  offset: 0, 0
+  index: -1
+woman_eyelid_closed
+  rotate: false
+  xy: 976, 1706
+  size: 58, 37
+  orig: 58, 37
+  offset: 0, 0
+  index: -1
+woman_eyelid_open
+  rotate: false
+  xy: 28, 1716
+  size: 70, 27
+  orig: 70, 27
+  offset: 0, 0
+  index: -1
+woman_head
+  rotate: true
+  xy: 1539, 840
+  size: 351, 411
+  orig: 351, 411
+  offset: 0, 0
+  index: -1
+woman_mouth
+  rotate: false
+  xy: 840, 1711
+  size: 54, 32
+  orig: 54, 32
+  offset: 0, 0
+  index: -1
+woman_pupil
+  rotate: false
+  xy: 2, 1721
+  size: 24, 22
+  orig: 24, 22
+  offset: 0, 0
+  index: -1
+
+cum-bowl2.png
+size: 1605,1405
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back
+  rotate: false
+  xy: 2, 502
+  size: 1601, 901
+  orig: 1603, 903
+  offset: 1, 1
+  index: -1
+body
+  rotate: false
+  xy: 2, 2
+  size: 899, 498
+  orig: 899, 498
+  offset: 0, 0
+  index: -1
+ork_1_hand_1
+  rotate: false
+  xy: 903, 23
+  size: 648, 477
+  orig: 648, 477
+  offset: 0, 0
+  index: -1

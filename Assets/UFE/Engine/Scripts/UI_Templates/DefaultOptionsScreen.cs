@@ -17,7 +17,7 @@ public class DefaultOptionsScreen : OptionsScreen{
 	public Slider difficultySlider;
 	public Text difficultyName;
 	public Text aiEngineName;
-	public Toggle debugModeToggle;
+	public Toggle debugModeToggle, sfwToggle;
 	public Button changeControlsButton;
 	public Button cancelButton;
 	public float sliderSpeed = 0.1f;
@@ -25,9 +25,28 @@ public class DefaultOptionsScreen : OptionsScreen{
 	public float delayBeforePlayingMusic = 0.1f;
     #endregion
 
+    private void Awake()
+    {
+        if (PlayerPrefs.GetString("PSFW") == "Yes")
+            sfwToggle.gameObject.SetActive(false);
+        else
+            sfwToggle.gameObject.SetActive(true);
+    }
+
     private void Start()
     {
-        
+        this.sfwToggle.onValueChanged.RemoveListener(ToggleNSFWMode);
+
+        if (PlayerPrefs.GetString("SFW") == "No")
+        {
+			sfwToggle.isOn = false;
+        }
+        else
+        {
+            sfwToggle.isOn = true;
+        }
+
+        this.sfwToggle.onValueChanged.AddListener(ToggleNSFWMode);
     }
 
     #region protected instance properties
@@ -58,7 +77,8 @@ public class DefaultOptionsScreen : OptionsScreen{
 	}
 	
 	public override void OnHide (){
-		base.OnHide ();
+        //sfwToggle.onValueChanged.RemoveListener(delegate { ToggleNSFWMode(sfwToggle.isOn); });
+        base.OnHide ();
 		this.visible = false;
 	}
 	
@@ -250,6 +270,20 @@ public class DefaultOptionsScreen : OptionsScreen{
 			}
 		}
 	}
+
+	public void ToggleNSFWMode(bool isOn)
+	{
+        if (isOn)
+        {
+            PlayerPrefs.SetString("SFW", "Yes");
+
+        }
+        else
+		{
+            PlayerPrefs.SetString("SFW", "No");
+        }
+			Debug.Log(PlayerPrefs.GetString("SFW"));
+    }
 	
 	public override void ToggleMusic(){
 		if (this.visible){
