@@ -812,7 +812,7 @@ MonoBehaviour:
   Player3: {fileID: 0}
   MoveTutorial: {fileID: 1377440647233432984}
   GamePadTutorial: {fileID: 4956930846842058020}
-  _isTuttorialMode: 0
+  _isTutorialMode: 0
 --- !u!114 &1172978036262832045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,7 +993,7 @@ MonoBehaviour:
   Player3: {fileID: 11400000, guid: b0b780c9c41eaaf4dbf1233c6379a5fa, type: 2}
   MoveTutorial: {fileID: 1377440647233432984}
   GamePadTutorial: {fileID: 4956930846842058020}
-  _isTuttorialMode: 1
+  _isTutorialMode: 1
 --- !u!1 &1377440647233432984
 GameObject:
   m_ObjectHideFlags: 0

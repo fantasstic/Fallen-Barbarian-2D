@@ -818,7 +818,7 @@ MonoBehaviour:
     inputViewerIcon6: {fileID: 0}
   - inputType: 1
     inputButtonName: P1KeyboardVertical
-    engineRelatedButton: 3
+    engineRelatedButton: 2
     joystickAxisName: P1JoystickVertical
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -963,7 +963,7 @@ MonoBehaviour:
   player2_Inputs:
   - inputType: 1
     inputButtonName: P2KeyboardVertical
-    engineRelatedButton: 3
+    engineRelatedButton: 2
     joystickAxisName: 
     cInputPositiveKeyName: 
     cInputPositiveDefaultKey: 
@@ -1214,7 +1214,7 @@ MonoBehaviour:
       aiWeightList: 1
   trainingModeOptions:
     inputInfo: 0
-    freezeTime: 0
+    freezeTime: 1
     p1StartingLife: 100
     p2StartingLife: 100
     p1StartingGauge: 0
@@ -1341,20 +1341,20 @@ MonoBehaviour:
       overrideComboEfficiency: 0
       comboEfficiency: 1
       startupBehavior: 3
-    selectedDifficultyLevel: 5
+    selectedDifficultyLevel: 0
     selectedDifficulty:
-      difficultyLevel: 5
-      overrideTimeBetweenDecisions: 0
-      timeBetweenDecisions: 0
-      overrideTimeBetweenActions: 0
-      timeBetweenActions: 0.05
-      overrideAggressiveness: 0
-      aggressiveness: 0.5
-      overrideRuleCompliance: 0
-      ruleCompliance: 0.9
-      overrideComboEfficiency: 0
-      comboEfficiency: 1
-      startupBehavior: 3
+      difficultyLevel: 0
+      overrideTimeBetweenDecisions: 1
+      timeBetweenDecisions: 0.5
+      overrideTimeBetweenActions: 1
+      timeBetweenActions: 0.3
+      overrideAggressiveness: 1
+      aggressiveness: 0.1
+      overrideRuleCompliance: 1
+      ruleCompliance: 0.606
+      overrideComboEfficiency: 1
+      comboEfficiency: 0.2
+      startupBehavior: 1
   networkOptions:
     forceAnimationControl: 0
     disableRootMotion: 0

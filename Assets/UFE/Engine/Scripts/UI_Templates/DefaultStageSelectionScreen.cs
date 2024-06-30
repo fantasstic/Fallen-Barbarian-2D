@@ -47,10 +47,15 @@ public class DefaultStageSelectionScreen : StageSelectionScreen{
 			}
 		}
 	}
-	#endregion
+    #endregion
 
-	#region public override methods
-	public override void DoFixedUpdate(
+    private void Start()
+    {
+		TrySelectStage();
+    }
+
+    #region public override methods
+    public override void DoFixedUpdate(
 		IDictionary<InputReferences, InputEvents> player1PreviousInputs,
 		IDictionary<InputReferences, InputEvents> player1CurrentInputs,
 		IDictionary<InputReferences, InputEvents> player2PreviousInputs,

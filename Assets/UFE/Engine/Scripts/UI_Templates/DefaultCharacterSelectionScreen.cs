@@ -34,10 +34,12 @@ public class DefaultCharacterSelectionScreen : CharacterSelectionScreen {
 
 	public int defaultCharacterPlayer1 = 0;
 	public int defaultCharacterPlayer2 = 999;
-	#endregion
+    public UFE3D.CharacterInfo Player1;
+    public UFE3D.CharacterInfo Player2;
+    #endregion
 
-	#region protected instance fields
-	protected List<Selectable> characterButtonsWhiteList = new List<Selectable>();
+    #region protected instance fields
+    protected List<Selectable> characterButtonsWhiteList = new List<Selectable>();
 
 	protected GameObject background;
 	protected GameObject gameObjectPlayer1;
@@ -160,7 +162,15 @@ public class DefaultCharacterSelectionScreen : CharacterSelectionScreen {
 		}
 	}
 
-	public override void SetHoverIndex(int player, int characterIndex){
+    private void Start()
+    {
+		TrySelectCharacter();
+        TrySelectCharacter();
+
+
+    }
+
+    public override void SetHoverIndex(int player, int characterIndex){
 		if (!this.closing){
 			int maxCharacterIndex = this.GetMaxCharacterIndex();
 			this.p1HoverIndex = Mathf.Clamp(this.p1HoverIndex, 0, maxCharacterIndex);
