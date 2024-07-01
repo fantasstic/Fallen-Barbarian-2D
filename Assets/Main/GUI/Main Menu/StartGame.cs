@@ -27,6 +27,11 @@ public class StartGame : MonoBehaviour
         if(!PlayerPrefs.HasKey("TutorialDone"))
             PlayerPrefs.SetString("TutorialDone", "No");
 
+        if(PlayerPrefs.GetString("TutorialDone") == "No")
+            _isTutorialMode = true;
+        else
+            _isTutorialMode = false;
+
         _wins = PlayerPrefs.GetInt("Wins");
         //_wins = 3;
 

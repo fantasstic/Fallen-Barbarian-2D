@@ -37,6 +37,14 @@ public class TutorialQuest : MonoBehaviour
     public TMP_Text HitCounter;
     public bool TutorialDone;
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetString("TutorialDone") == "No")
+            TutorialDone = false;
+        else
+            TutorialDone = true;
+    }
+
     private void OnEnable()
     {
         
@@ -226,7 +234,7 @@ public class TutorialQuest : MonoBehaviour
                         HitCounter.gameObject.SetActive(false);
                         FinalDialoge.SetActive(true);
                         Mover.enabled = false;
-                        
+                        PlayerPrefs.SetString("TutorialDone", "Yes");
                     }
                     break;
 

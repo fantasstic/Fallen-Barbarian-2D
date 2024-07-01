@@ -132,10 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3dd8035eff4c84386d1dd53edfd0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _globalInfo: {fileID: 0}
   Player1: {fileID: 11400000, guid: a8ed8d082e35b144b8f633cf7b30f118, type: 2}
   Player2: {fileID: 11400000, guid: a59bea863eae5154b81df4b44e1799fb, type: 2}
+  Player3: {fileID: 0}
   MoveTutorial: {fileID: 24788127083071191}
   GamePadTutorial: {fileID: 24788127083071191}
+  _isTutorialMode: 0
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +634,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b74447a0709dacc4d80c9a89d84734db, type: 3}
+    m_Font: {fileID: 12800000, guid: 75dfc8b0be97f4545917b0eab89886a7, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 1
@@ -922,7 +925,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b74447a0709dacc4d80c9a89d84734db, type: 3}
+    m_Font: {fileID: 12800000, guid: 75dfc8b0be97f4545917b0eab89886a7, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 1
@@ -2066,7 +2069,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b74447a0709dacc4d80c9a89d84734db, type: 3}
+    m_Font: {fileID: 12800000, guid: 75dfc8b0be97f4545917b0eab89886a7, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 1
@@ -2146,7 +2149,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b74447a0709dacc4d80c9a89d84734db, type: 3}
+    m_Font: {fileID: 12800000, guid: 75dfc8b0be97f4545917b0eab89886a7, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 1

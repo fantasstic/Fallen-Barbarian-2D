@@ -252,6 +252,9 @@ MonoBehaviour:
   buttonNetwork: {fileID: 0}
   buttonBluetooth: {fileID: 0}
   ButtonManager: {fileID: 0}
+  NSFWAnim: {fileID: 386544344634643794}
+  SFWAnim: {fileID: 4738323848803921072}
+  PSFWAnim: {fileID: 7744116066674513824}
 --- !u!114 &6847679832973929446
 MonoBehaviour:
   m_ObjectHideFlags: 0

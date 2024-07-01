@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using Naninovel.FX;
 
 public class DefaultMainMenuScreen : MainMenuScreen{
     #region public instance fields
@@ -19,12 +20,16 @@ public class DefaultMainMenuScreen : MainMenuScreen{
 	public Button buttonNetwork;
 	public Button buttonBluetooth;
 	public GameObject ButtonManager;
+	public GameObject NSFWAnim, SFWAnim, PSFWAnim;
     #endregion
 
     private void Start()
     {
         if (PlayerPrefs.GetString("PSFW") == "Yes")
 		{
+			PSFWAnim.SetActive(true);
+            NSFWAnim.SetActive(false);
+            SFWAnim.SetActive(false);
             PatreonButton.gameObject.SetActive(false);
             DiscordButton.gameObject.SetActive(false);
 
@@ -36,6 +41,19 @@ public class DefaultMainMenuScreen : MainMenuScreen{
 
 		}
 
+        if (PlayerPrefs.GetString("SFW") == "Yes")
+        {
+            PSFWAnim.SetActive(false);
+            NSFWAnim.SetActive(false);
+            SFWAnim.SetActive(true);
+        }
+        else
+        {
+            PSFWAnim.SetActive(false);
+            NSFWAnim.SetActive(true);
+            SFWAnim.SetActive(false);
+        }
+
         if (!PlayerPrefs.HasKey("SFW"))
 			PlayerPrefs.SetString("SFW", "No");
 
@@ -46,7 +64,10 @@ public class DefaultMainMenuScreen : MainMenuScreen{
 		_controller.RoundStart = false;
 
 		if (UFE.config.inputOptions.inputManagerType == InputManagerType.CustomClass)
-            ButtonManager.SetActive(false);
+		{
+			if(ButtonManager != null) 
+				ButtonManager.SetActive(false);
+		}
     }
 
     #region public override methods
